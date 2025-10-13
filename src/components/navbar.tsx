@@ -19,10 +19,9 @@ import { useLocation } from "react-router-dom";
 import { memo, useEffect, useMemo, useState } from "react";
 import { title } from "./primitives";
 import { keysToLanguages } from "@/i18n";
+import { useZustand } from "@/zustand";
 
 export const Navbar = () => {
-  const { search } = useLocation();
-
   const { i18n } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const renderValue = useMemo(() => {
@@ -40,12 +39,16 @@ export const Navbar = () => {
       </>
     );
   }, [i18n.resolvedLanguage]);
-  const pathname = useLocation().pathname;
+  const location = useLocation();
+  const pathname = location.pathname + location.hash;
+
   const { t } = useTranslation();
 
   useEffect(() => {
     setIsMenuOpen(false);
   }, [pathname]);
+
+  const { activeSection, setActiveSection } = useZustand();
   return (
     <HeroUINavbar
       maxWidth="2xl"
@@ -53,36 +56,60 @@ export const Navbar = () => {
       isBlurred={false}
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
+      // style={{ backgroundColor: "rgb(255, 255, 255, 0.9)" }}
     >
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
-        <div className="hidden sm:flex gap-4 justify-start ml-2">
+        <div className="hidden lg:flex gap-4 justify-start ml-2">
           {siteConfig.navItems.map((item) => (
-            <NavbarItem key={item.href}>
+            <NavbarItem key={item.href} id={item.href}>
               <Link
+                onPress={(e) => {
+                  if (item.href.split("#")[0] !== location.pathname) {
+                    setActiveSection(item.href);
+                    if (item.scroll) {
+                      setTimeout(() => {
+                        document
+                          .getElementById(item.href.split("#")[1])
+                          ?.scrollIntoView({
+                            behavior: "smooth",
+                          });
+                      }, 1);
+                    }
+                  }
+                  if (item.scroll) {
+                    let anchorId: string | undefined = undefined;
+                    if (item.href.includes("#"))
+                      anchorId = item.href.split("#")[1];
+                    if (!anchorId)
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    else
+                      document.getElementById(anchorId)?.scrollIntoView({
+                        behavior: "smooth",
+                      });
+                  } else {
+                    setActiveSection(item.href);
+                  }
+                }}
                 className={clsx(
-                  "data-[active=true]:text-primary data-[active=true]:font-medium"
+                  "data-[active=true]:text-primary data-[active=true]:font-medium "
                 )}
-                color={item.href === pathname ? "primary" : "foreground"}
-                href={item.href + search}
+                color={item.href === activeSection ? "primary" : "foreground"}
+                href={item.href}
               >
                 {t(`routes.${item.href}`)}
               </Link>
             </NavbarItem>
           ))}
         </div>
-        <div className=" flex sm:hidden gap-4 justify-start ml-2">
+        <div className=" flex lg:hidden gap-4 justify-start ml-2">
           <span className={`${title({ size: "sm" })} font-serif`}>
-            {t(
-              "routes." +
-                siteConfig.navItems.find((value) => value.href == pathname)
-                  ?.href
-            )}
+            Herrenhaus Fischer
           </span>
         </div>
       </NavbarContent>
 
-      <NavbarContent className="sm:flex  basis-1 sm:basis-full" justify="end">
-        <NavbarItem className="sm:flex gap-2">
+      <NavbarContent className="lg:flex  basis-1 lg:basis-full" justify="end">
+        <NavbarItem className="lg:flex gap-2">
           <ThemeSwitch />
         </NavbarItem>
         <NavbarItem className="flex">
@@ -113,18 +140,48 @@ export const Navbar = () => {
           </Select>
         </NavbarItem>
         <NavbarMenuToggle
-          className="sm:hidden flex"
+          className="lg:hidden flex"
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
         />
       </NavbarContent>
 
-      <NavbarMenu>
+      <NavbarMenu
+      // style={{ backgroundColor: "rgb(255, 255, 255, 0.9)" }}
+      >
         <div className="mx-4 mt-2 flex flex-col gap-2">
           {siteConfig.navItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
               <Link
-                color={item.href === pathname ? "primary" : "foreground"}
-                href={item.href + search}
+                onPress={(e) => {
+                  setIsMenuOpen(false);
+                  if (item.href.split("#")[0] !== location.pathname) {
+                    setActiveSection(item.href);
+                    if (item.scroll) {
+                      setTimeout(() => {
+                        document
+                          .getElementById(item.href.split("#")[1])
+                          ?.scrollIntoView({
+                            behavior: "smooth",
+                          });
+                      }, 1);
+                    }
+                  }
+                  if (item.scroll) {
+                    let anchorId: string | undefined = undefined;
+                    if (item.href.includes("#"))
+                      anchorId = item.href.split("#")[1];
+                    if (!anchorId)
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    else
+                      document.getElementById(anchorId)?.scrollIntoView({
+                        behavior: "smooth",
+                      });
+                  } else {
+                    setActiveSection(item.href);
+                  }
+                }}
+                color={item.href === activeSection ? "primary" : "foreground"}
+                href={item.href}
                 size="lg"
               >
                 {t(`routes.${item.href}`)}

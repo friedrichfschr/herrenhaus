@@ -5,8 +5,8 @@ import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 
 export const keysToLanguages = {
-  us: "English",
   de: "Deutsch",
+  gb: "English",
   fr: "Français",
   es: "Español",
 };
@@ -30,7 +30,7 @@ i18n
   .init({
     debug: true,
 
-    fallbackLng: "us",
+    fallbackLng: "de",
 
     interpolation: {
       escapeValue: false, // not needed for react as it escapes by default
@@ -41,8 +41,8 @@ i18n
         translation: {
           routes: {
             "/": "Start",
-            "/festlich": "Festliche Herrenmode",
-            "/herrenmode": "Herrenmode",
+            "/#festlich": "Festliche Herrenmode",
+            "/#herrenmode": "Herrenmode",
             "/termine": "Termine",
             "/kontakt": "Kontakt",
             "/empfehlungen": "Empfehlungen",
@@ -53,11 +53,11 @@ i18n
           },
         },
       },
-      us: {
+      gb: {
         translation: {
           routes: {
             "/": "About",
-            "/festlich": "Festive Menswear",
+            "/#scroll": "Festive Menswear",
             "/herrenmode": "Menswear",
             "/termine": "Events",
             "/kontakt": "Contact",
@@ -70,6 +70,20 @@ i18n
         },
       },
       fr: {
+        translation: {
+          routes: {
+            About: "Moi",
+            Resumé: "Resumé",
+            Projects: "Projets",
+            Blog: "Blog",
+          },
+          projects: {
+            Palabra:
+              "Une application pour enricher son vocabulaire au moyen des vidéos, des livres ou les nouvelles",
+          },
+        },
+      },
+      es2: {
         translation: {
           routes: {
             About: "Moi",

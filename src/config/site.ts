@@ -6,12 +6,18 @@ export const siteConfig = {
   navItems: [
     {
       href: "/",
+      label: "Start",
+      scroll: true,
     },
     {
-      href: "/festlich",
+      href: "/#festlich",
+      label: "Festliche Herrenmode",
+      scroll: true,
     },
     {
-      href: "/herrenmode",
+      label: "Herrenmode",
+      href: "/#herrenmode",
+      scroll: true,
     },
     // {
     //   href: "/klara",
@@ -29,5 +35,6 @@ export const siteConfig = {
 
   links: {
     klara: "https://www.klara-fischer.de",
+    instagram: "https://www.instagram.com/herrenhaus_fischer/",
   },
 };
