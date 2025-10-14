@@ -40,47 +40,32 @@ i18n
       de: {
         translation: {
           routes: {
-            "/": "Start",
-            "/#festlich": "Festliche Herrenmode",
-            "/#herrenmode": "Herrenmode",
-            "/termine": "Termine",
-            "/kontakt": "Kontakt",
-            "/empfehlungen": "Empfehlungen",
-          },
-          projects: {
-            Palabra:
-              "A Language Learning App to build up & learn Vocabulary through Books, Videos and the News",
+            Start: "Start",
+            "Festliche Herrenmode": "Festliche Herrenmode",
+            Männermode: "Männermode",
+            Termine: "Termine",
+            Kontakt: "Kontakt",
+            Empfehlungen: "Empfehlungen",
+            "Klara Fischer": "Klara Fischer",
+            Aktuelles: "Aktuelles",
           },
         },
       },
       gb: {
         translation: {
           routes: {
-            "/": "About",
-            "/#scroll": "Festive Menswear",
-            "/herrenmode": "Menswear",
-            "/termine": "Events",
-            "/kontakt": "Contact",
-            "/empfehlungen": "Recommendations",
-          },
-          projects: {
-            Palabra:
-              "Eine Sprachenlernapp zum Wortschatz erweitern & Üben durch Bücher, Videos und Zeitung",
+            Start: "Start",
+            "Festliche Herrenmode": "Festive Menswear",
+            Männermode: "Menswear",
+            Termine: "Events",
+            Kontakt: "Contact",
+            Empfehlungen: "Recommendations",
           },
         },
       },
       fr: {
         translation: {
-          routes: {
-            About: "Moi",
-            Resumé: "Resumé",
-            Projects: "Projets",
-            Blog: "Blog",
-          },
-          projects: {
-            Palabra:
-              "Une application pour enricher son vocabulaire au moyen des vidéos, des livres ou les nouvelles",
-          },
+          routes: {},
         },
       },
       es2: {
@@ -90,10 +75,6 @@ i18n
             Resumé: "Resumé",
             Projects: "Projets",
             Blog: "Blog",
-          },
-          projects: {
-            Palabra:
-              "Une application pour enricher son vocabulaire au moyen des vidéos, des livres ou les nouvelles",
           },
         },
       },

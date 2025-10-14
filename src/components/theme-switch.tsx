@@ -5,6 +5,7 @@ import clsx from "clsx";
 import { useTheme } from "@heroui/use-theme";
 
 import { SunFilledIcon, MoonFilledIcon } from "@/components/icons";
+import { useZustand } from "@/zustand";
 
 export interface ThemeSwitchProps {
   className?: string;
@@ -18,7 +19,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
   const [isMounted, setIsMounted] = useState(false);
 
   const { theme, setTheme } = useTheme();
-
+  const { setTheme: setZustandTheme } = useZustand();
   const {
     Component,
     slots,
@@ -28,7 +29,10 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
     getWrapperProps,
   } = useSwitch({
     isSelected: theme === "light",
-    onChange: () => setTheme(theme === "light" ? "dark" : "light"),
+    onChange: () => {
+      setTheme(theme === "light" ? "dark" : "light");
+      setZustandTheme(theme === "light" ? "dark" : "light");
+    },
   });
 
   useEffect(() => {
@@ -45,7 +49,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
         className: clsx(
           "px-px transition-opacity hover:opacity-80 cursor-pointer",
           className,
-          classNames?.base,
+          classNames?.base
         ),
       })}
     >
@@ -67,7 +71,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
               "px-0",
               "mx-0",
             ],
-            classNames?.wrapper,
+            classNames?.wrapper
           ),
         })}
       >

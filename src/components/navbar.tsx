@@ -11,15 +11,14 @@ import clsx from "clsx";
 
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
-
 import { useTranslation } from "react-i18next";
 import { Select, SelectItem } from "@heroui/select";
 import { Avatar } from "@heroui/avatar";
 import { useLocation } from "react-router-dom";
 import { memo, useEffect, useMemo, useState } from "react";
-import { title } from "./primitives";
 import { keysToLanguages } from "@/i18n";
 import { useZustand } from "@/zustand";
+import { Divider } from "@heroui/divider";
 
 export const Navbar = () => {
   const { i18n } = useTranslation();
@@ -53,6 +52,7 @@ export const Navbar = () => {
     <HeroUINavbar
       maxWidth="2xl"
       position="sticky"
+      className="shadow-md shadow-background pb-2 inset-shadow-xl z-50 "
       isBlurred={false}
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
@@ -60,35 +60,33 @@ export const Navbar = () => {
     >
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <div className="hidden lg:flex gap-4 justify-start ml-2">
-          {siteConfig.navItems.map((item) => (
+          {siteConfig.scrollNavItems.map((item) => (
             <NavbarItem key={item.href} id={item.href}>
               <Link
-                onPress={(e) => {
+                onPress={() => {
                   if (item.href.split("#")[0] !== location.pathname) {
                     setActiveSection(item.href);
-                    if (item.scroll) {
-                      setTimeout(() => {
-                        document
-                          .getElementById(item.href.split("#")[1])
-                          ?.scrollIntoView({
-                            behavior: "smooth",
-                          });
-                      }, 1);
-                    }
+                    setTimeout(() => {
+                      document
+                        .getElementById(item.href.split("#")[1])
+                        ?.scrollIntoView({
+                          behavior: "smooth",
+                          block: "start",
+                          inline: "start",
+                        });
+                    }, 1);
                   }
-                  if (item.scroll) {
-                    let anchorId: string | undefined = undefined;
-                    if (item.href.includes("#"))
-                      anchorId = item.href.split("#")[1];
-                    if (!anchorId)
-                      window.scrollTo({ top: 0, behavior: "smooth" });
-                    else
-                      document.getElementById(anchorId)?.scrollIntoView({
-                        behavior: "smooth",
-                      });
-                  } else {
-                    setActiveSection(item.href);
-                  }
+                  let anchorId: string | undefined = undefined;
+                  if (item.href.includes("#"))
+                    anchorId = item.href.split("#")[1];
+                  if (!anchorId)
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  else
+                    document.getElementById(anchorId)?.scrollIntoView({
+                      behavior: "smooth",
+                      block: "start",
+                      inline: "start",
+                    });
                 }}
                 className={clsx(
                   "data-[active=true]:text-primary data-[active=true]:font-medium "
@@ -96,13 +94,28 @@ export const Navbar = () => {
                 color={item.href === activeSection ? "primary" : "foreground"}
                 href={item.href}
               >
-                {t(`routes.${item.href}`)}
+                {t(`routes.${item.label}`)}
               </Link>
             </NavbarItem>
           ))}
+          {siteConfig.navItems.map((item) => (
+            <NavbarItem key={item.href} id={item.href}>
+              <Link
+                onPress={() => setActiveSection(item.href)}
+                className={clsx(
+                  "data-[active=true]:text-primary data-[active=true]:font-medium "
+                )}
+                color={item.href === activeSection ? "primary" : "foreground"}
+                href={item.href}
+              >
+                {t(`routes.${item.label}`)}
+              </Link>{" "}
+            </NavbarItem>
+          ))}
         </div>
-        <div className=" flex lg:hidden gap-4 justify-start ml-2">
-          <span className={`${title({ size: "sm" })} font-serif`}>
+        <div className=" flex lg:hidden gap-4 justify-start ml-0">
+          {/* <Image src={siteConfig.links.logo} width={120} className="ml-5" /> */}
+          <span className={`font-serif italic text-3xl mt-2 font-bold `}>
             Herrenhaus Fischer
           </span>
         </div>
@@ -149,45 +162,68 @@ export const Navbar = () => {
       // style={{ backgroundColor: "rgb(255, 255, 255, 0.9)" }}
       >
         <div className="mx-4 mt-2 flex flex-col gap-2">
-          {siteConfig.navItems.map((item, index) => (
+          {siteConfig.scrollNavItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
               <Link
-                onPress={(e) => {
+                onPress={() => {
                   setIsMenuOpen(false);
                   if (item.href.split("#")[0] !== location.pathname) {
                     setActiveSection(item.href);
-                    if (item.scroll) {
-                      setTimeout(() => {
-                        document
-                          .getElementById(item.href.split("#")[1])
-                          ?.scrollIntoView({
-                            behavior: "smooth",
-                          });
-                      }, 1);
-                    }
+                    setTimeout(() => {
+                      document
+                        .getElementById(item.href.split("#")[1])
+                        ?.scrollIntoView({
+                          behavior: "smooth",
+                        });
+                    }, 1);
                   }
-                  if (item.scroll) {
-                    let anchorId: string | undefined = undefined;
-                    if (item.href.includes("#"))
-                      anchorId = item.href.split("#")[1];
-                    if (!anchorId)
-                      window.scrollTo({ top: 0, behavior: "smooth" });
-                    else
-                      document.getElementById(anchorId)?.scrollIntoView({
-                        behavior: "smooth",
-                      });
-                  } else {
-                    setActiveSection(item.href);
-                  }
+                  let anchorId: string | undefined = undefined;
+                  if (item.href.includes("#"))
+                    anchorId = item.href.split("#")[1];
+                  if (!anchorId)
+                    window.scrollTo({ top: 0, behavior: "smooth" });
+                  else
+                    document.getElementById(anchorId)?.scrollIntoView({
+                      behavior: "smooth",
+                    });
                 }}
                 color={item.href === activeSection ? "primary" : "foreground"}
+                className={clsx("italic text-lg font-semibold")}
                 href={item.href}
-                size="lg"
               >
-                {t(`routes.${item.href}`)}
+                {t(`routes.${item.label}`)}
               </Link>
             </NavbarMenuItem>
           ))}
+          <Divider className="my-1" />
+          {siteConfig.navItems.map((item) => (
+            <NavbarItem key={item.href} id={item.href}>
+              <Link
+                onPress={() => setActiveSection(item.href)}
+                className={clsx(
+                  "data-[active=true]:text-primary data-[active=true]:font-medium text-lg font-semibold"
+                )}
+                color={item.href === activeSection ? "primary" : "foreground"}
+                href={item.href}
+              >
+                {t(`routes.${item.label}`)}
+              </Link>
+            </NavbarItem>
+          ))}
+          <Divider />
+          <NavbarItem>
+            <Link
+              color="secondary"
+              isExternal
+              showAnchorIcon
+              className={clsx(
+                "decoration-secondary underline font-semibold text-lg w-full"
+              )}
+              href={siteConfig.links.klara}
+            >
+              {t(`routes.Klara Fischer`)}
+            </Link>
+          </NavbarItem>
         </div>
       </NavbarMenu>
     </HeroUINavbar>
