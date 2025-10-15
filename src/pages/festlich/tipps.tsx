@@ -1,12 +1,36 @@
 import { title } from "@/components/primitives";
+import { BackButton } from "./fürdenBräutigam";
+import { Button } from "@heroui/button";
+import { Link } from "@heroui/link";
+import { useZustand } from "@/zustand";
 
 export default function TippsPage() {
+  const { setActiveSection } = useZustand();
   return (
     <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10 w-full">
-      <div className="inline-block max-w-lg text-center justify-center">
+      <div className="text-center justify-center mt-12  relative w-full flex-col flex max-w-xl md:max-w-3xl">
+        <Button
+          variant="ghost"
+          className="sm:absolute sm:left-5 sm:top-1 max-w-25 mb-3 sm:mb-0 sm:ml-0 ml-5"
+          size="md"
+          as={Link}
+          href="/#festlich"
+          onPress={() => {
+            setActiveSection("/#festlich");
+            setTimeout(() => {
+              document.getElementById("festlich")?.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+                inline: "start",
+              });
+            }, 1);
+          }}
+        >
+          {"<-"}
+        </Button>
         <h1 className={title()}>Tipps für den Bräutigam</h1>
       </div>
-      <div className="max-w-lg md:max-w-3xl text-justify mx-auto  justify-center items-center text-lg px-4">
+      <div className="max-w-xl md:max-w-3xl text-justify mx-auto  justify-center items-center text-lg px-4">
         <div className="mt-5">
           Das Outfit für den „Schönsten Tag des Lebens“ auszusuchen sollte
           Freude bereiten und nicht stressen!

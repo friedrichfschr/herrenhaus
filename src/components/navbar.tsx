@@ -19,6 +19,7 @@ import { memo, useEffect, useMemo, useState } from "react";
 import { keysToLanguages } from "@/i18n";
 import { useZustand } from "@/zustand";
 import { Divider } from "@heroui/divider";
+import { Image } from "@heroui/image";
 
 export const Navbar = () => {
   const { i18n } = useTranslation();
@@ -50,15 +51,66 @@ export const Navbar = () => {
   const { activeSection, setActiveSection } = useZustand();
   return (
     <HeroUINavbar
-      maxWidth="2xl"
+      maxWidth="xl"
       position="sticky"
-      className="shadow-md shadow-background pb-2 inset-shadow-xl z-50 "
+      className="shadow-md shadow-background pb-6  sm:pb-12 inset-shadow-xl "
       isBlurred={false}
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
       // style={{ backgroundColor: "rgb(255, 255, 255, 0.9)" }}
     >
-      <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
+      <NavbarContent
+        className="basis-1/5 sm:basis-full flex-col"
+        justify="start"
+      >
+        <Image src="/logo-herrenhaus-fischer.png" width={230} />
+      </NavbarContent>
+
+      <NavbarContent
+        className="mt-3 flex flex-wrap  items-center basis-1 lg:basis-full gap-1"
+        justify="end"
+      >
+        <NavbarItem className="flex mr-4">
+          <Select
+            className="flex-grow"
+            value={i18n.resolvedLanguage}
+            aria-label="Select Language"
+            renderValue={() => renderValue}
+            onSelectionChange={(e) => {
+              i18n.changeLanguage(e.currentKey);
+            }}
+            variant="bordered"
+            selectedKeys={[`${i18n.resolvedLanguage}`]}
+          >
+            {Object.entries(keysToLanguages).map(([key, language]) => (
+              <SelectItem key={key} hideSelectedIcon textValue={language}>
+                <>
+                  <div className="sm:hidden min-w">
+                    <FlagAvatar code={key} alt={language} />
+                  </div>
+                  <div className="hidden sm:flex items-center justify-start flex-row flex-auto gap-2">
+                    <FlagAvatar code={key} alt={language} />
+                    {language}
+                  </div>
+                </>
+              </SelectItem>
+            ))}
+          </Select>
+        </NavbarItem>
+
+        <NavbarItem className="flex-row flex items-center ">
+          <ThemeSwitch />
+          <button
+            className="py-5 pl-5 pr-6 lg:hidden flex items-center"
+            onClick={() => setIsMenuOpen((prev) => !prev)}
+          >
+            <NavbarMenuToggle
+              className=""
+              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            />
+          </button>
+        </NavbarItem>
+
         <div className="hidden lg:flex gap-4 justify-start ml-2">
           {siteConfig.scrollNavItems.map((item) => (
             <NavbarItem key={item.href} id={item.href}>
@@ -98,69 +150,10 @@ export const Navbar = () => {
               </Link>
             </NavbarItem>
           ))}
-          {siteConfig.navItems.map((item) => (
-            <NavbarItem key={item.href} id={item.href}>
-              <Link
-                onPress={() => setActiveSection(item.href)}
-                className={clsx(
-                  "data-[active=true]:text-primary data-[active=true]:font-medium "
-                )}
-                color={item.href === activeSection ? "primary" : "foreground"}
-                href={item.href}
-              >
-                {t(`routes.${item.label}`)}
-              </Link>{" "}
-            </NavbarItem>
-          ))}
-        </div>
-        <div className=" flex lg:hidden gap-4 justify-start ml-0">
-          {/* <Image src={siteConfig.links.logo} width={120} className="ml-5" /> */}
-          <span className={`font-serif italic text-3xl mt-2 font-bold `}>
-            Herrenhaus Fischer
-          </span>
         </div>
       </NavbarContent>
 
-      <NavbarContent className="lg:flex  basis-1 lg:basis-full" justify="end">
-        <NavbarItem className="lg:flex gap-2">
-          <ThemeSwitch />
-        </NavbarItem>
-        <NavbarItem className="flex">
-          <Select
-            className="flex-grow"
-            value={i18n.resolvedLanguage}
-            aria-label="Select Language"
-            renderValue={() => renderValue}
-            onSelectionChange={(e) => {
-              i18n.changeLanguage(e.currentKey);
-            }}
-            variant="bordered"
-            selectedKeys={[`${i18n.resolvedLanguage}`]}
-          >
-            {Object.entries(keysToLanguages).map(([key, language]) => (
-              <SelectItem key={key} hideSelectedIcon textValue={language}>
-                <>
-                  <div className="sm:hidden min-w">
-                    <FlagAvatar code={key} alt={language} />
-                  </div>
-                  <div className="hidden sm:flex items-center justify-start flex-row flex-auto gap-2">
-                    <FlagAvatar code={key} alt={language} />
-                    {language}
-                  </div>
-                </>
-              </SelectItem>
-            ))}
-          </Select>
-        </NavbarItem>
-        <NavbarMenuToggle
-          className="lg:hidden flex"
-          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-        />
-      </NavbarContent>
-
-      <NavbarMenu
-      // style={{ backgroundColor: "rgb(255, 255, 255, 0.9)" }}
-      >
+      <NavbarMenu className="pt-10">
         <div className="mx-4 mt-2 flex flex-col gap-2">
           {siteConfig.scrollNavItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
@@ -196,21 +189,7 @@ export const Navbar = () => {
             </NavbarMenuItem>
           ))}
           <Divider className="my-1" />
-          {siteConfig.navItems.map((item) => (
-            <NavbarItem key={item.href} id={item.href}>
-              <Link
-                onPress={() => setActiveSection(item.href)}
-                className={clsx(
-                  "data-[active=true]:text-primary data-[active=true]:font-medium text-lg font-semibold"
-                )}
-                color={item.href === activeSection ? "primary" : "foreground"}
-                href={item.href}
-              >
-                {t(`routes.${item.label}`)}
-              </Link>
-            </NavbarItem>
-          ))}
-          <Divider />
+
           <NavbarItem>
             <Link
               color="secondary"

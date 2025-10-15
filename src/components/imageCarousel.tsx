@@ -11,7 +11,7 @@ import {
   useDisclosure,
 } from "@heroui/modal";
 import { Card, CardBody, CardFooter } from "@heroui/card";
-import { useState } from "react";
+import { useRef, useState } from "react";
 const images = [
   "/Wilvorst/GWLook1.jpg",
 
@@ -28,68 +28,63 @@ const images = [
   "/Wilvorst/WilvorstLook1.jpg",
 ];
 
+const responsive = {
+  largeDesktop: {
+    breakpoint: { max: 5000, min: 1500 },
+    items: 4,
+    slidesToSlide: 2, // optional, default to 1.
+    partialVisibilityGutter: 0,
+  },
+  desktop: {
+    breakpoint: { max: 1500, min: 1200 },
+    items: 3,
+    slidesToSlide: 1, // optional, default to 1.
+    partialVisibilityGutter: 100,
+  },
+  tablet: {
+    breakpoint: { max: 1200, min: 700 },
+    items: 2,
+    slidesToSlide: 1, // optional, default to 1.
+    partialVisibilityGutter: 100,
+  },
+  mobile: {
+    breakpoint: { max: 700, min: 0 },
+    items: 1,
+    slidesToSlide: 1, // optional, default to 1.
+    partialVisibilityGutter: 100,
+  },
+};
+
 export const ImageCarousel = () => {
-  const responsive = {
-    largeDesktop: {
-      breakpoint: { max: 5000, min: 1500 },
-      items: 4,
-      slidesToSlide: 2, // optional, default to 1.
-      partialVisibilityGutter: 0,
-    },
-    desktop: {
-      breakpoint: { max: 1500, min: 1200 },
-      items: 3,
-      slidesToSlide: 1, // optional, default to 1.
-      partialVisibilityGutter: 100,
-    },
-    tablet: {
-      breakpoint: { max: 1200, min: 840 },
-      items: 2,
-      slidesToSlide: 1, // optional, default to 1.
-      partialVisibilityGutter: 100,
-    },
-    mobile: {
-      breakpoint: { max: 840, min: 0 },
-      items: 1,
-      slidesToSlide: 1, // optional, default to 1.
-      partialVisibilityGutter: 100,
-    },
-  };
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [image, setImage] = useState("");
   return (
-    <>
+    <div>
       <Carousel
         swipeable={true}
         draggable={true}
         responsive={responsive}
+        shouldResetAutoplay
         infinite={true}
         minimumTouchDrag={10}
         slidesToSlide={2}
         autoPlay
         autoPlaySpeed={4000}
-        arrows={!isOpen}
         centerMode={true}
-        containerClass=""
+        containerClass="carousel-container z-0"
         itemClass=""
       >
         {images.map((src, idx) => (
-          <Card
-            isFooterBlurred
-            key={idx}
-            className="px-0 mx-1"
-            style={{ userSelect: "none" }}
-          >
+          <Card key={idx} className="px-0 mx-1" style={{ userSelect: "none" }}>
             <CardBody className=" md:h-100 sm:h-90 h-70 py-1 px-1 ">
               <Button
-                className="p-0 flex-1 bg-transparent items-center"
+                className="p-0 flex-1 items-center"
                 onPress={() => {
                   setImage(src);
                   onOpen();
                 }}
               >
                 <Image
-                  shadow="lg"
                   isZoomed
                   style={{ objectFit: "cover" }}
                   draggable={false}
@@ -104,6 +99,7 @@ export const ImageCarousel = () => {
           </Card>
         ))}
       </Carousel>
+
       <Modal
         backdrop="blur"
         placement="center"
@@ -156,6 +152,6 @@ export const ImageCarousel = () => {
           )}
         </ModalContent>
       </Modal>
-    </>
+    </div>
   );
 };

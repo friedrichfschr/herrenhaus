@@ -14,7 +14,7 @@ export const siteConfig = {
     },
     {
       label: "Männermode",
-      href: "/#mänermode",
+      href: "/#männermode",
     },
     {
       label: "Termine",
@@ -52,7 +52,7 @@ export const siteConfig = {
   ],
 
   links: {
-    logo: "https://herrenhaus-fischer.de/files/fischer/img/layout/logo-herrenhaus-fischer.jpg",
+    logo: "",
     klara: "https://www.klara-fischer.de",
     instagram: "https://www.instagram.com/herrenhaus_fischer/",
   },

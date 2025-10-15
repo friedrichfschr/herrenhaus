@@ -1,12 +1,40 @@
-import { subtitle, title } from "@/components/primitives";
+import { title } from "@/components/primitives";
+import { useZustand } from "@/zustand";
+import { Button } from "@heroui/button";
+import { Link } from "@heroui/link";
+export function BackButton() {
+  const { setActiveSection } = useZustand();
+  return (
+    <Button
+      variant="ghost"
+      className="sm:absolute sm:left-5 sm:top-1 max-w-25 mb-3 sm:mb-0 sm:ml-0 ml-5"
+      size="md"
+      as={Link}
+      href="/#festlich"
+      onPress={() => {
+        setActiveSection("/#festlich");
+        setTimeout(() => {
+          document.getElementById("festlich")?.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+            inline: "start",
+          });
+        }, 1);
+      }}
+    >
+      {"<-"}
+    </Button>
+  );
+}
 
-export default function SpektakulärPage() {
+export default function fürdenBräutigamPage() {
   return (
     <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10 w-full">
-      <div className="inline-block max-w-lg text-center justify-center">
-        <h1 className={title()}>Spektakulär</h1>
+      <div className="flex-col flex  text-center justify-center relative w-full max-w-xl md:max-w-3xl ">
+        <BackButton />
+        <h1 className={title()}>Für den Bräutigam</h1>
       </div>
-      <div className="max-w-lg md:max-w-3xl text-justify mx-auto  justify-center items-center text-lg px-4">
+      <div className="max-w-xl md:max-w-3xl text-justify mx-auto  justify-center items-center text-lg px-4">
         <div>
           Der Anzug für die Hochzeit soll etwas ganz Besonderes sein. Der
           Bräutigam steht gemeinsam mit der Braut auch optisch im Mittelpunkt.
