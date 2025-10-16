@@ -30,7 +30,9 @@ module.exports = {
             },
             focus: "#E3C674",
           },
-          layout: {},
+          layout: {
+            radius: { small: "0rem", medium: "0rem", large: "0rem" },
+          },
         },
         light: {
           extend: "light", // <- inherit default values from dark theme
@@ -50,7 +52,9 @@ module.exports = {
             },
             focus: "#E3C674",
           },
-          layout: {},
+          layout: {
+            radius: { small: "0rem", medium: "0rem", large: "0rem" },
+          },
         },
       },
     }),

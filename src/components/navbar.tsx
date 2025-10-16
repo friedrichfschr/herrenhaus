@@ -150,6 +150,19 @@ export const Navbar = () => {
               </Link>
             </NavbarItem>
           ))}
+          {siteConfig.navItems.map((item) => (
+            <NavbarItem key={item.href} id={item.href}>
+              <Link
+                style={{ textDecoration: "underline" }}
+                color={"foreground"}
+                href={item.href}
+                isExternal={item.isExternal}
+                showAnchorIcon={item.isExternal}
+              >
+                {t(`routes.${item.label}`)}
+              </Link>
+            </NavbarItem>
+          ))}
         </div>
       </NavbarContent>
 

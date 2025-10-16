@@ -11,7 +11,7 @@ export default function TippsPage() {
       <div className="text-center justify-center mt-12  relative w-full flex-col flex max-w-xl md:max-w-3xl">
         <Button
           variant="ghost"
-          className="sm:absolute sm:left-5 sm:top-1 max-w-25 mb-3 sm:mb-0 sm:ml-0 ml-5"
+          className="sm:absolute sm:left-5 sm:top-1 max-w-25 mb-3 sm:mb-0 sm:ml-0 ml-5 rounded-sm"
           size="md"
           as={Link}
           href="/#festlich"

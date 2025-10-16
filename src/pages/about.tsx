@@ -1,4 +1,4 @@
-import { ImageCarousel } from "@/components/imageCarousel";
+import { ImageCarousel } from "@/components/imageCarouselStart";
 import { title } from "@/components/primitives";
 import { useZustand } from "@/zustand";
 import { Button } from "@heroui/button";
@@ -8,6 +8,11 @@ import { useTheme } from "@heroui/use-theme";
 import { useEffect, useRef } from "react";
 import { Accordion, AccordionItem } from "@heroui/accordion";
 import { t } from "i18next";
+import { ScrollShadow } from "@heroui/scroll-shadow";
+import Marken from "@/components/marken";
+
+interface Marken {}
+
 export default function DocsPage() {
   const sections = useRef([]);
 
@@ -79,9 +84,18 @@ export default function DocsPage() {
         <Accordion
           variant="bordered"
           defaultExpandedKeys={["1"]}
-          className="mx-1 w-[98%] "
+          className="mx-1 w-[98%]  "
         >
           <AccordionItem
+            onPress={() =>
+              setTimeout(
+                () =>
+                  document
+                    .getElementById("festlich")
+                    ?.scrollIntoView({ behavior: "instant" }),
+                0
+              )
+            }
             key="1"
             aria-label="Für den Bräutigam und seine Gäste"
             title="Für den Bräutigam und seine Gäste"
@@ -98,7 +112,7 @@ export default function DocsPage() {
                 wichtigsten Tag“ ein kleines Wegstück zu begleiten. Ich freue
                 mich auf Euch!
               </p>
-              <p className="sm:text-left mt-5  text-center mr-1 sm:ml-20 md:ml-35 lg:ml-27 xl:ml-30 italic font-serif">
+              <p className="text-left mt-5  mr-1 ml-10 sm:ml-20 md:ml-35 lg:ml-27 xl:ml-30 italic font-serif">
                 Herzlichst
               </p>
             </div>
@@ -108,26 +122,24 @@ export default function DocsPage() {
             >
               {theme == "dark" ? (
                 <Image
-                  width={400}
-                  className="w-80 sm:100 md:140 lg:w-200 mt-10 sm:mt-15"
+                  className="w-50 sm:60 md:140 lg:w-200 mt-10 sm:mt-15"
                   src={"/UnterschriftDark.png"}
                 />
               ) : (
                 <Image
-                  width={400}
-                  className="w-80 sm:100 md:140 lg:w-200 mt-10 sm:mt-15"
+                  className="w-50 sm:60 md:140 lg:w-200 mt-10 sm:mt-15"
                   src={"/Unterschrift.png"}
                 />
               )}
               <Image
-                className="lg:w-50 lg:h-50 md:w-40 md:h-40 sm:w-30 sm:h-30 hidden sm:flex  rounded-full "
+                className="lg:w-50 lg:h-50 md:w-40 md:h-40 sm:w-30 sm:h-30 h-20 w-20 sm:flex  rounded-full "
                 style={{ objectFit: "cover" }}
                 src={"/BernhardFotoGruß.jpg"}
               />
             </div>
             <div className="grid-cols-2 grid gap-2">
               <Button
-                className="font-semibold text-lg  whitespace-normal h-auto"
+                className="font-semibold text-lg  whitespace-normal h-auto "
                 variant="bordered"
                 as={Link}
                 href="/bräutigam"
@@ -136,7 +148,7 @@ export default function DocsPage() {
                 Für den Bräutigam
               </Button>
               <Button
-                className="font-semibold text-lg flex-1  whitespace-normal h-auto"
+                className="font-semibold text-lg flex-1  whitespace-normal h-auto  "
                 variant="bordered"
                 href="/trauzeuge"
                 as={Link}
@@ -149,7 +161,7 @@ export default function DocsPage() {
                 as={Link}
                 href="familie"
                 onPress={() => window.scrollTo({ top: 0 })}
-                className="font-semibold text-lg flex-1  whitespace-normal h-auto"
+                className="font-semibold text-lg flex-1  whitespace-normal h-auto  "
               >
                 Gäste & Familie des Brautpaares
               </Button>
@@ -158,33 +170,38 @@ export default function DocsPage() {
                 as={Link}
                 href="tipps"
                 onPress={() => window.scrollTo({ top: 0 })}
-                className="font-semibold text-lg  whitespace-normal h-auto"
+                className="font-semibold text-lg  whitespace-normal h-auto  "
               >
                 Tipps für den Bräutigam
               </Button>
             </div>
           </AccordionItem>
           <AccordionItem
+            onPress={() =>
+              setTimeout(
+                () =>
+                  document
+                    .getElementById("festlich")
+                    ?.scrollIntoView({ behavior: "instant" }),
+                0
+              )
+            }
             key="2"
             aria-label="Unsere Marken"
             title="Unsere Marken"
           >
-            <ul>
-              <li>Wilvorst</li>
-              <li>Roberto Vicenti</li>
-              <li>Kastell Wedding</li>
-              <li>Digel Ceremony</li>
-              <li>Tziacco</li>
-              <li>Una</li>
-              <li>Olymp</li>
-              <li>Eterna</li>
-              <li>Lindenmann</li>
-              <li>Abrazi</li>
-              <li>Lloyd</li>
-              <li>Digel Schuhe</li>
-            </ul>
+            <Marken />
           </AccordionItem>
           <AccordionItem
+            onPress={() =>
+              setTimeout(
+                () =>
+                  document
+                    .getElementById("festlich")
+                    ?.scrollIntoView({ behavior: "instant" }),
+                0
+              )
+            }
             key="3"
             aria-label="Fotoshootings"
             title="Fotoshootings"
@@ -197,6 +214,15 @@ export default function DocsPage() {
             </ul>
           </AccordionItem>
           <AccordionItem
+            onPress={() =>
+              setTimeout(
+                () =>
+                  document
+                    .getElementById("festlich")
+                    ?.scrollIntoView({ behavior: "instant" }),
+                0
+              )
+            }
             key="4"
             aria-label="Von unseren Kunden"
             title="Von unseren Kunden"
@@ -214,26 +240,13 @@ export default function DocsPage() {
           {t("routes.Männermode")}
         </h1>
         <div>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat
-          suscipit placeat perspiciatis, eveniet accusamus, ut ullam, cumque
-          atque aut ipsam id magnam tenetur beatae. Iusto nulla neque facilis
-          veniam adipisci! Lorem ipsum dolor, sit amet consectetur adipisicing
-          elit. Fugiat suscipit placeat perspiciatis, eveniet accusamus, ut
-          ullam, cumque atque aut ipsam id magnam tenetur beatae. Iusto nulla
-          neque facilis veniam adipisci! Lorem ipsum dolor, sit amet consectetur
-          adipisicing elit. Fugiat suscipit placeat perspiciatis, eveniet
-          accusamus, ut ullam, cumque atque aut ipsam id magnam tenetur beatae.
-          Iusto nulla neque facilis veniam adipisci! Lorem ipsum dolor, sit amet
-          consectetur adipisicing elit. Fugiat suscipit placeat perspiciatis,
-          eveniet accusamus, ut ullam, cumque atque aut ipsam id magnam tenetur
-          beatae. Iusto nulla neque facilis veniam adipisci! Lorem ipsum dolor,
-          sit amet consectetur adipisicing elit. Fugiat suscipit placeat
-          perspiciatis, eveniet accusamus, ut ullam, cumque atque aut ipsam id
-          magnam tenetur beatae. Iusto nulla neque facilis veniam adipisci!
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat
-          suscipit placeat perspiciatis, eveniet accusamus, ut ullam, cumque
-          atque aut ipsam id magnam tenetur beatae. Iusto nulla neque facilis
-          veniam adipisci!
+          Dieser salbeigrüne Anzug besticht durch dezent matten Glanz und
+          natürlicher Oberfläche.Zusammensetzung: 52% Viskose, 46% Schurwolle,
+          2% Elasthan Preis Anzug 2-tlg.: 519,95 € Die passende Weste mit
+          geometrischem Muster ist harmonisch abgestimmt und wird mit Schleife
+          oder Plastron ergänzt. Perfekt wird das Outfit mit dem Einstecktuch.
+          Preis Weste: 149,95 € Preis Schleife/Tuch: 69,95 € Preis
+          Plastron/Tuch: 84,95 €
         </div>
       </div>
       <div
@@ -245,38 +258,6 @@ export default function DocsPage() {
         <h1 className={title() + "text-center font-serif italic"}>
           {" "}
           {t("routes.Termine")}
-        </h1>
-        <div>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat
-          suscipit placeat perspiciatis, eveniet accusamus, ut ullam, cumque
-          atque aut ipsam id magnam tenetur beatae. Iusto nulla neque facilis
-          veniam adipisci! Lorem ipsum dolor, sit amet consectetur adipisicing
-          elit. Fugiat suscipit placeat perspiciatis, eveniet accusamus, ut
-          ullam, cumque atque aut ipsam id magnam tenetur beatae. Iusto nulla
-          neque facilis veniam adipisci! Lorem ipsum dolor, sit amet consectetur
-          adipisicing elit. Fugiat suscipit placeat perspiciatis, eveniet
-          accusamus, ut ullam, cumque atque aut ipsam id magnam tenetur beatae.
-          Iusto nulla neque facilis veniam adipisci! Lorem ipsum dolor, sit amet
-          consectetur adipisicing elit. Fugiat suscipit placeat perspiciatis,
-          eveniet accusamus, ut ullam, cumque atque aut ipsam id magnam tenetur
-          beatae. Iusto nulla neque facilis veniam adipisci! Lorem ipsum dolor,
-          sit amet consectetur adipisicing elit. Fugiat suscipit placeat
-          perspiciatis, eveniet accusamus, ut ullam, cumque atque aut ipsam id
-          magnam tenetur beatae. Iusto nulla neque facilis veniam adipisci!
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat
-          suscipit placeat perspiciatis, eveniet accusamus, ut ullam, cumque
-          atque aut ipsam id magnam tenetur beatae. Iusto nulla neque facilis
-          veniam adipisci!
-        </div>
-      </div>
-      <div
-        id="klara"
-        data-section
-        className=" max-w-2xl text-center  justify-center   pt-30 
-         "
-      >
-        <h1 className={title() + "text-center font-serif italic"}>
-          {t("routes.Klara Fischer")}
         </h1>
         <div>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat

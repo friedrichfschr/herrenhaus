@@ -21,10 +21,6 @@ export const siteConfig = {
       href: "/#termine",
     },
     {
-      label: "Klara Fischer",
-      href: "/#klara",
-    },
-    {
       label: "Aktuelles",
       href: "/#aktuelles",
     },
@@ -34,9 +30,11 @@ export const siteConfig = {
     },
   ],
   navItems: [
-    // // {
-    // //   href: "/klara",
-    // // },
+    {
+      href: "https://www.klara-fischer.de/",
+      isExternal: true,
+      label: "Klara Fischer",
+    },
     // {
     //   label: "Termine",
     //   href: "/termine",
