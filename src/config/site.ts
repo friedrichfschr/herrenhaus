@@ -17,16 +17,16 @@ export const siteConfig = {
       href: "/#männermode",
     },
     {
-      label: "Termine",
-      href: "/#termine",
-    },
-    {
       label: "Aktuelles",
       href: "/#aktuelles",
     },
     {
       label: "Kontakt",
       href: "/#kontakt",
+    },
+    {
+      label: "Empfehlungen",
+      href: "/#empfehlungen",
     },
   ],
   navItems: [

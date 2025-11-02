@@ -47,6 +47,7 @@ i18n
             "Klara Fischer": "Klara Fischer",
             Aktuelles: "Aktuelles",
             Kontakt: "Kontakt",
+            Empfehlungen: "Empfehlungen",
           },
         },
       },
@@ -60,6 +61,7 @@ i18n
             "Klara Fischer": "Klara Fischer",
             Aktuelles: "Latest",
             Kontakt: "Contact",
+            Empfehlungen: "Recommendations",
           },
         },
       },
@@ -68,7 +70,7 @@ i18n
           routes: {},
         },
       },
-      es2: {
+      es: {
         translation: {
           routes: {
             About: "Moi",

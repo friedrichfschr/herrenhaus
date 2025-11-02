@@ -1,5 +1,4 @@
-import { subtitle, title } from "@/components/primitives";
-import { BackButton } from "./fürdenBräutigam";
+import { title } from "@/components/primitives";
 import { useZustand } from "@/zustand";
 import { Button } from "@heroui/button";
 import { Link } from "@heroui/link";
@@ -11,7 +10,7 @@ export default function TrauzeugePage() {
       <div className="text-center justify-center mt-12  relative w-full flex-col flex max-w-xl md:max-w-3xl">
         <Button
           variant="ghost"
-          className=" max-w-25 mb-5  ml-5"
+          className=" max-w-25 mb-5  ml-5 rounded-md"
           size="md"
           as={Link}
           href="/#festlich"

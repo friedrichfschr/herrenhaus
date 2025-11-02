@@ -7,7 +7,7 @@ export function BackButton() {
   return (
     <Button
       variant="ghost"
-      className="sm:absolute sm:left-5 sm:top-1 max-w-25 mb-3 sm:mb-0 sm:ml-0 ml-5"
+      className="sm:absolute sm:left-5 sm:top-1 max-w-25 mb-3 sm:mb-0 sm:ml-0 ml-5 rounded-md"
       size="md"
       as={Link}
       href="/#festlich"

@@ -10,48 +10,35 @@ import {
   ModalHeader,
   useDisclosure,
 } from "@heroui/modal";
-import { Card, CardBody, CardFooter } from "@heroui/card";
-import { useRef, useState } from "react";
+import { Card, CardBody, CardHeader } from "@heroui/card";
+import { useState } from "react";
 const images = [
-  "/Wilvorst/GWLook1.jpg",
+  "/Start/Herrenhaus_Fischer_Außenansicht.jpg",
+  "/Start/Diana_und_Bernhard.jpg",
 
   "/Wilvorst/WilvorstLook13.jpg",
-
-  "/Wilvorst/GWLook2.jpg",
-
-  "/Wilvorst/WilvorstLook6.jpg",
-
-  "/Wilvorst/GWLook7.jpg",
-
-  "/Wilvorst/TziaccoLook4.jpg",
-
-  "/Wilvorst/WilvorstLook1.jpg",
 ];
 
 const responsive = {
   largeDesktop: {
     breakpoint: { max: 5000, min: 1500 },
     items: 4,
-    slidesToSlide: 2, // optional, default to 1.
-    partialVisibilityGutter: 0,
+    slidesToSlide: 1, // optional, default to 1.
   },
   desktop: {
     breakpoint: { max: 1500, min: 1200 },
     items: 3,
     slidesToSlide: 1, // optional, default to 1.
-    partialVisibilityGutter: 100,
   },
   tablet: {
     breakpoint: { max: 1200, min: 700 },
     items: 2,
     slidesToSlide: 1, // optional, default to 1.
-    partialVisibilityGutter: 100,
   },
   mobile: {
     breakpoint: { max: 700, min: 0 },
     items: 1,
     slidesToSlide: 1, // optional, default to 1.
-    partialVisibilityGutter: 100,
   },
 };
 
@@ -75,21 +62,27 @@ export const ImageCarousel = () => {
         itemClass=""
       >
         {images.map((src, idx) => (
-          <Card key={idx} className="px-0 mx-1" style={{ userSelect: "none" }}>
-            <CardBody className=" md:h-100 sm:h-90 h-70 py-1 px-1 ">
+          <Card
+            key={idx}
+            className="px-0 mx-1 bg-transparent border-0 shadow-none"
+            style={{ userSelect: "none" }}
+          >
+            <CardHeader className="py-0 text-sm text-center bg-transparent">
+              Das Herrenhaus
+            </CardHeader>
+            <CardBody className="lg:h-120 md:h-100 sm:h-90 h-70 py-0 px-0 bg-transparent">
               <Button
-                className="p-0 flex-1 items-center"
+                className="p-0  items-center bg-transparent h-full w-full"
                 onPress={() => {
                   setImage(src);
                   onOpen();
                 }}
               >
                 <Image
-                  isZoomed
                   style={{ objectFit: "cover" }}
                   draggable={false}
                   src={src}
-                  className="h-full w-full"
+                  className="h-full"
                 />
               </Button>
             </CardBody>

@@ -1,5 +1,5 @@
 import { Accordion, AccordionItem } from "@heroui/accordion";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { ImageCarouselBrands } from "./imageCarouselBrands";
 export interface PhotoInfo {
   file: string;
@@ -24,7 +24,7 @@ async function getData<T>(path: string): Promise<T> {
       "Content-Type": "application/json",
       Accept: "application/json",
     },
-    cache: "no-cache",
+    cache: "force-cache",
   });
 
   if (!response.ok) {
@@ -90,7 +90,9 @@ export default function Marken() {
   const [loading, setLoading] = useState(true);
   const [selectedKeys, setSelectedKeys] = useState(new Set([""]));
   const [tt, forceUpdate] = useState(0);
-  useEffect(() => {
+  console.log("FlipCard render");
+
+  useLayoutEffect(() => {
     (async () => {
       try {
         const result = await fetchMarkenWithPhotos();
@@ -108,7 +110,6 @@ export default function Marken() {
 
   if (loading) return <p>Loading…</p>;
   if (error) return <p style={{ color: "red" }}>{error}</p>;
-
   return (
     <Accordion
       variant="splitted"

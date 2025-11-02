@@ -8,14 +8,11 @@ import { useTheme } from "@heroui/use-theme";
 import { useEffect, useRef } from "react";
 import { Accordion, AccordionItem } from "@heroui/accordion";
 import { t } from "i18next";
-import { ScrollShadow } from "@heroui/scroll-shadow";
 import Marken from "@/components/marken";
-
-interface Marken {}
+import { ContactForm } from "@/components/contactForm";
 
 export default function DocsPage() {
   const sections = useRef([]);
-
   const { setActiveSection, theme: zustandTheme } = useZustand();
   const { theme: heroTheme } = useTheme();
   let theme;
@@ -122,12 +119,12 @@ export default function DocsPage() {
             >
               {theme == "dark" ? (
                 <Image
-                  className="w-50 sm:60 md:140 lg:w-200 mt-10 sm:mt-15"
+                  className="w-50 sm:60 md:80 lg:w-100 mt-10 sm:mt-15"
                   src={"/UnterschriftDark.png"}
                 />
               ) : (
                 <Image
-                  className="w-50 sm:60 md:140 lg:w-200 mt-10 sm:mt-15"
+                  className="w-50 sm:60 md:80 lg:w-100 mt-10 sm:mt-15"
                   src={"/Unterschrift.png"}
                 />
               )}
@@ -137,9 +134,9 @@ export default function DocsPage() {
                 src={"/BernhardFotoGruß.jpg"}
               />
             </div>
-            <div className="grid-cols-2 grid gap-2">
+            <div className="flex-col flex gap-2 ">
               <Button
-                className="font-semibold text-lg  whitespace-normal h-auto "
+                className="font-semibold text-lg  whitespace-normal h-auto min-h-12"
                 variant="bordered"
                 as={Link}
                 href="/bräutigam"
@@ -148,7 +145,7 @@ export default function DocsPage() {
                 Für den Bräutigam
               </Button>
               <Button
-                className="font-semibold text-lg flex-1  whitespace-normal h-auto  "
+                className="font-semibold text-lg flex-1  whitespace-normal h-auto   min-h-12"
                 variant="bordered"
                 href="/trauzeuge"
                 as={Link}
@@ -161,7 +158,7 @@ export default function DocsPage() {
                 as={Link}
                 href="familie"
                 onPress={() => window.scrollTo({ top: 0 })}
-                className="font-semibold text-lg flex-1  whitespace-normal h-auto  "
+                className="font-semibold text-lg flex-1  whitespace-normal h-auto   min-h-12"
               >
                 Gäste & Familie des Brautpaares
               </Button>
@@ -170,7 +167,7 @@ export default function DocsPage() {
                 as={Link}
                 href="tipps"
                 onPress={() => window.scrollTo({ top: 0 })}
-                className="font-semibold text-lg  whitespace-normal h-auto  "
+                className="font-semibold text-lg  whitespace-normal h-auto   min-h-12"
               >
                 Tipps für den Bräutigam
               </Button>
@@ -240,26 +237,6 @@ export default function DocsPage() {
           {t("routes.Männermode")}
         </h1>
         <div>
-          Dieser salbeigrüne Anzug besticht durch dezent matten Glanz und
-          natürlicher Oberfläche.Zusammensetzung: 52% Viskose, 46% Schurwolle,
-          2% Elasthan Preis Anzug 2-tlg.: 519,95 € Die passende Weste mit
-          geometrischem Muster ist harmonisch abgestimmt und wird mit Schleife
-          oder Plastron ergänzt. Perfekt wird das Outfit mit dem Einstecktuch.
-          Preis Weste: 149,95 € Preis Schleife/Tuch: 69,95 € Preis
-          Plastron/Tuch: 84,95 €
-        </div>
-      </div>
-      <div
-        id="termine"
-        data-section
-        className=" max-w-2xl text-center  justify-center   pt-30 
-         "
-      >
-        <h1 className={title() + "text-center font-serif italic"}>
-          {" "}
-          {t("routes.Termine")}
-        </h1>
-        <div>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat
           suscipit placeat perspiciatis, eveniet accusamus, ut ullam, cumque
           atque aut ipsam id magnam tenetur beatae. Iusto nulla neque facilis
@@ -282,6 +259,7 @@ export default function DocsPage() {
           veniam adipisci!
         </div>
       </div>
+
       <div
         id="aktuelles"
         data-section
@@ -317,34 +295,53 @@ export default function DocsPage() {
       <div
         id="kontakt"
         data-section
-        className=" max-w-2xl text-center  justify-center   pt-30 
+        className=" max-w-2xl text-left justify-center   pt-30  w-full items-center
+         "
+      >
+        <ContactForm />
+      </div>
+      <div
+        id="empfehlungen"
+        data-section
+        className=" max-w-2xl w-full justify-center text-center   pt-30 px-8
          "
       >
         <h1 className={title() + "text-center font-serif italic"}>
-          {t("routes.Kontakt")}
+          {t("routes.Empfehlungen")}
         </h1>
-        <div>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat
-          suscipit placeat perspiciatis, eveniet accusamus, ut ullam, cumque
-          atque aut ipsam id magnam tenetur beatae. Iusto nulla neque facilis
-          veniam adipisci! Lorem ipsum dolor, sit amet consectetur adipisicing
-          elit. Fugiat suscipit placeat perspiciatis, eveniet accusamus, ut
-          ullam, cumque atque aut ipsam id magnam tenetur beatae. Iusto nulla
-          neque facilis veniam adipisci! Lorem ipsum dolor, sit amet consectetur
-          adipisicing elit. Fugiat suscipit placeat perspiciatis, eveniet
-          accusamus, ut ullam, cumque atque aut ipsam id magnam tenetur beatae.
-          Iusto nulla neque facilis veniam adipisci! Lorem ipsum dolor, sit amet
-          consectetur adipisicing elit. Fugiat suscipit placeat perspiciatis,
-          eveniet accusamus, ut ullam, cumque atque aut ipsam id magnam tenetur
-          beatae. Iusto nulla neque facilis veniam adipisci! Lorem ipsum dolor,
-          sit amet consectetur adipisicing elit. Fugiat suscipit placeat
-          perspiciatis, eveniet accusamus, ut ullam, cumque atque aut ipsam id
-          magnam tenetur beatae. Iusto nulla neque facilis veniam adipisci!
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat
-          suscipit placeat perspiciatis, eveniet accusamus, ut ullam, cumque
-          atque aut ipsam id magnam tenetur beatae. Iusto nulla neque facilis
-          veniam adipisci!
-        </div>
+        <ul className="list-disc text-left">
+          <li>
+            <span className="font-bold">Brautmode</span>
+            <ul className="list-inside list-disc ">
+              <li>White Princess in Büren</li>
+              <li>Fräulein Fraulich in Paderborn</li>
+              <li>Zeit & Ewigkeit in Lemgo</li>{" "}
+              <li>Majas Brautmoden in Kalletal</li>{" "}
+              <li> Braut & Fest in Germete</li>
+            </ul>
+          </li>
+          <li>
+            <span className="font-bold">Fotografie</span>
+            <ul className="list-inside list-disc">
+              <li>Blickfang by Jenny Alexander Bürks in warburg </li>
+              <li> Die Hochzeitsfotografin Aenna</li>
+            </ul>
+          </li>
+          <li>
+            <span className="font-bold">Dekortation etc.</span>
+            <ul className="list-inside list-disc">
+              <li>Unendlich Eventdesign in Bad Driburg</li>
+              <li> Wedding Details by Nora Die Packerie</li>
+              <li>Die Packerei</li>
+            </ul>
+          </li>
+          <li>
+            <span className="font-bold">Gesang</span>
+            <ul className="list-inside list-disc">
+              <li>...</li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </section>
   );
