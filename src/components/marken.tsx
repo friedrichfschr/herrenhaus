@@ -1,6 +1,9 @@
 import { Accordion, AccordionItem } from "@heroui/accordion";
 import { useEffect, useLayoutEffect, useState } from "react";
 import { ImageCarouselBrands } from "./imageCarouselBrands";
+import { t } from "i18next";
+import i18n from "@/i18n";
+import { Card, CardBody } from "@heroui/card";
 export interface PhotoInfo {
   file: string;
   text: string;
@@ -105,6 +108,15 @@ export default function Marken() {
     })();
   }, []);
 
+  const [language, setLanguage] = useState(i18n.language);
+
+  useEffect(() => {
+    i18n.on("languageChanged", (lan) => {
+      console.log("language changedsdfsdf", lan);
+      setLanguage(lan);
+    });
+  }, [i18n]);
+
   if (loading) return <p>Loading…</p>;
   if (error) return <p style={{ color: "red" }}>{error}</p>;
 
@@ -140,9 +152,9 @@ export default function Marken() {
               paddingBottom: isOpen ? heightOfCarousel : 0,
             }}
           >
-            <p>{marke.text}</p>
+            <p>{t("festlich.markenTexte." + marke.name)}</p>
             <div
-              className=" w-[100vw] left-0 absolute overflow-visible pt-5 "
+              className="max-w-[1700px] w-[100%] left-0 min-[1700px]:left-[calc((100vw-1700px)/2)]  absolute overflow-visible pt-5 "
               id={`carouselDiv${i}`}
             >
               <ImageCarouselBrands data={marke.photos} />

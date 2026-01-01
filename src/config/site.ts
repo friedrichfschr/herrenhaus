@@ -17,8 +17,8 @@ export const siteConfig = {
       href: "/#männermode",
     },
     {
-      label: "Aktuelles",
-      href: "/#aktuelles",
+      label: "Schützenfest",
+      href: "/#schützenfest",
     },
     {
       label: "Kontakt",

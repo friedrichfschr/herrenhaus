@@ -1,3 +1,69 @@
 @import "tailwindcss";
 
+
+
+@media only screen and (min-device-width: 1800px){ .backgrounddiv {
+   background-image:url("/checkeredBackground.png");
+    background-size: 2000px 2000px;
+    background-color: rgba(0, 0, 0, 0.8);
+    background-blend-mode:color;
+    background-attachment: fixed;
+}
+
+.bgtinted {
+    background-image: url("/checkeredBackground.png");
+    background-size: 2000px 2000px;
+    background-color: rgba(0, 0, 0, 0.9);
+    background-attachment: fixed;
+    
+    background-blend-mode:color;
+    border-radius: 40px;
+}
+
+@layer utilities {
+  .mask-navbar {
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      rgba(0,0,0,9.9),
+      rgba(0,0,0,9.9),
+      rgba(0,0,0,9.9),
+      rgba(0,0,0,9.9),
+      rgba(0,0,0,0)
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      rgba(0,0,0,9),
+      rgba(0,0,0,9),
+      rgba(0,0,0,8),
+      rgba(0,0,0,8),
+      rgba(0,0,0,0)
+    );
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  }
+  .mask-footer {
+    -webkit-mask-image: linear-gradient(
+      to top,
+      rgba(0,0,0,10),
+      rgba(0,0,0,10),
+      rgba(0,0,0,9.9),
+      rgba(0,0,0,9.9),
+      rgba(0,0,0,0)
+    );
+    mask-image: linear-gradient(
+      to top,
+      rgba(0,0,0,10),
+      rgba(0,0,0,9),
+      rgba(0,0,0,8),
+      rgba(0,0,0,8),
+      rgba(0,0,0,8),
+      rgba(0,0,0,8),
+      rgba(0,0,0,0)
+    );
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  }
+}}
 @config "../../tailwind.config.js"
+
+

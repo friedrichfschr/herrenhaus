@@ -20,6 +20,7 @@ import { keysToLanguages } from "@/i18n";
 import { useZustand } from "@/zustand";
 import { Divider } from "@heroui/divider";
 import { Image } from "@heroui/image";
+import { FacebookIcon, InstagramIcon, MailIcon, YoutubeIcon } from "./icons";
 
 export const Navbar = () => {
   const { i18n } = useTranslation();
@@ -52,18 +53,25 @@ export const Navbar = () => {
   return (
     <HeroUINavbar
       maxWidth="xl"
-      position="sticky"
-      className="shadow-md shadow-background pb-6  sm:pb-12 inset-shadow-xl "
+      className=" pb-10  sm:pb-12 inset-shadow-xl backgrounddiv mask-navbar"
       isBlurred={false}
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
-      // style={{ backgroundColor: "rgb(255, 255, 255, 0.9)" }}
+      style={
+        {
+          // backgroundColor: "rgb(255, 255, 255, 0.2)",
+        }
+      }
     >
       <NavbarContent
         className="basis-1/5 sm:basis-full flex-col"
         justify="start"
       >
-        <Image src="/logo-herrenhaus-fischer.png" width={230} />
+        <Image
+          className="lg:fixed z-0 lg:left-5 xl:sticky min-[1800px]:hidden"
+          src="/logo-herrenhaus-fischer.png"
+          width={230}
+        />
       </NavbarContent>
 
       <NavbarContent
@@ -111,16 +119,16 @@ export const Navbar = () => {
           </button>
         </NavbarItem>
 
-        <div className="hidden lg:flex gap-4 justify-start ml-2">
+        <div className="hidden lg:flex gap-4 justify-start ml-2 z-4 backgrounddiv  pl-2 rounded-2xl">
           {siteConfig.scrollNavItems.map((item) => (
-            <NavbarItem key={item.href} id={item.href}>
+            <NavbarItem key={item.href} id={item.href} className="">
               <Link
                 onPress={() => {
                   if (item.href.split("#")[0] !== location.pathname) {
                     setActiveSection(item.href);
                     setTimeout(() => {
                       document
-                        .getElementById(item.href.split("#")[1])
+                        .getElementById(item.href.split("#")[1] + "scroll")
                         ?.scrollIntoView({
                           behavior: "smooth",
                           block: "start",
@@ -134,15 +142,14 @@ export const Navbar = () => {
                   if (!anchorId)
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   else
-                    document.getElementById(anchorId)?.scrollIntoView({
-                      behavior: "smooth",
-                      block: "start",
-                      inline: "start",
-                    });
+                    document
+                      .getElementById(anchorId + "scroll")
+                      ?.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                        inline: "start",
+                      });
                 }}
-                className={clsx(
-                  "data-[active=true]:text-primary data-[active=true]:font-medium "
-                )}
                 color={item.href === activeSection ? "primary" : "foreground"}
                 href={item.href}
               >
@@ -177,7 +184,7 @@ export const Navbar = () => {
                     setActiveSection(item.href);
                     setTimeout(() => {
                       document
-                        .getElementById(item.href.split("#")[1])
+                        .getElementById(item.href.split("#")[1] + "scroll")
                         ?.scrollIntoView({
                           behavior: "smooth",
                         });
@@ -189,9 +196,11 @@ export const Navbar = () => {
                   if (!anchorId)
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   else
-                    document.getElementById(anchorId)?.scrollIntoView({
-                      behavior: "smooth",
-                    });
+                    document
+                      .getElementById(anchorId + "scroll")
+                      ?.scrollIntoView({
+                        behavior: "smooth",
+                      });
                 }}
                 color={item.href === activeSection ? "primary" : "foreground"}
                 className={clsx("italic text-lg font-semibold")}
@@ -231,3 +240,41 @@ const FlagAvatar = memo(
     />
   )
 );
+
+export const Footer = () => {
+  return (
+    <footer className="w-full max-w-7xl mx-auto mb-10 text-center text-sm   pt-100">
+      <div className="flex justify-center gap-4 mb-2">
+        <Link
+          color="foreground"
+          href="https://www.instagram.com/herrenhaus_fischer/"
+        >
+          <InstagramIcon />
+        </Link>
+        <Link
+          color="foreground"
+          href="https://www.facebook.com/HerrenhausFischer/"
+        >
+          <FacebookIcon />
+        </Link>
+        <Link
+          color="foreground"
+          href="https://www.youtube.com/@bernhardfischer4937/"
+        >
+          <YoutubeIcon />
+        </Link>
+        <Link color="foreground" href="mailto:mode@herrenhaus-fischer.de">
+          <MailIcon />
+        </Link>
+      </div>
+      © 2026 Herrenhaus Fischer - design by{" "}
+      <Link
+        color="foreground"
+        className="text-sm italic"
+        href="friedrich.fschr.me"
+      >
+        Friedrich Fischer
+      </Link>
+    </footer>
+  );
+};

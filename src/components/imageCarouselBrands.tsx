@@ -8,13 +8,13 @@ import { PhotoInfo } from "./marken";
 import { motion } from "framer-motion";
 const responsive = {
   largeDesktop: {
-    breakpoint: { max: 5000, min: 1600 },
+    breakpoint: { max: 5000, min: 1400 },
     items: 4,
     slidesToSlide: 1, // optional, default to 1.
     partialVisibilityGutter: 100,
   },
   desktop: {
-    breakpoint: { max: 1600, min: 1200 },
+    breakpoint: { max: 1400, min: 1200 },
     items: 3,
     slidesToSlide: 1, // optional, default to 1.
     partialVisibilityGutter: 100,

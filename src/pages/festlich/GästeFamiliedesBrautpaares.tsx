@@ -3,9 +3,20 @@ import { BackButton } from "./fürdenBräutigam";
 import { Button } from "@heroui/button";
 import { Link } from "@heroui/link";
 import { useZustand } from "@/zustand";
+import { t } from "i18next";
+import React, { useEffect } from "react";
+import i18n from "@/i18n";
 
 export default function GästeFamiliePage() {
   const { setActiveSection } = useZustand();
+  const [language, setLanguage] = React.useState(i18n.language);
+
+  useEffect(() => {
+    i18n.on("languageChanged", (lan) => {
+      console.log("language changedsdfsdf", lan);
+      setLanguage(lan);
+    });
+  }, [i18n]);
   return (
     <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10 w-full">
       <div className="text-center justify-center mt-12  relative w-full flex-col flex max-w-xl md:max-w-3xl">
@@ -18,7 +29,7 @@ export default function GästeFamiliePage() {
           onPress={() => {
             setActiveSection("/#festlich");
             setTimeout(() => {
-              document.getElementById("festlich")?.scrollIntoView({
+              document.getElementById("festlichscroll")?.scrollIntoView({
                 behavior: "smooth",
                 block: "start",
                 inline: "start",
@@ -28,35 +39,19 @@ export default function GästeFamiliePage() {
         >
           {"<-"}
         </Button>
-        <h1 className={title()}>Gäste & Familie des Brautpaares</h1>
+        <h1 className={title()}>{t("festlich.buttons.3.title")}</h1>
       </div>
       <div className="max-w-xl md:max-w-3xl text-justify mx-auto  justify-center items-center text-lg px-4">
         <div className={"font-bold text-2xl mt-3 mb-3 text-left"}>
-          Dem festlichen Anlass entsprechend!
+          {t("festlich.buttons.3.texts.title1")}
         </div>
 
-        <div>
-          Anlassmode heißt so, weil Sie einem bestimmten Anlass entsprechen
-          soll. In unserer freien Gesellschaft ist das Tragen von formeller
-          Kleidung mittlerweile nicht mehr Standard. Kleider machen zwar immer
-          noch Leute, aber Kleidung ist in vielen Berufen kein Muss für
-          Aufstiegschancen. Daher kommen wir oft eher lässig leger daher. Was
-          dem Anlass entsprechend heißt, bestimmt jeder selbst für sich.
-          Zumindest sollte man sich hinterfragen und berücksichtigen, dass das
-          Brautpaar sich sehr viel Mühe mit der Ausgestaltung ihres wichtigen
-          Tages gibt und sich wahrscheinlich wünscht, dass sich auch die Gäste
-          entsprechend kleiden.
-        </div>
+        <div>{t("festlich.buttons.3.texts.text1")}</div>
 
         <div className={"font-bold text-2xl mt-10 mb-3 text-left"}>
-          Lässig und trotzdem chic?
+          {t("festlich.buttons.3.texts.title2")}
         </div>
-        <div>
-          Es muss auch nicht immer die formelle Anlasskleidung sein. Als Gast
-          kann ich mit einer sportlicheren Chino und gepflegtem Oberteil auch
-          eine gute Figur machen. Im Zweifel lohnt es sich, nachzufragen, ob ein
-          bestimmter Dress-Code einzuhalten ist.
-        </div>
+        <div>{t("festlich.buttons.3.texts.text2")}</div>
       </div>
     </section>
   );
