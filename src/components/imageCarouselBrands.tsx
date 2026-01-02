@@ -60,7 +60,7 @@ function Back({
             <>
               <div className="italic">
                 {Object.entries(p.preise).map(([key, value]) => (
-                  <div className="flex flex-row justify-between">
+                  <div className="flex flex-row justify-between" key={key}>
                     <p>{key}</p>
                     <p>{value as any}</p>
                   </div>

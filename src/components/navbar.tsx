@@ -16,11 +16,12 @@ import { Select, SelectItem } from "@heroui/select";
 import { Avatar } from "@heroui/avatar";
 import { useLocation } from "react-router-dom";
 import { memo, useEffect, useMemo, useState } from "react";
-import { keysToLanguages } from "@/i18n";
+import i18n, { keysToLanguages } from "@/i18n";
 import { useZustand } from "@/zustand";
 import { Divider } from "@heroui/divider";
 import { Image } from "@heroui/image";
 import { FacebookIcon, InstagramIcon, MailIcon, YoutubeIcon } from "./icons";
+import { t } from "i18next";
 
 export const Navbar = () => {
   const { i18n } = useTranslation();
@@ -113,6 +114,7 @@ export const Navbar = () => {
             onClick={() => setIsMenuOpen((prev) => !prev)}
           >
             <NavbarMenuToggle
+              as={NavbarMenuItem}
               className=""
               aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             />
@@ -242,8 +244,16 @@ const FlagAvatar = memo(
 );
 
 export const Footer = () => {
+  const [language, setLanguage] = useState(i18n.language);
+
+  useEffect(() => {
+    i18n.on("languageChanged", (lan) => {
+      setLanguage(lan);
+    });
+  }, [i18n]);
+
   return (
-    <footer className="w-full max-w-7xl mx-auto mb-10 text-center text-sm   pt-100">
+    <footer className="w-full max-w-7xl mx-auto mb-10 text-center text-sm  pt-15 sm:pt-70">
       <div className="flex justify-center gap-4 mb-2">
         <Link
           color="foreground"
@@ -267,11 +277,11 @@ export const Footer = () => {
           <MailIcon />
         </Link>
       </div>
-      © 2026 Herrenhaus Fischer - design by{" "}
+      © 2026 Herrenhaus Fischer - {t("footer.design")}
       <Link
         color="foreground"
         className="text-sm italic"
-        href="friedrich.fschr.me"
+        href="https://friedrich.fschr.me"
       >
         Friedrich Fischer
       </Link>

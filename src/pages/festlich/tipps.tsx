@@ -14,7 +14,6 @@ export default function TippsPage() {
 
   useEffect(() => {
     i18n.on("languageChanged", (lan) => {
-      console.log("language changedsdfsdf", lan);
       setLanguage(lan);
     });
   }, [i18n]);

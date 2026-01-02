@@ -3,7 +3,8 @@ import { useEffect, useLayoutEffect, useState } from "react";
 import { ImageCarouselBrands } from "./imageCarouselBrands";
 import { t } from "i18next";
 import i18n from "@/i18n";
-import { Card, CardBody } from "@heroui/card";
+import { markenFile, MarkeInterface } from "../markenFile.ts";
+
 export interface PhotoInfo {
   file: string;
   text: string;
@@ -11,45 +12,31 @@ export interface PhotoInfo {
   zusammensetzung?: string;
 }
 
-export interface Marken {
-  name: string;
-  text: string;
-  folderPath: string;
-}
-
-export interface MarkeWithPhotos extends Marken {
+export interface MarkeWithPhotos extends MarkeInterface {
   photos: PhotoInfo[];
 }
 
 async function getData<T>(path: string): Promise<T> {
+  console.log(path);
   const response = await fetch(path, {
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
     cache: "force-cache",
   });
 
+  const data: T = await response.json();
   if (!response.ok) {
     throw new Error(`Failed to fetch ${path}: ${response.statusText}`);
   }
-
-  const data: T = await response.json();
   return data;
 }
 
-const normalizePhotos = (raw: any[], folderPath: string): PhotoInfo[] => {
+const normalizePhotos = (raw: any[], TextDateiName: string): PhotoInfo[] => {
   return (raw ?? []).map((p: any) => {
     const rawPreise = p.preise ?? p.Preise ?? undefined;
 
-    // Ensure file path is rooted under folderPath (assets in /public resolve from site root)
-    const fileFromJson: string = p.file ?? "";
-    const file = fileFromJson.startsWith("/")
-      ? `${folderPath.replace(/\/$/, "")}${fileFromJson}`
-      : `${folderPath.replace(/\/$/, "")}/${fileFromJson}`;
+    // Ensure file path is rooted under TextDateiName (assets in /public resolve from site root)
 
     return {
-      file,
+      file: "marken/" + TextDateiName + "/" + p.file,
       text: p.text ?? "",
       preise: rawPreise,
       zusammensetzung: p.zusammensetzung, // present in your new format; leave undefined if absent
@@ -57,32 +44,27 @@ const normalizePhotos = (raw: any[], folderPath: string): PhotoInfo[] => {
   });
 };
 
-/**
- * Loads all Marken and, for each Marke, loads `<folderPath>/photos.json`.
- * Change `PHOTOS_FILE_NAME` if your per-marke file is named differently.
- */
-const PHOTOS_FILE_NAME = "texteZuPhotos.json";
-
 export const fetchMarkenWithPhotos = async (): Promise<MarkeWithPhotos[]> => {
   // 1) Load marken.json
-  const marken = await getData<Marken[]>("marken.json");
-
-  // 2) In parallel, load each marke's photos.json
-  const withPhotos = await Promise.all(
-    marken.map(async (m) => {
-      const photosPath = `${m.folderPath.replace(/\/$/, "")}/${PHOTOS_FILE_NAME}`;
-      console.log("FOLDERPATH", m.folderPath, m.name);
-      try {
-        const rawPhotos = await getData<any[]>(photosPath);
-        const photos = normalizePhotos(rawPhotos, m.folderPath);
-        return { ...m, photos } as MarkeWithPhotos;
-      } catch (e) {
-        // If a brand has no photos file, fail softly and just return empty photos
-        console.warn(`No photos for ${m.name} at ${photosPath}:`, e);
-        return { ...m, photos: [] } as MarkeWithPhotos;
-      }
-    })
+  const marken = markenFile;
+  // 2) Return marken immediately with empty photos, load photos in the background
+  const withPhotos = marken.map(
+    (m) => ({ ...m, photos: [] }) as MarkeWithPhotos
   );
+
+  // 3) Load photos asynchronously without blocking the UI
+  marken.forEach(async (m, index) => {
+    try {
+      const rawPhotos = await getData<any[]>(
+        `marken/texte/${m.TextDateiName}.json`
+      );
+      const photos = normalizePhotos(rawPhotos, m.TextDateiName);
+      withPhotos[index] = { ...m, photos } as MarkeWithPhotos;
+    } catch (e) {
+      // If a brand has no photos file, fail softly and just keep empty photos
+      console.warn(`No photos for ${m.name}`, e);
+    }
+  });
 
   return withPhotos;
 };
@@ -100,9 +82,33 @@ export default function Marken() {
       try {
         const result = await fetchMarkenWithPhotos();
         setItems(result);
+        setLoading(false);
+
+        // Prefetch photos for all brands
+        const marken = markenFile;
+        marken.forEach(async (m, index) => {
+          try {
+            const rawPhotos = await getData<any[]>(
+              `marken/texte/${m.TextDateiName}.json`
+            );
+            const photos = normalizePhotos(rawPhotos, m.TextDateiName);
+            setItems((prev) => {
+              const updated = [...prev];
+              updated[index] = { ...m, photos } as MarkeWithPhotos;
+              return updated;
+            });
+
+            // Prefetch images
+            photos.forEach((photo) => {
+              const img = new Image();
+              img.src = photo.file;
+            });
+          } catch (e) {
+            console.warn(`No photos for ${m.name}`, e);
+          }
+        });
       } catch (e: any) {
         setError(e?.message ?? "Unknown error");
-      } finally {
         setLoading(false);
       }
     })();
@@ -112,16 +118,12 @@ export default function Marken() {
 
   useEffect(() => {
     i18n.on("languageChanged", (lan) => {
-      console.log("language changedsdfsdf", lan);
       setLanguage(lan);
     });
   }, [i18n]);
 
-  if (loading) return <p>Loading…</p>;
   if (error) return <p style={{ color: "red" }}>{error}</p>;
 
-  if (loading) return <p>Loading…</p>;
-  if (error) return <p style={{ color: "red" }}>{error}</p>;
   return (
     <Accordion
       variant="splitted"
@@ -157,7 +159,9 @@ export default function Marken() {
               className="max-w-[1700px] w-[100%] left-0 min-[1700px]:left-[calc((100vw-1700px)/2)]  absolute overflow-visible pt-5 "
               id={`carouselDiv${i}`}
             >
-              <ImageCarouselBrands data={marke.photos} />
+              {marke.photos.length > 0 && (
+                <ImageCarouselBrands data={marke.photos} />
+              )}
             </div>
           </AccordionItem>
         );

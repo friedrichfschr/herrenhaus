@@ -35,7 +35,6 @@ export default function fürdenBräutigamPage() {
 
   useEffect(() => {
     i18n.on("languageChanged", (lan) => {
-      console.log("language changedsdfsdf", lan);
       setLanguage(lan);
     });
   }, [i18n]);
@@ -73,7 +72,7 @@ export default function fürdenBräutigamPage() {
           <div className={"font-semibold italic  text-lg mt-4 mb-2"}>
             {t("festlich.buttons.1.texts.price3")}
           </div>
-          <div>{t("festlich.buttons.1.texts.priceText3  ")}</div>
+          <div>{t("festlich.buttons.1.texts.priceText3")}</div>
           <div className={"font-semibold  italic text-lg mt-4 mb-2"}>
             {t("festlich.buttons.1.texts.price4")}
           </div>

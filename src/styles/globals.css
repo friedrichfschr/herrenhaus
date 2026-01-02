@@ -2,7 +2,7 @@
 
 
 
-@media only screen and (min-device-width: 1800px){ .backgrounddiv {
+/* @media only screen and (min-device-width: 1800px){ .backgrounddiv {
    background-image:url("/checkeredBackground.png");
     background-size: 2000px 2000px;
     background-color: rgba(0, 0, 0, 0.8);
@@ -63,7 +63,7 @@
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
   }
-}}
+}} */
 @config "../../tailwind.config.js"
 
 

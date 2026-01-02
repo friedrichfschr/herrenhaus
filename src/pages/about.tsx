@@ -64,7 +64,6 @@ export default function DocsPage() {
 
   useEffect(() => {
     i18n.on("languageChanged", (lan) => {
-      console.log("language changedsdfsdf", lan);
       setLanguage(lan);
     });
   }, [i18n]);
@@ -77,7 +76,7 @@ export default function DocsPage() {
           </div>
 
           <img
-            src="Start/Herrenhaus_Fischer_Außenansicht.jpg "
+            src="Start/Herrenhaus_Fischer_Außenansicht.png "
             className=" h-[250px] mx-auto sm:hidden "
             style={{
               float: "right",
@@ -85,9 +84,10 @@ export default function DocsPage() {
               clipPath: "circle(45%)",
             }}
           />
+
           <p className=" text-justify sm:hidden block ">{t("start.intro")}</p>
           <img
-            src="Start/Herrenhaus_Fischer_Außenansicht.jpg"
+            src="Start/Herrenhaus_Fischer_Außenansicht.png"
             className="h-90 hidden sm:block "
             style={{
               float: "left",
@@ -96,7 +96,7 @@ export default function DocsPage() {
             }}
           />
           <img
-            src="Start/FamilieFischer.JPG "
+            src="Start/FamilieFischer.png "
             className="h-90  hidden sm:block "
             style={{
               float: "right",
@@ -161,7 +161,7 @@ export default function DocsPage() {
               <Image
                 className="lg:w-50 lg:h-50 md:w-40 md:h-40 sm:w-30 sm:h-30 h-20 w-20 sm:flex  rounded-full "
                 style={{ objectFit: "cover" }}
-                src={"/BernhardFotoGruß.jpg"}
+                src={"/BernhardFotoGruß.png"}
               />
             </div>
             <div className="flex-col flex gap-2 ">
@@ -238,64 +238,85 @@ export default function DocsPage() {
                 <h1 className="text-4xl ">Gut Holzhausen</h1>
                 <ul className=" pl-5 text-sm">
                   <li>
-                    Organisation durch Anne Schlüter, unendlich eventdesign
+                    {t("festlich.fotoshootings.organisation")} Anne Schlüter,
+                    unendlich eventdesign
                   </li>
-                  <li>Brautmode von Brautsein aus Brakel</li>
-                  <li>Fotografie Anna Schnabel </li>
+                  <li>
+                    {t("festlich.fotoshootings.brautmode")} Brautsein aus Brakel
+                  </li>
+                  <li>
+                    {t("festlich.fotoshootings.fotografie")} Anna Schnabel{" "}
+                  </li>
                 </ul>
               </li>
               <Card className="grid grid-cols-1 p-3 sm:grid-cols-2 gap-3 lg:grid-cols-4">
-                <Image src="/ShootingHolzhausen/Pavillon_1.jpg" />
-                <Image src="/ShootingHolzhausen/Pavillon_3.jpg" />
-                <Image src="/ShootingHolzhausen/Pavillon_2.jpg" />
-                <Image src="/ShootingHolzhausen/Pavillon_4.jpg" />
+                <Image src="/ShootingHolzhausen/Pavillon_1.png" />
+                <Image src="/ShootingHolzhausen/Pavillon_3.png" />
+                <Image src="/ShootingHolzhausen/Pavillon_2.png" />
+                <Image src="/ShootingHolzhausen/Pavillon_4.png" />
               </Card>
               <br />
               <li className="flex justify-between items-center gap-4">
                 <ul className=" pl-5 text-sm">
                   <li>
-                    Organisation durch Nora Hartwich und Jennifer Horstmann
+                    {t("festlich.fotoshootings.organisation")} Nora Hartwich und
+                    Jennifer Horstmann
                   </li>
-                  <li>Brautmode von Zeit & Ewigkeit aus Lemgo</li>
-                  <li>Fotografie Blickfang by Jenny</li>
+                  <li>
+                    {t("festlich.fotoshootings.brautmode")} Zeit & Ewigkeit aus
+                    Lemgo
+                  </li>
+                  <li>
+                    {t("festlich.fotoshootings.fotografie")} Blickfang by Jenny
+                  </li>
                 </ul>
                 <h1 className="text-5xl sm:mr-10">Exterhof</h1>
               </li>
               <Card className="grid grid-cols-1 p-3 sm:grid-cols-2 gap-3 lg:grid-cols-4">
-                <Image src="/ShootingExterhof/Exterhof_1.jpg" />
-                <Image src="/ShootingExterhof/Exterhof_3.jpg" />
-                <Image src="/ShootingExterhof/Exterhof_2.jpg" />
-                <Image src="/ShootingExterhof/Exterhof_4.jpg" />
+                <Image src="/ShootingExterhof/Exterhof_1.png" />
+                <Image src="/ShootingExterhof/Exterhof_3.png" />
+                <Image src="/ShootingExterhof/Exterhof_2.png" />
+                <Image src="/ShootingExterhof/Exterhof_4.png" />
               </Card>
               <br />
               <li className="flex justify-between items-center gap-4">
                 <h1 className="text-4xl">Kloster Bredelaer</h1>
                 <ul className=" pl-5 text-sm">
-                  <li> Organisation durch Alexander Bürks</li>
-                  <li>Brautmode von Brautsein aus Brakel</li>
-                  <li>Fotografie Alexander Bürks</li>
+                  <li>
+                    {t("festlich.fotoshootings.organisation")} Alexander Bürks
+                  </li>
+                  <li>
+                    {t("festlich.fotoshootings.brautmode")} Brautsein aus Brakel
+                  </li>
+                  <li>
+                    {t("festlich.fotoshootings.fotografie")} Alexander Bürks
+                  </li>
                 </ul>
               </li>
               <Card className="grid grid-cols-1 p-3 sm:grid-cols-2 gap-3 lg:grid-cols-4">
-                <Image src="/ShootingBredelaer/Bredelaer_1.jpg" />
-                <Image src="/ShootingBredelaer/Bredelaer_3.jpg" />
-                <Image src="/ShootingBredelaer/Bredelaer_2.jpg" />
-                <Image src="/ShootingBredelaer/Bredelaer_4.jpg" />
+                <Image src="/ShootingBredelaer/Bredelaer_1.png" />
+                <Image src="/ShootingBredelaer/Bredelaer_3.png" />
+                <Image src="/ShootingBredelaer/Bredelaer_2.png" />
+                <Image src="/ShootingBredelaer/Bredelaer_4.png" />
               </Card>
               <br />
               <li className="flex justify-between items-center gap-4">
                 <ul className=" pl-5 text-sm">
-                  <li> Organisation durch Angelique</li>
-                  <li>Brautmode von Traumkleid Lippe</li>
-                  <li>Fotografie Jan-Niklas Schulz</li>
+                  <li>{t("festlich.fotoshootings.organisation")} Angelique</li>
+                  <li>
+                    {t("festlich.fotoshootings.brautmode")} Traumkleid Lippe
+                  </li>
+                  <li>
+                    {t("festlich.fotoshootings.fotografie")} Jan-Niklas Schulz
+                  </li>
                 </ul>
                 <h1 className="text-5xl sm:mr-10">Hof Frien</h1>
               </li>
               <Card className="grid grid-cols-1 p-3 sm:grid-cols-2 gap-3 lg:grid-cols-4">
-                <Image src="/ShootingHofFrien/Frien_1.jpg" />
-                <Image src="/ShootingHofFrien/Frien_3.jpg" />
-                <Image src="/ShootingHofFrien/Frien_2.jpg" />
-                <Image src="/ShootingHofFrien/Frien_4.jpg" />
+                <Image src="/ShootingHofFrien/Frien_1.png" />
+                <Image src="/ShootingHofFrien/Frien_3.png" />
+                <Image src="/ShootingHofFrien/Frien_2.png" />
+                <Image src="/ShootingHofFrien/Frien_4.png" />
               </Card>
             </ul>
           </AccordionItem>
@@ -323,7 +344,10 @@ export default function DocsPage() {
                 isReadOnly={true}
                 dimension={11}
               />
-              <span className="text-sm opacity-70 self-end">December 2025</span>
+              <span className="text-sm opacity-70 self-end">
+                {" "}
+                {t("time.december")} 2025
+              </span>
               <Link
                 className="underline text-blue-400 self-end"
                 href="https://www.google.com/maps/place/Herrenhaus+Fischer/@51.7159371,9.1800269,16z/data=!4m18!1m9!3m8!1s0x47bafe9d6aaca34b:0x6cc700fd279a294e!2sHerrenhaus+Fischer!8m2!3d51.7170957!4d9.1811834!9m1!1b1!16s%2Fg%2F11bzypxvtv!3m7!1s0x47bafe9d6aaca34b:0x6cc700fd279a294e!8m2!3d51.7170957!4d9.1811834!9m1!1b1!16s%2Fg%2F11bzypxvtv!18m1!1e1?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3M0gBUAM%3D"
@@ -342,7 +366,10 @@ export default function DocsPage() {
                   />
                   <div>
                     <h1>MeZZo RoX</h1>
-                    <span className="text-sm opacity-70">September 2025</span>
+                    <span className="text-sm opacity-70">
+                      {" "}
+                      {t("time.september")} 2025
+                    </span>
                   </div>
                   <StarRating
                     starsLength={5}
@@ -354,14 +381,10 @@ export default function DocsPage() {
                     className="ml-auto underline text-blue-400"
                     href="https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sCi9DQUlRQUNvZENodHljRjlvT2tsMGIxQlZlbTVUVDJWTFExRTBkV2cxV21GRVluYxAB!2m1!1s0x0:0x6cc700fd279a294e!3m1!1s2@1:CAIQACodChtycF9oOkl0b1BVem5TT2VLQ1E0dWg1WmFEYnc%7C0cjhXAUSFQC%7C"
                   >
-                    zum Review
+                    {t("festlich.reviews.reviewLinkText")}
                   </Link>
                 </CardHeader>
-                Ich habe hier meinen Hochzeitsanzug gekauft und bin absolut
-                begeistert! Die Beratung war freundlich, professionell und sehr
-                aufmerksam. Man nimmt sich Zeit, geht auf Wünsche ein und sorgt
-                dafür, dass man am Ende wirklich zufrieden nach Hause geht. Für
-                zukünftige Feiern werde ich definitiv wieder hierherkommen.
+                {t("festlich.reviews.review1")}
               </Card>
 
               <Card className=" p-3 mb-3 text-lg">
@@ -374,7 +397,9 @@ export default function DocsPage() {
                   />
                   <div>
                     <h1>Tobias Vogt</h1>
-                    <span className="text-sm opacity-70">Mai 2025</span>
+                    <span className="text-sm opacity-70">
+                      {t("time.may")} 2025
+                    </span>
                   </div>
                   <StarRating
                     starsLength={5}
@@ -386,24 +411,11 @@ export default function DocsPage() {
                     className="ml-auto underline text-blue-400"
                     href="https://www.google.com/maps/reviews/data=!4m8!14m7!1m6!2m5!1sChZDSUhNMG9nS0VJQ0FnTUNZZ3Y3OEl3EAE!2m1!1s0x0:0x6cc700fd279a294e!3m1!1s2@1:CIHM0ogKEICAgMCYgv78Iw%7CCgwIuvLTwAYQqMzWrQM%7C"
                   >
-                    zum Review
+                    {t("festlich.reviews.reviewLinkText")}
                   </Link>
                 </CardHeader>
                 <CardBody className="px-3 py-0">
-                  Ich habe heute im Herrenhaus Fischer einen Anzug gekauft und
-                  bin absolut begeistert – sowohl vom Anzug selbst als auch von
-                  der Beratung. Schon beim Betreten des Geschäfts spürt man die
-                  Liebe zum Detail und die Leidenschaft für klassische
-                  Herrenmode. Die Atmosphäre ist stilvoll und einladend.
-                  Besonders hervorheben möchte ich die äußerst kompetente und
-                  individuelle Beratung. Es wurde sich viel Zeit genommen, um
-                  auf meine Wünsche und Vorstellungen einzugehen. Dabei war die
-                  Beratung nicht nur fachlich top, sondern auch sehr freundlich
-                  und angenehm – man fühlt sich als Kunde wirklich
-                  wertgeschätzt. Am Ende habe ich einen perfekt sitzenden Anzug
-                  gefunden, der genau meinen Geschmack trifft. Ich kann das
-                  Herrenhaus Fischer uneingeschränkt empfehlen – für alle, die
-                  Wert auf Qualität, Stil und exzellenten Service legen.
+                  {t("festlich.reviews.review2")}
                 </CardBody>
               </Card>
             </div>
@@ -414,7 +426,7 @@ export default function DocsPage() {
       <div
         id="männermode"
         data-section
-        className="px-3 max-w-4xl  justify-center mt-30  w-full items-center text-center bgtinted p-8"
+        className="px-3 max-w-4xl  justify-center sm:mt-30  w-full items-center text-center bgtinted p-8"
       >
         <div className="text-left pb-2">
           <h1 className={title()}>{t("routes.Männermode")}</h1>
@@ -426,20 +438,20 @@ export default function DocsPage() {
           <p>{t("männermode.text2")}</p>
           <div className="flex flex-row flex-wrap gap-5 justify-around mb-5 mt-3">
             <Image
-              src="/Männermode/ETERNA_weißes_Hemd.jpg"
+              src="/Männermode/ETERNA_weißes_Hemd.png"
               isBlurred
               className="h-80 w-auto rounded-xl"
             />
             <div className="flex justify-center">
               <Image
-                src="/Männermode/Marvelis.jpg"
+                src="/Männermode/Marvelis.png"
                 isBlurred
                 className="h-80 w-auto rounded-xl"
                 classNames={{ wrapper: "justify-center items-center " }}
               />
             </div>
             <Image
-              src="/Männermode/CINQUE.jpg"
+              src="/Männermode/CINQUE.png"
               isBlurred
               className="h-80 w-auto rounded-xl"
             />
@@ -447,12 +459,12 @@ export default function DocsPage() {
           <p>{t("männermode.text3")}</p>
           <div className="flex flex-row flex-wrap gap-5 justify-around mb-5 mt-3">
             <Image
-              src="/Männermode/NZA_Image_Feuer.jpg"
+              src="/Männermode/NZA_Image_Feuer.png"
               isBlurred
               className="h-80 w-auto rounded-xl"
             />
             <Image
-              src="/Männermode/NZA_Norweger_Pulli_129,99_€.jpg"
+              src="/Männermode/NZA_Norweger_Pulli_129,99_€.png"
               isBlurred
               className="h-80 w-auto rounded-xl"
               classNames={{ wrapper: "justify-center items-center " }}
@@ -472,7 +484,7 @@ export default function DocsPage() {
       <div
         id="schützenfest"
         data-section
-        className="px-3 max-w-5xl  justify-center mt-30  w-full items-center bgtinted p-8"
+        className="px-3 max-w-5xl  justify-center sm:mt-30  w-full items-center bgtinted p-8"
       >
         <div className="text-left">
           <h1 className={title()}>Schützenfest</h1>
@@ -481,7 +493,7 @@ export default function DocsPage() {
           <p className="text-wrap text-left">{t("schützenfest.text1")}</p>
           <div className="sm:max-w-2/3 justify-self-center gap-5 flex items-center">
             <Image
-              src="Diana_und_Bernhard.jpg"
+              src="Diana_und_Bernhard.png"
               className="rounded-3xl max-w-50 align-baseline float-left"
             />
             <p className="text-default-500 text-left text-wrap">
@@ -494,20 +506,20 @@ export default function DocsPage() {
       <div
         id="kontakt"
         data-section
-        className="px-3 max-w-4xl text-left justify-center mt-30  w-full items-center bgtinted p-8"
+        className="px-3 max-w-4xl text-left justify-center sm:mt-30  w-full items-center bgtinted p-8"
       >
         <ContactForm />
       </div>
       <div
         id="empfehlungen"
         data-section
-        className=" max-w-3xl w-full justify-center text-left   p-8 mt-30 px-8 bgtinted
+        className=" max-w-3xl w-full justify-center text-left   p-8 sm:mt-30 px-8 bgtinted
          "
       >
         <h1 className={title()}>{t("routes.Empfehlungen")}</h1>
         <ul className="list-disc text-left ">
           <li>
-            <span className="font-bold">Brautmode</span>
+            <span className="font-bold">{t("empfehlungen.brautmode")}</span>
             <ul className="list-inside list-disc ">
               <li>White Princess in Büren</li>
               <li>Fräulein Fraulich in Paderborn</li>
@@ -517,14 +529,14 @@ export default function DocsPage() {
             </ul>
           </li>
           <li>
-            <span className="font-bold">Fotografie</span>
+            <span className="font-bold">{t("empfehlungen.fotografie")}</span>
             <ul className="list-inside list-disc">
               <li>Blickfang by Jenny Alexander Bürks in warburg </li>
               <li> Die Hochzeitsfotografin Aenna</li>
             </ul>
           </li>
           <li>
-            <span className="font-bold">Dekortation etc.</span>
+            <span className="font-bold">{t("empfehlungen.dekoration")}</span>
             <ul className="list-inside list-disc">
               <li>Unendlich Eventdesign in Bad Driburg</li>
               <li> Wedding Details by Nora Die Packerie</li>
@@ -532,7 +544,7 @@ export default function DocsPage() {
             </ul>
           </li>
           <li>
-            <span className="font-bold">Gesang</span>
+            <span className="font-bold">{t("empfehlungen.gesang")}</span>
             <ul className="list-inside list-disc">
               <li>...</li>
             </ul>

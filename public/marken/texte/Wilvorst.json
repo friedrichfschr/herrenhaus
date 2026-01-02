@@ -1,0 +1,68 @@
+[
+  {
+    "file": "WilvorstLook1.png",
+    "text": "Dieser salbeigrüne Anzug besticht durch dezent matten Glanz und natürlicher Oberfläche. Die passende Weste mit geometrischem Muster ist harmonisch abgestimmt und wird mit Schleife oder Plastron ergänzt. Perfekt wird das Outfit mit dem Einstecktuch.",
+    "preise": {
+      "Anzug 2-tlg": "519,95 €",
+      "Weste": "149,95 €",
+      "Schleife/Tuch": "69,95 €",
+      "Plastron/Tuch": "84,95 €"
+    },
+    "zusammensetzung": "52% Viskose, 46% Schurwolle, 2% Elasthan"
+  },
+  {
+    "file": "WilvorstLook6.png",
+    "text": "Dunkle Beigenuancen wirken sehr elegant. Die leichte Struktur dieses Anzugs verspricht angenehmen Tragekomfort in jeder Situation. Das florale Muster der Weste in den Naturtönen elfenbein, beige und braun macht den Bräutigamlook perfekt. Dazu ergänzen Schleife oder Plastron jeweils mit passendem Einstecktuch das Outfit.",
+    "preise": {
+      "Anzug 2-tlg": "589,95 €",
+      "Weste": "149,95 €",
+      "Schleife/Tuch": "69,95 €",
+      "Plastron/Tuch": "84,95 €"
+    },
+    "zusammensetzung": "100% Schurwolle"
+  },
+  {
+    "file": "WilvorstLook13.png",
+    "text": "Edle Brauntöne harmonieren perfekt mit den Brautkleidern. Dieser hellbraune Anzug besticht mit seiner lässig eleganten Struktur. Die Weste mit dem graphischen Muster sorgt für den festlichen Feinschliff.",
+    "preise": {
+      "Anzug 2-tlg": "589,95 €",
+      "Weste": "149,95 €",
+      "Schleife/Tuch": "69,95 €",
+      "Plastron/Tuch": "84,95 €"
+    },
+    "zusammensetzung": "53% Schurwolle, 42% Viskose, 5% Elasthan"
+  },
+  {
+    "file": "GWLook1.png",
+    "text": "Die Green Wedding Serie verspricht besonders nachhaltige Mode. Dieser lässige Anzug überzeugt mit sportlicher Attitüde. Die schmal geschnittene Weste ergänzt den Gesamtlook mit romantischem Blumenmuster.",
+    "preise": {
+      "Anzug 2-tlg": "639,95 €",
+      "Weste": "169,95 €",
+      "Schleife/Tuch": "74,95 €",
+      "Krawatte/Tuch": "69,95 €"
+    },
+    "zusammensetzung": "100% Schurwolle"
+  },
+  {
+    "file": "GWLook2.png",
+    "text": "Eine neue Farbigkeit in der natürlich wirkenden Anzugwelt ist das leicht türkis wirkende hellblau. Dieser sportlich geschnittene Anzug ist mit karierter Weste im gleichen Stoff harmonisch abgerundet. Durch die schlichte Wirkung ist dieser Anzug auch nach dem großen Fest ideal weiter zu verwenden. ",
+    "preise": {
+      "Anzug 2-tlg.": "",
+      "Weste": "189,95 €",
+      "Schleife/Tuch": "79,95 €",
+      "Krawatte/Tuch": "74,95 €"
+    },
+    "zusammensetzung": "100% Schurwolle"
+  },
+  {
+    "file": "GWLook7.png",
+    "text": "Mehr Natur geht nicht. Dieses phantastische dunkelgrün mit leichten Einflüssen von graubeige ist ein vielseitiger Anzug für den Bräutigam, für Gäste und für weitere Verwendung. Die Weste harmoniert mit dem graphisch-floralen Muster und komplettiert den festlichen Look.",
+    "preise": {
+      "Anzug 2-tlg": "579,95 €",
+      "Weste": "169,95 €",
+      "Schleife/Tuch": "74,95 €",
+      "Krawatte/Tuch": "69,95 €"
+    },
+    "zusammensetzung": "100% Schurwolle"
+  }
+]
