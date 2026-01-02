@@ -1,7 +1,5 @@
 import i18n from "i18next";
-
 import { initReactI18next } from "react-i18next";
-
 import LanguageDetector from "i18next-browser-languagedetector";
 
 export const keysToLanguages = {
@@ -229,7 +227,7 @@ i18n
             brautmode: "Brautmode",
             fotografie: "Fotografie",
             dekoration: "Dekoration",
-            gesang: "Gesang",
+            Spaß: "Spaß & Eventtechnik",
           },
           footer: {
             design: "Design von ",
@@ -438,7 +436,7 @@ i18n
             brautmode: "Bridal Fashion",
             fotografie: "Photography",
             dekoration: "Decoration",
-            gesang: "Singing",
+            Spaß: "Entertainment",
           },
           footer: {
             design: "Design by ",
@@ -647,7 +645,7 @@ i18n
             brautmode: "Robe de mariée",
             fotografie: "Photographie",
             dekoration: "Décoration",
-            gesang: "Chant",
+            Spaß: "Divertissement & technique événementielle",
           },
           footer: {
             design: "Design par ",
@@ -857,7 +855,7 @@ i18n
             brautmode: "Moda nupcial",
             fotografie: "Fotografía",
             dekoration: "Decoración",
-            gesang: "Canto",
+            Spaß: "Diversión y tecnología para eventos",
           },
           footer: {
             design: "Diseño de ",

@@ -1,10 +1,10 @@
-import { subtitle, title } from "@/components/primitives";
-import { BackButton } from "./fürdenBräutigam";
 import { Button } from "@heroui/button";
 import { Link } from "@heroui/link";
-import { useZustand } from "@/zustand";
 import { t } from "i18next";
 import React, { useEffect } from "react";
+
+import { useZustand } from "@/zustand";
+import { title } from "@/components/primitives";
 import i18n from "@/i18n";
 
 export default function GästeFamiliePage() {
@@ -16,15 +16,16 @@ export default function GästeFamiliePage() {
       setLanguage(lan);
     });
   }, [i18n]);
+
   return (
     <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10 w-full">
       <div className="text-center justify-center mt-12  relative w-full flex-col flex max-w-xl md:max-w-3xl">
         <Button
-          variant="ghost"
-          className=" max-w-25 mb-5  ml-5 rounded-md"
-          size="md"
           as={Link}
+          className=" max-w-25 mb-5  ml-5 rounded-md"
           href="/#festlich"
+          size="md"
+          variant="ghost"
           onPress={() => {
             setActiveSection("/#festlich");
             setTimeout(() => {

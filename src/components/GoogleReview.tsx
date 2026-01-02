@@ -55,6 +55,7 @@ async function getData<T>(path: string): Promise<T> {
   }
 
   const data: T = await response.json();
+
   return data;
 }
 
@@ -62,12 +63,14 @@ export const GoogleReviews = () => {
   const [items, setItems] = useState<Reviews[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+
   useLayoutEffect(() => {
     async function fetchReviews() {
       try {
         const reviews = await getData<Reviews[]>(
-          "/ReviewDataHerrenhausDecember25.json"
+          "/ReviewDataHerrenhausDecember25.json",
         );
+
         setItems(reviews);
       } catch (e: any) {
         setError(e?.message ?? "Unknown error");
@@ -82,16 +85,17 @@ export const GoogleReviews = () => {
 
   if (loading) return <p>Loading…</p>;
   if (error) return <p style={{ color: "red" }}>{error}</p>;
+
   return (
     <>
       <div className="items-end flex flex-col mb-5">
         <div className="flex flex-row items-start ">
           <b className="text-2xl mr-3">4.9 </b>
           <StarRating
-            starsLength={5}
+            dimension={10}
             initialRating={5}
             isReadOnly={true}
-            dimension={10}
+            starsLength={5}
           />
         </div>
         <i>277 reviews</i>
@@ -106,10 +110,10 @@ export const GoogleReviews = () => {
             <div className="flex flex-row justify-between items-center">
               <div className="flex flex-col">
                 <Link
-                  href={review.author_link}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   color="foreground"
+                  href={review.author_link}
+                  rel="noopener noreferrer"
+                  target="_blank"
                 >
                   <b className="text-2xl">{review.author_title}</b>
                 </Link>
@@ -118,10 +122,10 @@ export const GoogleReviews = () => {
 
               <div className="text-right">
                 <StarRating
-                  starsLength={5}
+                  dimension={9}
                   initialRating={Number(review.review_rating)}
                   isReadOnly={true}
-                  dimension={9}
+                  starsLength={5}
                 />
                 <i>{formatRelativeTime(review.review_datetime_utc)}</i>
               </div>
@@ -139,9 +143,9 @@ export const GoogleReviews = () => {
             )}
             <Link
               href={review.review_link}
-              target="_blank"
               rel="noopener noreferrer"
               style={{ color: "#659bffff", marginTop: "10px" }}
+              target="_blank"
             >
               Mehr Info
             </Link>

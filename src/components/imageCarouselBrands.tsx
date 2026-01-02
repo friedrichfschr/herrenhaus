@@ -4,8 +4,9 @@ import "react-multi-carousel/lib/styles.css";
 
 import { Card, CardBody } from "@heroui/card";
 import { useEffect, useState } from "react";
-import { PhotoInfo } from "./marken";
 import { motion } from "framer-motion";
+
+import { PhotoInfo } from "./marken";
 const responsive = {
   largeDesktop: {
     breakpoint: { max: 5000, min: 1400 },
@@ -60,7 +61,7 @@ function Back({
             <>
               <div className="italic">
                 {Object.entries(p.preise).map(([key, value]) => (
-                  <div className="flex flex-row justify-between" key={key}>
+                  <div key={key} className="flex flex-row justify-between">
                     <p>{key}</p>
                     <p>{value as any}</p>
                   </div>
@@ -95,17 +96,31 @@ function Front({
       onClick={() => setIsFlipped((prev: boolean) => !prev)}
     >
       <Image
-        src={p.file}
-        width={"100%"}
         className="min-h-40 rounded-2xl w-full flex-1 overflow-hidden lg:max-h-130 md:max-h-110 sm:max-h-100 max-h-90"
+        src={p.file}
         style={{ objectFit: "cover", objectPosition: "50% 90%" }}
+        width={"100%"}
       />
     </button>
   );
 }
 
-function FlipCard({ p, idx }: { p: PhotoInfo; idx: number }) {
-  const [isFlipped, setIsFlipped] = useState<boolean>(true);
+function FlipCard({
+  p,
+  idx,
+  isMoving,
+}: {
+  p: PhotoInfo;
+  idx: number;
+  isMoving: boolean;
+}) {
+  const setIsFlipped = (state: boolean) => {
+    if (!isMoving) {
+      setIsFlippedState(state);
+    }
+  };
+  const [isFlipped, setIsFlippedState] = useState<boolean>(true);
+
   useEffect(() => {
     if (idx == 1) {
       setTimeout(() => {
@@ -116,56 +131,63 @@ function FlipCard({ p, idx }: { p: PhotoInfo; idx: number }) {
       }, 1500);
     }
   }, []);
+  useEffect(() => {
+    setIsFlipped(true);
+  }, [isMoving]);
 
   return (
     <div className="lg:h-130 md:110 sm:h-100 h-90 w-full m-1">
       <motion.div
-        transition={{ duration: 0.8 }}
         animate={{
           rotateY: isFlipped ? 0 : 180,
         }}
+        id={p.file}
         style={{
           backfaceVisibility: "hidden",
           position: "absolute",
           height: "100%",
         }}
-        id={p.file}
+        transition={{ duration: 0.8 }}
       >
-        <Front p={p} idx={idx} setIsFlipped={setIsFlipped} />
+        <Front idx={idx} p={p} setIsFlipped={setIsFlipped} />
       </motion.div>
       <motion.div
-        initial={{ rotateY: 180 }}
         animate={{
           rotateY: isFlipped ? 180 : 0,
         }}
+        className="h-full w-full"
+        initial={{ rotateY: 180 }}
         style={{
           backfaceVisibility: "hidden",
           position: "absolute",
           width: document.getElementById(p.file)?.clientWidth || "100%",
         }}
-        className="h-full w-full"
         transition={{ duration: 0.8 }}
       >
-        <Back p={p} idx={idx} setIsFlipped={setIsFlipped} />
+        <Back idx={idx} p={p} setIsFlipped={setIsFlipped} />
       </motion.div>
     </div>
   );
 }
 
 export const ImageCarouselBrands = ({ data }: { data: PhotoInfo[] }) => {
+  const [isMoving, setIsMoving] = useState(false);
+
   return (
     <Carousel
-      responsive={responsive}
       shouldResetAutoplay
-      infinite={data.length > 3}
-      slidesToSlide={2}
-      centerMode={true}
+      afterChange={() => setIsMoving(false)}
       arrows={data.length > 3}
-      itemClass=""
+      beforeChange={() => setIsMoving(true)}
+      centerMode={true}
       containerClass={`carousel-container bg-grey z-0 ${data.length > 3 ? "" : "justify-center items-center"}`}
+      infinite={data.length > 3}
+      itemClass=""
+      responsive={responsive}
+      slidesToSlide={2}
     >
       {data.map((p, idx) => {
-        return <FlipCard p={p} idx={idx} key={idx} />;
+        return <FlipCard key={idx} idx={idx} isMoving={isMoving} p={p} />;
       })}
     </Carousel>
   );

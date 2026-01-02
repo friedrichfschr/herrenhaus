@@ -45,21 +45,22 @@ const responsive = {
 export const ImageCarousel = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [image, setImage] = useState("");
+
   return (
     <div>
       <Carousel
-        swipeable={true}
-        draggable={true}
-        responsive={responsive}
-        shouldResetAutoplay
-        infinite={true}
-        minimumTouchDrag={10}
-        slidesToSlide={2}
         autoPlay
+        shouldResetAutoplay
         autoPlaySpeed={4000}
         centerMode={true}
         containerClass="carousel-container z-0"
+        draggable={true}
+        infinite={true}
         itemClass=""
+        minimumTouchDrag={10}
+        responsive={responsive}
+        slidesToSlide={2}
+        swipeable={true}
       >
         {images.map((src, idx) => (
           <Card
@@ -79,10 +80,10 @@ export const ImageCarousel = () => {
                 }}
               >
                 <Image
-                  style={{ objectFit: "cover" }}
+                  className="h-full"
                   draggable={false}
                   src={src}
-                  className="h-full"
+                  style={{ objectFit: "cover" }}
                 />
               </Button>
             </CardBody>
@@ -95,9 +96,7 @@ export const ImageCarousel = () => {
 
       <Modal
         backdrop="blur"
-        placement="center"
         isOpen={isOpen}
-        onOpenChange={onOpenChange}
         motionProps={{
           variants: {
             enter: {
@@ -116,6 +115,8 @@ export const ImageCarousel = () => {
             },
           },
         }}
+        placement="center"
+        onOpenChange={onOpenChange}
       >
         <ModalContent className="max-h-[85vh] z-10">
           {(onClose) => (
@@ -123,10 +124,10 @@ export const ImageCarousel = () => {
               <ModalHeader className="flex flex-col gap-1">{image}</ModalHeader>
               <ModalBody>
                 <Image
-                  src={image}
                   isZoomed
-                  draggable={false}
                   className="max-h-[40vh] w-full"
+                  draggable={false}
+                  src={image}
                   style={{ objectFit: "cover" }}
                 />
                 <p>{image}</p>

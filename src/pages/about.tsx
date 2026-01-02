@@ -1,5 +1,3 @@
-import { title } from "@/components/primitives";
-import { useZustand } from "@/zustand";
 import { Button } from "@heroui/button";
 import { Image } from "@heroui/image";
 import { Link } from "@heroui/link";
@@ -7,23 +5,21 @@ import { useTheme } from "@heroui/use-theme";
 import React, { useEffect, useRef } from "react";
 import { Accordion, AccordionItem } from "@heroui/accordion";
 import { t } from "i18next";
-import Marken from "@/components/marken";
-import { ContactForm } from "@/components/contactForm";
 import { Card, CardBody, CardHeader } from "@heroui/card";
 import { Avatar } from "@heroui/avatar";
 import { StarRating } from "react-flexible-star-rating";
-import {
-  FacebookIcon,
-  InstagramIcon,
-  MailIcon,
-  YoutubeIcon,
-} from "@/components/icons";
+
+import { ContactForm } from "@/components/contactForm";
+import Marken from "@/components/marken";
+import { useZustand } from "@/zustand";
+import { title } from "@/components/primitives";
 import i18n from "@/i18n";
 export default function DocsPage() {
   const sections = useRef([]);
   const { setActiveSection, theme: zustandTheme } = useZustand();
   const { theme: heroTheme } = useTheme();
   let theme;
+
   if (zustandTheme) theme = zustandTheme;
   else theme = heroTheme;
   const handleScroll = () => {
@@ -67,17 +63,18 @@ export default function DocsPage() {
       setLanguage(lan);
     });
   }, [i18n]);
+
   return (
     <section className="flex flex-col items-center justify-center min-h-[calc(100vh-130px)] px-3">
-      <div id="/" data-section className="w-full sm:pt-40">
+      <div data-section className="w-full sm:pt-40" id="/">
         <div className="px-3 mb-10  max-w-[1050px] mx-auto text-center text-lg  py-8 lg:pb-20 bgtinted">
           <div className="pb-3">
             <h1 className={title()}>Herrenhaus Fischer</h1>
           </div>
 
           <img
-            src="Start/Herrenhaus_Fischer_Außenansicht.png "
             className=" h-[250px] mx-auto sm:hidden "
+            src="Start/Herrenhaus_Fischer_Außenansicht.png "
             style={{
               float: "right",
               shapeOutside: "circle(48%)",
@@ -87,8 +84,8 @@ export default function DocsPage() {
 
           <p className=" text-justify sm:hidden block ">{t("start.intro")}</p>
           <img
-            src="Start/Herrenhaus_Fischer_Außenansicht.png"
             className="h-90 hidden sm:block "
+            src="Start/Herrenhaus_Fischer_Außenansicht.png"
             style={{
               float: "left",
               shapeOutside: "circle(60% at 37% 60%)",
@@ -96,8 +93,8 @@ export default function DocsPage() {
             }}
           />
           <img
-            src="Start/FamilieFischer.png "
             className="h-90  hidden sm:block "
+            src="Start/FamilieFischer.png "
             style={{
               float: "right",
               // marginTop: "-30px",
@@ -106,35 +103,35 @@ export default function DocsPage() {
             }}
           />
           <p className=" text-justify sm:block hidden ">{t("start.intro")}</p>
-          <div id="festlichscroll"></div>
+          <div id="festlichscroll" />
         </div>
       </div>
       <div
-        id="festlich"
         data-section
         className="py-8  w-full max-w-7xl bgtinted px-1 flex flex-col justify-center items-center"
+        id="festlich"
       >
         <div className=" text-center justify-center">
           <h1 className={title()}>{t("routes.Festliche Herrenmode")}</h1>
         </div>
         <Accordion
-          variant="bordered"
-          defaultExpandedKeys={["1"]}
           className=" mx-auto  "
+          defaultExpandedKeys={["1"]}
+          variant="bordered"
         >
           <AccordionItem
+            key="1"
+            aria-label={t("festlich.accordion.1")}
+            title={t("festlich.accordion.1")}
             onPress={() =>
               setTimeout(
                 () =>
                   document
                     .getElementById("festlichscroll")
                     ?.scrollIntoView({ behavior: "instant" }),
-                0
+                0,
               )
             }
-            key="1"
-            aria-label={t("festlich.accordion.1")}
-            title={t("festlich.accordion.1")}
           >
             <div className="max-w-7xl  text-center mx-auto text-lg px-4 pt-3">
               <p className=" ">{t("festlich.intro1")}</p>
@@ -160,78 +157,78 @@ export default function DocsPage() {
               )}
               <Image
                 className="lg:w-50 lg:h-50 md:w-40 md:h-40 sm:w-30 sm:h-30 h-20 w-20 sm:flex  rounded-full "
-                style={{ objectFit: "cover" }}
                 src={"/BernhardFotoGruß.png"}
+                style={{ objectFit: "cover" }}
               />
             </div>
             <div className="flex-col flex gap-2 ">
               <Button
-                className="font-semibold text-lg  whitespace-normal h-auto min-h-12"
-                variant="bordered"
                 as={Link}
+                className="font-semibold text-lg  whitespace-normal h-auto min-h-12"
                 href="/bräutigam"
+                variant="bordered"
                 onPress={() => window.scrollTo({ top: 0 })}
               >
                 {t("festlich.buttons.1.title")}
               </Button>
               <Button
-                className="font-semibold text-lg flex-1  whitespace-normal h-auto   min-h-12"
-                variant="bordered"
-                href="/trauzeuge"
                 as={Link}
+                className="font-semibold text-lg flex-1  whitespace-normal h-auto   min-h-12"
+                href="/trauzeuge"
+                variant="bordered"
                 onPress={() => window.scrollTo({ top: 0 })}
               >
                 {t("festlich.buttons.2.title")}
               </Button>
               <Button
-                variant="bordered"
                 as={Link}
-                href="familie"
-                onPress={() => window.scrollTo({ top: 0 })}
                 className="font-semibold text-lg flex-1  whitespace-normal h-auto   min-h-12"
+                href="familie"
+                variant="bordered"
+                onPress={() => window.scrollTo({ top: 0 })}
               >
                 {t("festlich.buttons.3.title")}
               </Button>
               <Button
-                variant="bordered"
                 as={Link}
-                href="tipps"
-                onPress={() => window.scrollTo({ top: 0 })}
                 className="font-semibold text-lg  whitespace-normal h-auto   min-h-12"
+                href="tipps"
+                variant="bordered"
+                onPress={() => window.scrollTo({ top: 0 })}
               >
                 {t("festlich.buttons.4.title")}
               </Button>
             </div>
           </AccordionItem>
           <AccordionItem
+            key="2"
+            aria-label={t("festlich.accordion.2")}
+            title={t("festlich.accordion.2")}
             onPress={() =>
               setTimeout(
                 () =>
                   document
                     .getElementById("festlichscroll")
                     ?.scrollIntoView({ behavior: "instant" }),
-                0
+                0,
               )
             }
-            key="2"
-            aria-label={t("festlich.accordion.2")}
-            title={t("festlich.accordion.2")}
           >
             <Marken />
           </AccordionItem>
           <AccordionItem
+            key="3"
+            aria-label={t("festlich.accordion.3")}
+            title={t("festlich.accordion.3")}
             onPress={() =>
               setTimeout(
                 () =>
                   document
                     .getElementById("festlichscroll")
                     ?.scrollIntoView({ behavior: "instant" }),
-                0
+                0,
               )
             }
-            key="3"
-            aria-label={t("festlich.accordion.3")}
-            title={t("festlich.accordion.3")}
           >
             <ul className="flex flex-col ">
               <li className="flex justify-between items-center gap-4">
@@ -245,7 +242,7 @@ export default function DocsPage() {
                     {t("festlich.fotoshootings.brautmode")} Brautsein aus Brakel
                   </li>
                   <li>
-                    {t("festlich.fotoshootings.fotografie")} Anna Schnabel{" "}
+                    {t("festlich.fotoshootings.fotografie")} Anna Schnabel
                   </li>
                 </ul>
               </li>
@@ -321,31 +318,30 @@ export default function DocsPage() {
             </ul>
           </AccordionItem>
           <AccordionItem
+            key="4"
+            aria-label={t("festlich.accordion.4")}
             id="männermodescroll"
+            subtitle=""
+            title={t("festlich.accordion.4")}
             onPress={() =>
               setTimeout(
                 () =>
                   document
                     .getElementById("festlichscroll")
                     ?.scrollIntoView({ behavior: "instant" }),
-                0
+                0,
               )
             }
-            key="4"
-            aria-label={t("festlich.accordion.4")}
-            title={t("festlich.accordion.4")}
-            subtitle=""
           >
-            <div className="items-center flex flex-col mb-5">
-              <b className="text-3xl mb-2">4.9 </b>
+            <div className="items-start flex flex-col mb-5">
+              {/* <p className="text-2xl mb-2 text-default-600">4.9 </p>
               <StarRating
                 starsLength={5}
                 initialRating={5}
                 isReadOnly={true}
-                dimension={11}
-              />
+                dimension={10}
+              /> */}
               <span className="text-sm opacity-70 self-end">
-                {" "}
                 {t("time.december")} 2025
               </span>
               <Link
@@ -367,15 +363,14 @@ export default function DocsPage() {
                   <div>
                     <h1>MeZZo RoX</h1>
                     <span className="text-sm opacity-70">
-                      {" "}
                       {t("time.september")} 2025
                     </span>
                   </div>
                   <StarRating
-                    starsLength={5}
+                    dimension={7}
                     initialRating={5}
                     isReadOnly={true}
-                    dimension={7}
+                    starsLength={5}
                   />
                   <Link
                     className="ml-auto underline text-blue-400"
@@ -402,10 +397,10 @@ export default function DocsPage() {
                     </span>
                   </div>
                   <StarRating
-                    starsLength={5}
+                    dimension={7}
                     initialRating={5}
                     isReadOnly={true}
-                    dimension={7}
+                    starsLength={5}
                   />
                   <Link
                     className="ml-auto underline text-blue-400"
@@ -421,12 +416,12 @@ export default function DocsPage() {
             </div>
           </AccordionItem>
         </Accordion>
-        <div className="flex flex-row flex-wrap  justify-center gap-5 mt-10  px-4"></div>
+        <div className="flex flex-row flex-wrap  justify-center gap-5 mt-10  px-4" />
       </div>
       <div
-        id="männermode"
         data-section
         className="px-3 max-w-4xl  justify-center sm:mt-30  w-full items-center text-center bgtinted p-8"
+        id="männermode"
       >
         <div className="text-left pb-2">
           <h1 className={title()}>{t("routes.Männermode")}</h1>
@@ -438,41 +433,41 @@ export default function DocsPage() {
           <p>{t("männermode.text2")}</p>
           <div className="flex flex-row flex-wrap gap-5 justify-around mb-5 mt-3">
             <Image
-              src="/Männermode/ETERNA_weißes_Hemd.png"
               isBlurred
               className="h-80 w-auto rounded-xl"
+              src="/Männermode/ETERNA_weißes_Hemd.png"
             />
             <div className="flex justify-center">
               <Image
-                src="/Männermode/Marvelis.png"
                 isBlurred
                 className="h-80 w-auto rounded-xl"
                 classNames={{ wrapper: "justify-center items-center " }}
+                src="/Männermode/Marvelis.png"
               />
             </div>
             <Image
-              src="/Männermode/CINQUE.png"
               isBlurred
               className="h-80 w-auto rounded-xl"
+              src="/Männermode/CINQUE.png"
             />
           </div>
           <p>{t("männermode.text3")}</p>
           <div className="flex flex-row flex-wrap gap-5 justify-around mb-5 mt-3">
             <Image
-              src="/Männermode/NZA_Image_Feuer.png"
               isBlurred
               className="h-80 w-auto rounded-xl"
+              src="/Männermode/NZA_Image_Feuer.png"
             />
             <Image
-              src="/Männermode/NZA_Norweger_Pulli_129,99_€.png"
               isBlurred
               className="h-80 w-auto rounded-xl"
               classNames={{ wrapper: "justify-center items-center " }}
+              src="/Männermode/NZA_Norweger_Pulli_129,99_€.png"
             />
             <Image
-              src="/Männermode/Replay.webp"
               isBlurred
               className="h-80 w-auto rounded-xl"
+              src="/Männermode/Replay.webp"
             />
           </div>
           <p>{t("männermode.text4")}</p>
@@ -482,9 +477,9 @@ export default function DocsPage() {
       </div>
 
       <div
-        id="schützenfest"
         data-section
         className="px-3 max-w-5xl  justify-center sm:mt-30  w-full items-center bgtinted p-8"
+        id="schützenfest"
       >
         <div className="text-left">
           <h1 className={title()}>Schützenfest</h1>
@@ -493,8 +488,8 @@ export default function DocsPage() {
           <p className="text-wrap text-left">{t("schützenfest.text1")}</p>
           <div className="sm:max-w-2/3 justify-self-center gap-5 flex items-center">
             <Image
-              src="Diana_und_Bernhard.png"
               className="rounded-3xl max-w-50 align-baseline float-left"
+              src="Diana_und_Bernhard.png"
             />
             <p className="text-default-500 text-left text-wrap">
               {t("schützenfest.text2")}
@@ -504,49 +499,175 @@ export default function DocsPage() {
         </div>
       </div>
       <div
-        id="kontakt"
         data-section
         className="px-3 max-w-4xl text-left justify-center sm:mt-30  w-full items-center bgtinted p-8"
+        id="kontakt"
       >
         <ContactForm />
       </div>
       <div
-        id="empfehlungen"
         data-section
         className=" max-w-3xl w-full justify-center text-left   p-8 sm:mt-30 px-8 bgtinted
          "
+        id="empfehlungen"
       >
         <h1 className={title()}>{t("routes.Empfehlungen")}</h1>
         <ul className="list-disc text-left ">
           <li>
             <span className="font-bold">{t("empfehlungen.brautmode")}</span>
-            <ul className="list-inside list-disc ">
-              <li>White Princess in Büren</li>
-              <li>Fräulein Fraulich in Paderborn</li>
-              <li>Zeit & Ewigkeit in Lemgo</li>{" "}
-              <li>Majas Brautmoden in Kalletal</li>{" "}
-              <li> Braut & Fest in Germete</li>
+            <ul className="list-inside list-disc flex flex-col">
+              <Link
+                isExternal
+                showAnchorIcon
+                className=""
+                color="foreground"
+                href="https://whiteprincess.de/"
+              >
+                <li>White Princess in Büren</li>
+              </Link>
+              <Link
+                isExternal
+                showAnchorIcon
+                className=""
+                color="foreground"
+                href="https://www.fraeuleinfraulich.de/"
+              >
+                <li>Fräulein Fraulich in Paderborn</li>
+              </Link>
+
+              <Link
+                isExternal
+                showAnchorIcon
+                className=""
+                color="foreground"
+                href="https://www.zeitundewigkeit-brautmoden.de/"
+              >
+                <li>Zeit & Ewigkeit in Lemgo</li>
+              </Link>
+
+              <Link
+                isExternal
+                showAnchorIcon
+                className=""
+                color="foreground"
+                href="https://www.majas-brautmoden.de/"
+              >
+                <li>Majas Brautmoden in Kalletal</li>
+              </Link>
+              <Link
+                isExternal
+                showAnchorIcon
+                className=""
+                color="foreground"
+                href="https://brautundfest.de/"
+              >
+                <li> Braut & Fest in Germete</li>
+              </Link>
+              <Link
+                isExternal
+                showAnchorIcon
+                className=""
+                color="foreground"
+                href="https://traumkleid-lippe.de/"
+              >
+                <li>Traumkleid Lippe in Lemgo</li>
+              </Link>
+              <Link
+                isExternal
+                showAnchorIcon
+                className=""
+                color="foreground"
+                href="https://www.braut-abendmode-brilon.de/"
+              >
+                <li> Braut- und Abendmode Brilon</li>
+              </Link>
+              <Link
+                isExternal
+                showAnchorIcon
+                className=""
+                color="foreground"
+                href="https://beccaloreen.de/"
+              >
+                <li> Beccaloreen Paderborn</li>
+              </Link>
             </ul>
           </li>
           <li>
             <span className="font-bold">{t("empfehlungen.fotografie")}</span>
-            <ul className="list-inside list-disc">
-              <li>Blickfang by Jenny Alexander Bürks in warburg </li>
-              <li> Die Hochzeitsfotografin Aenna</li>
+            <ul className="list-inside list-disc flex flex-col">
+              <Link
+                isExternal
+                showAnchorIcon
+                className=""
+                color="foreground"
+                href="https://www.blickfangbyjenny.de/"
+              >
+                <li>Blickfang by Jenny</li>
+              </Link>
+              <Link
+                isExternal
+                showAnchorIcon
+                className=""
+                color="foreground"
+                href="https://www.diehochzeitsfotografin.de/"
+              >
+                <li> Die Hochzeitsfotografin Aenna</li>
+              </Link>
+              <Link
+                isExternal
+                showAnchorIcon
+                className=""
+                color="foreground"
+                href="https://www.albueart.de/"
+              >
+                <li> Alexander Bürks in warburg </li>
+              </Link>
             </ul>
           </li>
           <li>
             <span className="font-bold">{t("empfehlungen.dekoration")}</span>
-            <ul className="list-inside list-disc">
-              <li>Unendlich Eventdesign in Bad Driburg</li>
-              <li> Wedding Details by Nora Die Packerie</li>
-              <li>Die Packerei</li>
+            <ul className="list-inside list-disc flex flex-col">
+              <Link
+                isExternal
+                showAnchorIcon
+                className=""
+                color="foreground"
+                href="https://unendlich-events.de/"
+              >
+                <li>Unendlich Eventdesign in Bad Driburg</li>
+              </Link>
+              <Link
+                isExternal
+                showAnchorIcon
+                className=""
+                color="foreground"
+                href="https://www.weddingdetails.de/"
+              >
+                <li> Wedding Details by Nora</li>
+              </Link>
+              <Link
+                isExternal
+                showAnchorIcon
+                className=""
+                color="foreground"
+                href="https://www.die-packerie.de/"
+              >
+                <li>Die Packerei</li>
+              </Link>
             </ul>
           </li>
           <li>
-            <span className="font-bold">{t("empfehlungen.gesang")}</span>
+            <span className="font-bold">{t("empfehlungen.Spaß")}</span>
             <ul className="list-inside list-disc">
-              <li>...</li>
+              <Link
+                isExternal
+                showAnchorIcon
+                className=""
+                color="foreground"
+                href="https://fotomaschine.net/"
+              >
+                <li>Die Fotomaschine</li>
+              </Link>
             </ul>
           </li>
         </ul>

@@ -1,9 +1,12 @@
 import { Accordion, AccordionItem } from "@heroui/accordion";
 import { useEffect, useLayoutEffect, useState } from "react";
-import { ImageCarouselBrands } from "./imageCarouselBrands";
 import { t } from "i18next";
-import i18n from "@/i18n";
+
 import { markenFile, MarkeInterface } from "../markenFile.ts";
+
+import { ImageCarouselBrands } from "./imageCarouselBrands";
+
+import i18n from "@/i18n";
 
 export interface PhotoInfo {
   file: string;
@@ -23,9 +26,11 @@ async function getData<T>(path: string): Promise<T> {
   });
 
   const data: T = await response.json();
+
   if (!response.ok) {
     throw new Error(`Failed to fetch ${path}: ${response.statusText}`);
   }
+
   return data;
 }
 
@@ -49,16 +54,17 @@ export const fetchMarkenWithPhotos = async (): Promise<MarkeWithPhotos[]> => {
   const marken = markenFile;
   // 2) Return marken immediately with empty photos, load photos in the background
   const withPhotos = marken.map(
-    (m) => ({ ...m, photos: [] }) as MarkeWithPhotos
+    (m) => ({ ...m, photos: [] }) as MarkeWithPhotos,
   );
 
   // 3) Load photos asynchronously without blocking the UI
   marken.forEach(async (m, index) => {
     try {
       const rawPhotos = await getData<any[]>(
-        `marken/texte/${m.TextDateiName}.json`
+        `marken/texte/${m.TextDateiName}.json`,
       );
       const photos = normalizePhotos(rawPhotos, m.TextDateiName);
+
       withPhotos[index] = { ...m, photos } as MarkeWithPhotos;
     } catch (e) {
       // If a brand has no photos file, fail softly and just keep empty photos
@@ -75,32 +81,39 @@ export default function Marken() {
   const [loading, setLoading] = useState(true);
   const [selectedKeys, setSelectedKeys] = useState(new Set([""]));
   const [tt, forceUpdate] = useState(0);
+
   console.log("FlipCard render");
 
   useLayoutEffect(() => {
     (async () => {
       try {
         const result = await fetchMarkenWithPhotos();
+
         setItems(result);
         setLoading(false);
 
         // Prefetch photos for all brands
         const marken = markenFile;
+
         marken.forEach(async (m, index) => {
           try {
             const rawPhotos = await getData<any[]>(
-              `marken/texte/${m.TextDateiName}.json`
+              `marken/texte/${m.TextDateiName}.json`,
             );
             const photos = normalizePhotos(rawPhotos, m.TextDateiName);
+
             setItems((prev) => {
               const updated = [...prev];
+
               updated[index] = { ...m, photos } as MarkeWithPhotos;
+
               return updated;
             });
 
             // Prefetch images
             photos.forEach((photo) => {
               const img = new Image();
+
               img.src = photo.file;
             });
           } catch (e) {
@@ -126,33 +139,34 @@ export default function Marken() {
 
   return (
     <Accordion
-      variant="splitted"
       className="rounded-none overflow-visible"
+      selectedKeys={selectedKeys}
+      variant="splitted"
       onSelectionChange={(selection) => {
         console.log("force", tt);
         setTimeout(() => forceUpdate((prev) => (prev == 0 ? 1 : 0)), 100);
         //@ts-ignore
         setSelectedKeys(selection);
       }}
-      selectedKeys={selectedKeys}
     >
       {items.map((marke, i) => {
         const heightOfCarousel = document.getElementById(
-          `carouselDiv${i}`
+          `carouselDiv${i}`,
         )?.offsetHeight;
         const isOpen = selectedKeys.has(i.toString());
+
         return (
           <AccordionItem
             // onPress={() =>
             //   setTimeout(() => forceUpdate((prev) => (prev == 0 ? 1 : 0)), 100)
             // }
-            className="rounded-none"
             key={i}
             aria-label={marke.name}
-            title={marke.name}
+            className="rounded-none"
             style={{
               paddingBottom: isOpen ? heightOfCarousel : 0,
             }}
+            title={marke.name}
           >
             <p>{t("festlich.markenTexte." + marke.name)}</p>
             <div

@@ -18,7 +18,7 @@
     
     background-blend-mode:color;
     border-radius: 40px;
-}
+} */
 
 @layer utilities {
   .mask-navbar {
@@ -63,7 +63,7 @@
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
   }
-}} */
+}
 @config "../../tailwind.config.js"
 
 

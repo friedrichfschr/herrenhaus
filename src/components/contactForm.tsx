@@ -2,12 +2,14 @@ import { Button } from "@heroui/button";
 import { Form } from "@heroui/form";
 import { Input, Textarea } from "@heroui/input";
 import { Link } from "@heroui/link";
-import { title } from "./primitives";
 import { t } from "i18next";
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { addToast } from "@heroui/toast";
 import ReCAPTCHA from "react-google-recaptcha";
+
+import { title } from "./primitives";
+
 import i18n from "@/i18n";
 
 export function ContactForm() {
@@ -20,12 +22,13 @@ export function ContactForm() {
   const sendEmail = (e: any) => {
     e.preventDefault();
 
-    if (!recaptchaRef.current.getValue()) {
+    if (!recaptchaRef.current || !recaptchaRef.current.getValue()) {
       addToast({
         title: "Error",
         description: t("kontakt.errorMessageRecaptcha"),
         color: "danger",
       });
+
       return;
     }
     const params = {
@@ -55,7 +58,7 @@ export function ContactForm() {
               setName("");
               setFirma("");
               setMessage("");
-              recaptchaRef.current.reset();
+              recaptchaRef.current?.reset();
             }
           },
           (error) => {
@@ -77,7 +80,7 @@ export function ContactForm() {
     }
   };
 
-  const [language, setLanguage] = React.useState(i18n.language);
+  const [_, setLanguage] = React.useState(i18n.language);
 
   React.useEffect(() => {
     i18n.on("languageChanged", (lan) => {
@@ -107,10 +110,10 @@ export function ContactForm() {
         <div className="  grow">
           <iframe
             className="grow"
-            width="100%"
             height="100%"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2471.871195028342!2d9.178608477638686!3d51.71709899536135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bafe9d6aaca34b%3A0x6cc700fd279a294e!2sHerrenhaus%20Fischer!5e0!3m2!1sen!2sde!4v1767107459772!5m2!1sen!2sde"
             loading="lazy"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2471.871195028342!2d9.178608477638686!3d51.71709899536135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bafe9d6aaca34b%3A0x6cc700fd279a294e!2sHerrenhaus%20Fischer!5e0!3m2!1sen!2sde!4v1767107459772!5m2!1sen!2sde"
+            width="100%"
           />
         </div>
         <div className="flex flex-col  ">
@@ -122,11 +125,11 @@ export function ContactForm() {
           <span>
             <br />
           </span>
-          <Link size="lg" href="tel:05272 - 355 83">
+          <Link href="tel:05272 - 355 83" size="lg">
             05272 - 355 832
           </Link>
 
-          <Link size="lg" href="mailto:mode@herrenhaus-fischer.de">
+          <Link href="mailto:mode@herrenhaus-fischer.de" size="lg">
             mode@herrenhaus-fischer.de
           </Link>
         </div>
@@ -138,7 +141,6 @@ export function ContactForm() {
           onSubmit={sendEmail}
         >
           <Input
-            onChange={(e) => setEmail(e.target.value)}
             isRequired
             errorMessage={t("kontakt.errorMessageEmail")}
             label={t("kontakt.label.email")}
@@ -146,33 +148,34 @@ export function ContactForm() {
             name="email"
             placeholder={t("kontakt.placeholder.email")}
             type="email"
+            onChange={(e) => setEmail(e.target.value)}
           />
           <Input
-            onChange={(e) => setName(e.target.value)}
             label={t("kontakt.label.name")}
             labelPlacement="outside"
             name="name"
             placeholder={t("kontakt.placeholder.name")}
             type="text"
+            onChange={(e) => setName(e.target.value)}
           />
 
           <Input
-            onChange={(e) => setFirma(e.target.value)}
             label={t("kontakt.label.firma")}
             labelPlacement="outside"
             name="Firma"
             placeholder={t("kontakt.placeholder.firma")}
             type="text"
+            onChange={(e) => setFirma(e.target.value)}
           />
           <Textarea
             isRequired
-            onChange={(e) => setMessage(e.target.value)}
+            classNames={{ label: "w-full text-left" }}
             label={t("kontakt.label.nachricht")}
             labelPlacement="outside"
-            classNames={{ label: "w-full text-left" }}
             name="message"
             placeholder={t("kontakt.placeholder.nachricht")}
             type="text"
+            onChange={(e) => setMessage(e.target.value)}
           />
           <div className="flex gap-2" id="empfehlungenscroll">
             <Button color="primary" type="submit">
@@ -182,10 +185,11 @@ export function ContactForm() {
         </Form>
       </div>
       {message ? (
+        //@ts-ignore
         <ReCAPTCHA
-          theme="light"
-          ref={recaptchaRef}
+          ref={recaptchaRef as any}
           sitekey={"6LcGn_8rAAAAAM0d8BhfD9J9eUAcNNTYLMyZmxWS"}
+          theme="light"
         />
       ) : null}
     </>

@@ -1,19 +1,21 @@
-import { title } from "@/components/primitives";
-import i18n from "@/i18n";
-import { useZustand } from "@/zustand";
 import { Button } from "@heroui/button";
 import { Link } from "@heroui/link";
 import { t } from "i18next";
 import React, { useEffect } from "react";
+
+import { useZustand } from "@/zustand";
+import i18n from "@/i18n";
+import { title } from "@/components/primitives";
 export function BackButton() {
   const { setActiveSection } = useZustand();
+
   return (
     <Button
-      variant="ghost"
-      className="sm:absolute sm:left-5 sm:top-1 max-w-25 mb-3 sm:mb-0 sm:ml-0 ml-5 rounded-md"
-      size="md"
       as={Link}
+      className="sm:absolute sm:left-5 sm:top-1 max-w-25 mb-3 sm:mb-0 sm:ml-0 ml-5 rounded-md"
       href="/#festlich"
+      size="md"
+      variant="ghost"
       onPress={() => {
         setActiveSection("/#festlich");
         setTimeout(() => {
