@@ -30,11 +30,11 @@ export const siteConfig = {
     },
   ],
   navItems: [
-    {
-      href: "https://www.klara-fischer.de/",
-      isExternal: true,
-      label: "Klara Fischer",
-    },
+    // {
+    //   href: "https://www.klara-fischer.de/",
+    //   isExternal: true,
+    //   label: "Klara Fischer",
+    // },
     // {
     //   label: "Termine",
     //   href: "/termine",

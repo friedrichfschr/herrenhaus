@@ -66,7 +66,7 @@ export default function DocsPage() {
 
   return (
     <section className="flex flex-col items-center justify-center min-h-[calc(100vh-130px)] px-3">
-      <div data-section className="w-full sm:pt-40" id="/">
+      <div data-section className="w-full  xl:pt-40" id="/">
         <div className="px-3 mb-10  max-w-[1050px] mx-auto text-center text-lg  py-8 lg:pb-20 bgtinted">
           <div className="pb-3">
             <h1 className={title()}>Herrenhaus Fischer</h1>
@@ -486,7 +486,7 @@ export default function DocsPage() {
         </div>
         <div>
           <p className="text-wrap text-left">{t("schützenfest.text1")}</p>
-          <div className="sm:max-w-2/3 justify-self-center gap-5 flex items-center  mt-4">
+          <div className="sm:max-w-2/3 justify-self-center gap-5 flex items-center mx-auto mt-4">
             <Image
               className="rounded-3xl max-[640px]:max-w-1/2 sm:max-w-60  min-w-35    float-left"
               src="Diana_und_Bernhard.png"

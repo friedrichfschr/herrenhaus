@@ -23,6 +23,7 @@ import { useZustand } from "@/zustand";
 import i18n, { keysToLanguages } from "@/i18n";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { siteConfig } from "@/config/site";
+import { Button } from "@heroui/button";
 
 export const Navbar = () => {
   const { i18n } = useTranslation();
@@ -68,11 +69,11 @@ export const Navbar = () => {
       onMenuOpenChange={setIsMenuOpen}
     >
       <NavbarContent
-        className="basis-1/5 sm:basis-full flex-col items-start"
+        className="basis-1/5 sm:basis-full flex-col items-start "
         justify="start"
       >
         <Image
-          className="lg:fixed z-0  xl:sticky "
+          className=" top-0 lg:left-0 xl:left-auto  z-0 fixed "
           src="/logo-herrenhaus-fischer.png"
           width={230}
         />
@@ -127,15 +128,16 @@ export const Navbar = () => {
         <div className="hidden lg:flex gap-4 justify-start ml-2 z-4 backgrounddiv  pl-2 rounded-2xl">
           {siteConfig.scrollNavItems.map((item) => (
             <NavbarItem key={item.href} className="" id={item.href}>
-              <Link
-                color={item.href === activeSection ? "primary" : "foreground"}
-                href={item.href}
+              <Button
+                color={item.href === activeSection ? "primary" : "default"}
+                variant="light"
+                className="text-md"
                 onPress={() => {
                   if (item.href.split("#")[0] !== location.pathname) {
                     setActiveSection(item.href);
                     setTimeout(() => {
                       document
-                        .getElementById(item.href.split("#")[1] + "scroll")
+                        .getElementById(item.href.split("#")[1])
                         ?.scrollIntoView({
                           behavior: "smooth",
                           block: "start",
@@ -147,23 +149,21 @@ export const Navbar = () => {
 
                   if (item.href.includes("#"))
                     anchorId = item.href.split("#")[1];
+
                   if (!anchorId)
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   else
-                    document
-                      .getElementById(anchorId + "scroll")
-                      ?.scrollIntoView({
-                        behavior: "smooth",
-                        block: "start",
-                        inline: "start",
-                      });
+                    document.getElementById(anchorId)?.scrollIntoView({
+                      behavior: "smooth",
+                    });
                 }}
               >
                 {t(`routes.${item.label}`)}
-              </Link>
+              </Button>
             </NavbarItem>
           ))}
-          {siteConfig.navItems.map((item) => (
+
+          {/* {siteConfig.navItems.map((item) => (
             <NavbarItem key={item.href} id={item.href}>
               <Link
                 color={"foreground"}
@@ -175,7 +175,7 @@ export const Navbar = () => {
                 {t(`routes.${item.label}`)}
               </Link>
             </NavbarItem>
-          ))}
+          ))} */}
         </div>
       </NavbarContent>
 
@@ -193,7 +193,7 @@ export const Navbar = () => {
                     setActiveSection(item.href);
                     setTimeout(() => {
                       document
-                        .getElementById(item.href.split("#")[1] + "scroll")
+                        .getElementById(item.href.split("#")[1])
                         ?.scrollIntoView({
                           behavior: "smooth",
                         });
@@ -203,14 +203,13 @@ export const Navbar = () => {
 
                   if (item.href.includes("#"))
                     anchorId = item.href.split("#")[1];
+
                   if (!anchorId)
                     window.scrollTo({ top: 0, behavior: "smooth" });
                   else
-                    document
-                      .getElementById(anchorId + "scroll")
-                      ?.scrollIntoView({
-                        behavior: "smooth",
-                      });
+                    document.getElementById(anchorId)?.scrollIntoView({
+                      behavior: "smooth",
+                    });
                 }}
               >
                 {t(`routes.${item.label}`)}
@@ -258,7 +257,7 @@ export const Footer = () => {
   }, [i18n]);
 
   return (
-    <footer className="w-full max-w-7xl mx-auto mb-10 text-center text-sm  pt-15 sm:pt-70">
+    <footer className="w-full max-w-7xl mx-auto mb-10 text-center text-sm  pt-15 md:pt-30 lg:-40 xl:pt-70">
       <div className="flex justify-center gap-4 mb-2">
         <Link
           color="foreground"
