@@ -129,7 +129,7 @@ export default function DocsPage() {
                   document
                     .getElementById("festlichscroll")
                     ?.scrollIntoView({ behavior: "instant" }),
-                0,
+                0
               )
             }
           >
@@ -210,7 +210,7 @@ export default function DocsPage() {
                   document
                     .getElementById("festlichscroll")
                     ?.scrollIntoView({ behavior: "instant" }),
-                0,
+                0
               )
             }
           >
@@ -226,7 +226,7 @@ export default function DocsPage() {
                   document
                     .getElementById("festlichscroll")
                     ?.scrollIntoView({ behavior: "instant" }),
-                0,
+                0
               )
             }
           >
@@ -329,7 +329,7 @@ export default function DocsPage() {
                   document
                     .getElementById("festlichscroll")
                     ?.scrollIntoView({ behavior: "instant" }),
-                0,
+                0
               )
             }
           >
@@ -486,12 +486,12 @@ export default function DocsPage() {
         </div>
         <div>
           <p className="text-wrap text-left">{t("schützenfest.text1")}</p>
-          <div className="sm:max-w-2/3 justify-self-center gap-5 flex items-center">
+          <div className="sm:max-w-2/3 justify-self-center gap-5 flex items-center  mt-4">
             <Image
-              className="rounded-3xl max-w-50 align-baseline float-left"
+              className="rounded-3xl max-[640px]:max-w-1/2 sm:max-w-60  min-w-35    float-left"
               src="Diana_und_Bernhard.png"
             />
-            <p className="text-default-500 text-left text-wrap">
+            <p className="text-default-500  max-[640px]:max-w-1/2 text-left text-wrap">
               {t("schützenfest.text2")}
             </p>
             <div id="kontaktscroll"> </div>

@@ -56,7 +56,7 @@ export const Navbar = () => {
 
   return (
     <HeroUINavbar
-      className=" pb-10  sm:pb-12 inset-shadow-xl backgrounddiv mask-navbar"
+      className=" pb-10  sm:pb-16 inset-shadow-xl backgrounddiv mask-navbar"
       isBlurred={false}
       isMenuOpen={isMenuOpen}
       maxWidth="xl"
@@ -68,11 +68,11 @@ export const Navbar = () => {
       onMenuOpenChange={setIsMenuOpen}
     >
       <NavbarContent
-        className="basis-1/5 sm:basis-full flex-col"
+        className="basis-1/5 sm:basis-full flex-col items-start"
         justify="start"
       >
         <Image
-          className="lg:fixed z-0 lg:left-5 xl:sticky "
+          className="lg:fixed z-0  xl:sticky "
           src="/logo-herrenhaus-fischer.png"
           width={230}
         />
@@ -224,7 +224,7 @@ export const Navbar = () => {
               isExternal
               showAnchorIcon
               className={clsx(
-                "decoration-secondary underline font-semibold text-lg w-full",
+                "decoration-secondary underline font-semibold text-lg w-full"
               )}
               color="secondary"
               href={siteConfig.links.klara}
@@ -245,7 +245,7 @@ const FlagAvatar = memo(
       className="w-6 h-6"
       src={`https://flagcdn.com/${code}.svg`}
     />
-  ),
+  )
 );
 
 export const Footer = () => {
