@@ -57,7 +57,7 @@ export const Navbar = () => {
 
   return (
     <HeroUINavbar
-      className=" pb-10  sm:pb-16 inset-shadow-xl backgrounddiv mask-navbar"
+      className=" pb-14  sm:pb-16 inset-shadow-xl backgrounddiv mask-navbar"
       isBlurred={false}
       isMenuOpen={isMenuOpen}
       maxWidth="xl"
