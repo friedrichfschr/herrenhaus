@@ -6,6 +6,7 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   plugins: [react(), tsconfigPaths(), tailwindcss()],
   server: {
-    allowedHosts: ["herrenhaus.fschr.me"],
+    allowedHosts: ["herrenhaus.fschr.me, www.herrenhaus-fischer.de"],
   },
+  base: "/",
 });
