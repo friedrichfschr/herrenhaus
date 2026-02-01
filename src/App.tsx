@@ -7,6 +7,8 @@ import TippsPage from "./pages/festlich/tipps";
 import GästeFamiliePage from "./pages/festlich/GästeFamiliedesBrautpaares";
 
 import AboutPage from "@/pages/about";
+import { Datenschutz } from "./pages/datenschutz";
+import { Impressum } from "./pages/impressum";
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
         <Route element={<TrauzeugePage />} path="/trauzeuge" />
         <Route element={<GästeFamiliePage />} path="/familie" />
         <Route element={<TippsPage />} path="/tipps" />
+        <Route element={<Datenschutz />} path="/datenschutz" />
+        <Route element={<Impressum />} path="/impressum" />
       </Routes>
     </DefaultLayout>
   );

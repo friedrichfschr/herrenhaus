@@ -230,6 +230,8 @@ i18n
             Spaß: "Spaß & Eventtechnik",
           },
           footer: {
+            datenschutz: "Datenschutz",
+            impressum: "Impressum",
             design: "Design von ",
           },
 
@@ -439,6 +441,8 @@ i18n
             Spaß: "Entertainment",
           },
           footer: {
+            datenschutz: "Privacy Policy",
+            impressum: "Imprint",
             design: "Design by ",
           },
           time: {
@@ -649,6 +653,8 @@ i18n
           },
           footer: {
             design: "Design par ",
+            datenschutz: "Politique de confidentialité",
+            impressum: "Impressum",
           },
           time: {
             year: "Année",
@@ -859,6 +865,8 @@ i18n
           },
           footer: {
             design: "Diseño de ",
+            datenschutz: "Política de privacidad",
+            impressum: "Aviso legal",
           },
           time: {
             year: "Año",

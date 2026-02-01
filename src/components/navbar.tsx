@@ -223,7 +223,7 @@ export const Navbar = () => {
               isExternal
               showAnchorIcon
               className={clsx(
-                "decoration-secondary underline font-semibold text-lg w-full"
+                "decoration-secondary underline font-semibold text-lg w-full",
               )}
               color="secondary"
               href={siteConfig.links.klara}
@@ -244,7 +244,7 @@ const FlagAvatar = memo(
       className="w-6 h-6"
       src={`https://flagcdn.com/${code}.svg`}
     />
-  )
+  ),
 );
 
 export const Footer = () => {
@@ -288,6 +288,22 @@ export const Footer = () => {
         href="https://friedrich.fschr.me"
       >
         Friedrich Fischer
+      </Link>{" "}
+      -{" "}
+      <Link
+        className="text-sm italic underline"
+        color="foreground"
+        href="/datenschutz"
+      >
+        {t("footer.datenschutz")}
+      </Link>{" "}
+      -{" "}
+      <Link
+        className="text-sm italic underline"
+        color="foreground"
+        href="/impressum"
+      >
+        {t("footer.impressum")}
       </Link>
     </footer>
   );
