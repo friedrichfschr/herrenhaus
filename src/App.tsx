@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 
 import DefaultLayout from "./layouts/default";
 import FürdenBräutigamPage from "./pages/festlich/fürdenBräutigam";

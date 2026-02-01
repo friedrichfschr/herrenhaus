@@ -5,7 +5,7 @@ type Props = {};
 
 export function Impressum(props: Props) {
   return (
-    <section className="min-h-[calc(100vh-130px)] flex items-center justify-center px-4 py-12">
+    <section className="min-h-[calc(100vh-400px)] flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-2xl">
         <h1 className="text-4xl font-bold mb-8 text-center">Impressum</h1>
 

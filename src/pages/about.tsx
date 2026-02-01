@@ -14,6 +14,7 @@ import Marken from "@/components/marken";
 import { useZustand } from "@/zustand";
 import { title } from "@/components/primitives";
 import i18n from "@/i18n";
+import { useNavigate } from "react-router-dom";
 export default function DocsPage() {
   const sections = useRef([]);
   const { setActiveSection, theme: zustandTheme } = useZustand();
@@ -63,6 +64,8 @@ export default function DocsPage() {
       setLanguage(lan);
     });
   }, [i18n]);
+
+  const navigate = useNavigate();
 
   return (
     <section className="flex flex-col items-center justify-center min-h-[calc(100vh-130px)] px-3">
@@ -129,7 +132,7 @@ export default function DocsPage() {
                   document
                     .getElementById("festlichscroll")
                     ?.scrollIntoView({ behavior: "instant" }),
-                0
+                0,
               )
             }
           >
@@ -163,38 +166,42 @@ export default function DocsPage() {
             </div>
             <div className="flex-col flex gap-2 ">
               <Button
-                as={Link}
                 className="font-semibold text-lg  whitespace-normal h-auto min-h-12"
-                href="/bräutigam"
                 variant="bordered"
-                onPress={() => window.scrollTo({ top: 0 })}
+                onPress={() => {
+                  window.scrollTo({ top: 0 });
+                  navigate("/bräutigam");
+                }}
               >
                 {t("festlich.buttons.1.title")}
               </Button>
               <Button
-                as={Link}
                 className="font-semibold text-lg flex-1  whitespace-normal h-auto   min-h-12"
-                href="/trauzeuge"
                 variant="bordered"
-                onPress={() => window.scrollTo({ top: 0 })}
+                onPress={() => {
+                  window.scrollTo({ top: 0 });
+                  navigate("/trauzeuge");
+                }}
               >
                 {t("festlich.buttons.2.title")}
               </Button>
               <Button
-                as={Link}
                 className="font-semibold text-lg flex-1  whitespace-normal h-auto   min-h-12"
-                href="familie"
                 variant="bordered"
-                onPress={() => window.scrollTo({ top: 0 })}
+                onPress={() => {
+                  window.scrollTo({ top: 0 });
+                  navigate("/familie");
+                }}
               >
                 {t("festlich.buttons.3.title")}
               </Button>
               <Button
-                as={Link}
                 className="font-semibold text-lg  whitespace-normal h-auto   min-h-12"
-                href="tipps"
                 variant="bordered"
-                onPress={() => window.scrollTo({ top: 0 })}
+                onPress={() => {
+                  window.scrollTo({ top: 0 });
+                  navigate("/tipps");
+                }}
               >
                 {t("festlich.buttons.4.title")}
               </Button>
@@ -210,7 +217,7 @@ export default function DocsPage() {
                   document
                     .getElementById("festlichscroll")
                     ?.scrollIntoView({ behavior: "instant" }),
-                0
+                0,
               )
             }
           >
@@ -226,7 +233,7 @@ export default function DocsPage() {
                   document
                     .getElementById("festlichscroll")
                     ?.scrollIntoView({ behavior: "instant" }),
-                0
+                0,
               )
             }
           >
@@ -329,7 +336,7 @@ export default function DocsPage() {
                   document
                     .getElementById("festlichscroll")
                     ?.scrollIntoView({ behavior: "instant" }),
-                0
+                0,
               )
             }
           >
@@ -507,8 +514,7 @@ export default function DocsPage() {
       </div>
       <div
         data-section
-        className=" max-w-3xl w-full justify-center text-left   p-8 sm:mt-30 px-8 bgtinted
-         "
+        className=" max-w-3xl w-full justify-center text-left   p-8 sm:mt-30 px-8 bgtinted pb-20"
         id="empfehlungen"
       >
         <h1 className={title()}>{t("routes.Empfehlungen")}</h1>

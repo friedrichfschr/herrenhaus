@@ -11,7 +11,7 @@ import clsx from "clsx";
 import { useTranslation } from "react-i18next";
 import { Select, SelectItem } from "@heroui/select";
 import { Avatar } from "@heroui/avatar";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { memo, useEffect, useMemo, useState } from "react";
 import { Divider } from "@heroui/divider";
 import { Image } from "@heroui/image";
@@ -55,6 +55,7 @@ export const Navbar = () => {
 
   const { activeSection, setActiveSection } = useZustand();
 
+  const navigate = useNavigate();
   return (
     <HeroUINavbar
       className=" pb-14  sm:pb-16 inset-shadow-xl backgrounddiv mask-navbar"
@@ -125,14 +126,19 @@ export const Navbar = () => {
           </button>
         </NavbarItem>
 
-        <div className="hidden lg:flex gap-4 justify-start ml-2 z-4 backgrounddiv  pl-2 rounded-2xl">
+        <div className="hidden lg:flex gap-4 justify-start ml-2 z-4 backgrounddiv  bg-background">
           {siteConfig.scrollNavItems.map((item) => (
             <NavbarItem key={item.href} className="" id={item.href}>
               <Button
                 color={item.href === activeSection ? "primary" : "default"}
                 variant="light"
-                className="text-md"
+                className={
+                  (item.href === activeSection
+                    ? "dark:bg-foreground-50 bg-foreground-100 scale-105"
+                    : "") + " text-md hover:scale-105 duration-400"
+                }
                 onPress={() => {
+                  navigate("/");
                   if (item.href.split("#")[0] !== location.pathname) {
                     setActiveSection(item.href);
                     setTimeout(() => {
@@ -188,6 +194,7 @@ export const Navbar = () => {
                 color={item.href === activeSection ? "primary" : "foreground"}
                 href={item.href}
                 onPress={() => {
+                  navigate("/");
                   setIsMenuOpen(false);
                   if (item.href.split("#")[0] !== location.pathname) {
                     setActiveSection(item.href);
@@ -256,8 +263,10 @@ export const Footer = () => {
     });
   }, [i18n]);
 
+  const navigate = useNavigate();
+
   return (
-    <footer className="w-full max-w-7xl mx-auto mb-10 text-center text-sm  pt-15 md:pt-30 lg:-40 xl:pt-70">
+    <footer className="w-full max-w-7xl mx-auto mb-10 text-center text-sm   pt-40 ">
       <div className="flex justify-center gap-4 mb-2">
         <Link
           color="foreground"
@@ -283,7 +292,7 @@ export const Footer = () => {
       </div>
       © 2026 Herrenhaus Fischer - {t("footer.design")}
       <Link
-        className="text-sm italic"
+        className="text-sm italic underline cursor-grab"
         color="foreground"
         href="https://friedrich.fschr.me"
       >
@@ -291,17 +300,17 @@ export const Footer = () => {
       </Link>{" "}
       -{" "}
       <Link
-        className="text-sm italic underline"
+        onPress={() => navigate("/datenschutz")}
+        className="text-sm italic underline cursor-grab"
         color="foreground"
-        href="/datenschutz"
       >
         {t("footer.datenschutz")}
       </Link>{" "}
       -{" "}
       <Link
-        className="text-sm italic underline"
+        onPress={() => navigate("/impressum")}
+        className="text-sm italic underline cursor-grab"
         color="foreground"
-        href="/impressum"
       >
         {t("footer.impressum")}
       </Link>

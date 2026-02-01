@@ -6,6 +6,7 @@ import React, { useEffect } from "react";
 import { useZustand } from "@/zustand";
 import { title } from "@/components/primitives";
 import i18n from "@/i18n";
+import { useNavigate } from "react-router-dom";
 
 export default function TippsPage() {
   const { setActiveSection } = useZustand();
@@ -18,16 +19,17 @@ export default function TippsPage() {
     });
   }, [i18n]);
 
+  const navigate = useNavigate();
+
   return (
     <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10 w-full">
       <div className="text-center justify-center mt-12  relative w-full flex-col flex max-w-xl md:max-w-3xl">
         <Button
-          as={Link}
           className="sm:absolute sm:left-5 sm:top-1 max-w-25 mb-3 sm:mb-0 sm:ml-0 ml-5 rounded-md"
-          href="/#festlich"
           size="md"
           variant="ghost"
           onPress={() => {
+            navigate("/");
             setActiveSection("/#festlich");
             setTimeout(() => {
               document.getElementById("festlichscroll")?.scrollIntoView({

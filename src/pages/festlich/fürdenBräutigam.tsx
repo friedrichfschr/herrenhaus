@@ -6,17 +6,19 @@ import React, { useEffect } from "react";
 import { useZustand } from "@/zustand";
 import i18n from "@/i18n";
 import { title } from "@/components/primitives";
+import { useNavigate } from "react-router-dom";
 export function BackButton() {
   const { setActiveSection } = useZustand();
+  const navigate = useNavigate();
 
   return (
     <Button
       as={Link}
       className="sm:absolute sm:left-5 sm:top-1 max-w-25 mb-3 sm:mb-0 sm:ml-0 ml-5 rounded-md"
-      href="/#festlich"
       size="md"
       variant="ghost"
       onPress={() => {
+        navigate("/");
         setActiveSection("/#festlich");
         setTimeout(() => {
           document.getElementById("festlichscroll")?.scrollIntoView({
