@@ -132,10 +132,8 @@ i18n
                   tipp5:
                     "Auf Hochzeitsmessen oder im Internet kann man sich schon etwas mit dem Thema Hochzeitsanzug auseinandersetzen. Prospekte, Zeitschriften und Internetseiten zeigen immer nur die halbe Wahrheit. Probieren Sie unterschiedliche Styles an sich selbst aus, um sicher zu sein, welches der Richtige für Sie ist.",
                   tipp6:
-                    "Auf Hochzeitsmessen oder im Internet kann man sich schon etwas mit dem Thema Hochzeitsanzug auseinandersetzen. Prospekte, Zeitschriften und Internetseiten zeigen immer nur die halbe Wahrheit. Probieren Sie unterschiedliche Styles an sich selbst aus, um sicher zu sein, welches der Richtige für Sie ist.",
-                  tipp7:
                     "Bringen Sie gerne Berater zum Termin mit, z.B. Eltern, Braut oder Freunde, aber denken Sie daran, dass zu viele Berater auch verunsichern können. (Bringen Sie möglichst nicht Mutter und Schwiegermutter gleichzeitig als Berater mit. Es sei denn, die beiden sind beste Freundinnen…)",
-                  tipp8:
+                  tipp7:
                     "Welche Stilrichtung hat das Brautkleid? Ist es weiß oder elfenbeinfarben? Gerne kann die Braut auch ein Bild ihres Kleides übermitteln. Dann können wir im Feintuning gezielter beraten.",
                 },
               },
@@ -344,10 +342,8 @@ i18n
                   tipp5:
                     "Wedding fairs or the internet can be helpful for first inspiration. Brochures, magazines and websites only show part of the truth. Try different styles on yourself to be sure which one really suits you.",
                   tipp6:
-                    "Wedding fairs or the internet can be helpful for first inspiration. Brochures, magazines and websites only show part of the truth. Try different styles on yourself to be sure which one really suits you.",
-                  tipp7:
                     "Feel free to bring advisors along – parents, the bride or friends – but remember that too many opinions can also be confusing. (If possible, don’t bring both mother and mother-in-law together – unless they happen to be best friends…)",
-                  tipp8:
+                  tipp7:
                     "What style is the wedding dress? Is it white or ivory? The bride is also welcome to send us a picture of her dress so we can advise you even more precisely during the fine-tuning.",
                 },
               },
@@ -554,10 +550,8 @@ i18n
                   tipp5:
                     "Les salons du mariage et Internet peuvent inspirer. Mais magazines et sites ne montrent qu’une partie de la réalité. Essayez différentes coupes pour voir ce qui vous va vraiment.",
                   tipp6:
-                    "Les salons du mariage et Internet peuvent inspirer. Mais magazines et sites ne montrent qu’une partie de la réalité. Essayez différentes coupes pour voir ce qui vous va vraiment.",
-                  tipp7:
                     "Venez accompagné si vous le souhaitez – parents, mariée, amis – mais trop d’avis peuvent aussi troubler. (Évitez si possible de venir avec la mère et la belle-mère en même temps – sauf si elles sont meilleures amies…)",
-                  tipp8:
+                  tipp7:
                     "Quel est le style de la robe ? Blanche ou ivoire ? La mariée peut aussi envoyer une photo – cela nous aide à conseiller encore plus précisément.",
                 },
               },
@@ -766,10 +760,8 @@ i18n
                   tipp5:
                     "En ferias de boda o en internet ya se puede empezar a tratar un poco el tema del traje de novio. Folletos, revistas y páginas web solo muestran la mitad de la verdad. Pruebe diferentes estilos sobre usted mismo para estar seguro de cuál es el adecuado.",
                   tipp6:
-                    "En ferias de boda o en internet ya se puede empezar a tratar un poco el tema del traje de novio. Folletos, revistas y páginas web solo muestran la mitad de la verdad. Pruebe diferentes estilos sobre usted mismo para estar seguro de cuál es el adecuado.",
-                  tipp7:
                     "Traiga con gusto asesores a la cita, por ejemplo padres, la novia o amigos, pero tenga en cuenta que demasiados asesores también pueden causar inseguridad. (A ser posible no traiga a la madre y a la suegra como asesoras al mismo tiempo, a no ser que sean mejores amigas…)",
-                  tipp8:
+                  tipp7:
                     "¿Qué estilo tiene el vestido de novia? ¿Es blanco o color marfil? La novia puede enviarnos una foto de su vestido. Así podremos asesorar de forma más precisa en los detalles.",
                 },
               },

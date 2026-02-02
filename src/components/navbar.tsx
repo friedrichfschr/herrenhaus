@@ -73,11 +73,19 @@ export const Navbar = () => {
         className="basis-1/5 sm:basis-full flex-col items-start "
         justify="start"
       >
-        <Image
-          className=" top-0 lg:left-0 xl:left-auto  z-0 fixed "
-          src="/logo-herrenhaus-fischer.png"
-          width={230}
-        />
+        <button
+          onClick={() => {
+            navigate("/");
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+          className="p-0 m-0"
+        >
+          <Image
+            className=" top-0 lg:left-0 xl:left-auto  z-0 fixed cursor-grab"
+            src="/logo-herrenhaus-fischer.png"
+            width={230}
+          />
+        </button>
       </NavbarContent>
 
       <NavbarContent
@@ -192,7 +200,6 @@ export const Navbar = () => {
               <Link
                 className={clsx("italic text-lg font-semibold")}
                 color={item.href === activeSection ? "primary" : "foreground"}
-                href={item.href}
                 onPress={() => {
                   navigate("/");
                   setIsMenuOpen(false);
