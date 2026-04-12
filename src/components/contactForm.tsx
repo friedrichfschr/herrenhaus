@@ -11,6 +11,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { title } from "./primitives";
 
 import i18n from "@/i18n";
+import { WhatsappIcon } from "./icons";
 
 export function ContactForm() {
   const [email, setEmail] = useState("");
@@ -68,7 +69,7 @@ export function ContactForm() {
               description: t("kontakt.errorDescription"),
               color: "danger",
             });
-          }
+          },
         );
     } catch (error) {
       console.log("FAILED...", error);
@@ -125,13 +126,34 @@ export function ContactForm() {
           <span>
             <br />
           </span>
-          <Link href="tel:05272 - 355 83" size="lg">
-            05272 - 355 832
-          </Link>
+          <div className="flex flex-col gap-2.5">
+            <Link
+              href="tel:05272 - 355 832"
+              size="lg"
+              className="bg-foreground-50 p-1"
+            >
+              05272 - 355 832
+            </Link>
 
-          <Link href="mailto:mode@herrenhaus-fischer.de" size="lg">
-            mode@herrenhaus-fischer.de
-          </Link>
+            <Link
+              href="mailto:mode@herrenhaus-fischer.de"
+              size="lg"
+              className="bg-foreground-50 p-1"
+            >
+              mode@herrenhaus-fischer.de
+            </Link>
+
+            <Link
+              href="https://wa.me/message/EQTWGGRLDB6DA1"
+              size="lg"
+              className="flex flex-wrap bg-foreground-50 p-1 "
+            >
+              <p className="mr-2 "> Bernhard Fischer </p>{" "}
+              <p className="flex flex-row gap-2">
+                Whatsapp <WhatsappIcon size={24} />
+              </p>
+            </Link>
+          </div>
         </div>
       </div>
       <div className="w-full mt-10 ">
