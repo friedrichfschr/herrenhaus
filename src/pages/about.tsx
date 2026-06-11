@@ -311,7 +311,7 @@ export default function DocsPage() {
                     {t("festlich.fotoshootings.brautmode")} Traumkleid Lippe
                   </li>
                   <li>
-                    {t("festlich.fotoshootings.fotografie")} Jan-Niklas Schulz
+                    {t("festlich.fotoshootings.fotografie")} Niklas Schulz-Lehne
                   </li>
                 </ul>
                 <h1 className="text-5xl sm:mr-10">Hof Frien</h1>
@@ -361,12 +361,6 @@ export default function DocsPage() {
             <div className="flex flex-col gap-3">
               <Card className="  p-3 text-lg">
                 <CardHeader className="text-xl flex-row justify-start gap-4">
-                  <Avatar
-                    isBordered
-                    radius="full"
-                    size="md"
-                    src="https://lh3.googleusercontent.com/a/ACg8ocKVxdNRkH_il1no5pnH2hQZVsUOZvvZ8Y5an_r2XryOTe_FDw=w36-h36-p-rp-mo-ba3-br100"
-                  />
                   <div>
                     <h1>MeZZo RoX</h1>
                     <span className="text-sm opacity-70">
@@ -391,12 +385,6 @@ export default function DocsPage() {
 
               <Card className=" p-3 mb-3 text-lg">
                 <CardHeader className="text-xl flex-row justify-start  gap-5">
-                  <Avatar
-                    isBordered
-                    radius="full"
-                    size="md"
-                    src="https://lh3.googleusercontent.com/a-/ALV-UjW32X3kFjhDDpKCshuIPBvgojDSchMEO25wpxWroTk_tj5aG1tX6g=w72-h72-p-rp-mo-ba3-br100"
-                  />
                   <div>
                     <h1>Tobias Vogt</h1>
                     <span className="text-sm opacity-70">
@@ -617,7 +605,7 @@ export default function DocsPage() {
                 color="foreground"
                 href="https://www.diehochzeitsfotografin.de/"
               >
-                <li> Die Hochzeitsfotografin Aenna</li>
+                <li> Die Hochzeitsfotografin</li>
               </Link>
               <Link
                 isExternal
@@ -626,7 +614,16 @@ export default function DocsPage() {
                 color="foreground"
                 href="https://www.albueart.de/"
               >
-                <li> Alexander Bürks in warburg </li>
+                <li> Alexander Bürks in Warburg </li>
+              </Link>
+              <Link
+                isExternal
+                showAnchorIcon
+                className=""
+                color="foreground"
+                href="https://www.niklas-schulz-photography.de/"
+              >
+                <li> Niklas Schulz Photography </li>
               </Link>
             </ul>
           </li>
