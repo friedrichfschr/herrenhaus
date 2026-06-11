@@ -1728,6 +1728,16 @@
     "@react-types/shared" "^3.33.1"
     "@swc/helpers" "^0.5.0"
 
+"@react-aria/visually-hidden@^3.8.31":
+  version "3.8.31"
+  resolved "https://registry.npmjs.org/@react-aria/visually-hidden/-/visually-hidden-3.8.31.tgz"
+  integrity sha512-RTOHHa4n56a9A3criThqFHBifvZoV71+MCkSuNP2cKO662SUWjqKkd0tJt/mBRMEJPkys8K7Eirp6T8Wt5FFRA==
+  dependencies:
+    "@react-aria/interactions" "^3.27.1"
+    "@react-aria/utils" "^3.33.1"
+    "@react-types/shared" "^3.33.1"
+    "@swc/helpers" "^0.5.0"
+
 "@react-aria/visually-hidden@3.8.28":
   version "3.8.28"
   resolved "https://registry.npmjs.org/@react-aria/visually-hidden/-/visually-hidden-3.8.28.tgz"
@@ -3497,6 +3507,11 @@ fs-minipass@^3.0.0, fs-minipass@^3.0.3:
   integrity sha512-XUBA9XClHbnJWSfBzjkm6RvPsyg3sryZt06BEQoXcF7EK/xpGaQYJgQKDJSUH5SGZ76Y7pFx1QBnXz09rU5Fbw==
   dependencies:
     minipass "^7.0.3"
+
+fsevents@~2.3.2, fsevents@~2.3.3:
+  version "2.3.3"
+  resolved "https://registry.npmjs.org/fsevents/-/fsevents-2.3.3.tgz"
+  integrity sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==
 
 function-bind@^1.1.2:
   version "1.1.2"
