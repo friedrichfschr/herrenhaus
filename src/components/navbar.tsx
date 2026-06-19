@@ -301,7 +301,7 @@ export const Footer = () => {
       <Link
         className="text-sm italic underline cursor-grab"
         color="foreground"
-        href="https://friedrich.fschr.me"
+        href="https://friedrich-fischer.de"
       >
         Friedrich Fischer
       </Link>{" "}
