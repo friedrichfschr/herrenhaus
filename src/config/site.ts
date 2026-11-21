@@ -1,5 +1,14 @@
 export type SiteConfig = typeof siteConfig;
 
+export const sectionIds: Record<string, string> = {
+  "/": "/",
+  "/festlich": "festlich",
+  "/maennermode": "männermode",
+  "/schuetzenfest": "schützenfest",
+  "/kontakt": "kontakt",
+  "/empfehlungen": "empfehlungen",
+};
+
 export const siteConfig = {
   name: "Vite + HeroUI",
   description: "Make beautiful websites regardless of your design experience.",
@@ -9,24 +18,24 @@ export const siteConfig = {
       label: "Start",
     },
     {
-      href: "/#festlich",
+      href: "/festlich",
       label: "Festliche Herrenmode",
     },
     {
       label: "Männermode",
-      href: "/#männermode",
+      href: "/maennermode",
     },
     {
       label: "Schützenfest",
-      href: "/#schützenfest",
+      href: "/schuetzenfest",
     },
     {
       label: "Kontakt",
-      href: "/#kontakt",
+      href: "/kontakt",
     },
     {
       label: "Empfehlungen",
-      href: "/#empfehlungen",
+      href: "/empfehlungen",
     },
   ],
   navItems: [

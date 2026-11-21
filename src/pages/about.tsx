@@ -1,5 +1,5 @@
 import { Button } from "@heroui/button";
-import { Image } from "@heroui/image";
+import { SiteImage as Image, imageSources } from "@/components/siteImage";
 import { Link } from "@heroui/link";
 import { useTheme } from "@heroui/use-theme";
 import React, { useEffect, useRef } from "react";
@@ -14,9 +14,10 @@ import Marken from "@/components/marken";
 import { useZustand } from "@/zustand";
 import { title } from "@/components/primitives";
 import i18n from "@/i18n";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { sectionIds } from "@/config/site";
 export default function DocsPage() {
-  const sections = useRef([]);
+  const sections = useRef<NodeListOf<HTMLElement> | null>(null);
   const { setActiveSection, theme: zustandTheme } = useZustand();
   const { theme: heroTheme } = useTheme();
   let theme;
@@ -25,38 +26,44 @@ export default function DocsPage() {
   else theme = heroTheme;
   const handleScroll = () => {
     const pageYOffset = window.pageYOffset;
-    let newActiveSection = null;
+    let newActiveSection: string | null = null;
 
-    sections.current.forEach((section) => {
-      //@ts-ignore
+    sections.current?.forEach((section) => {
       const sectionOffsetTop = section.offsetTop - 500;
-      //@ts-ignore
       const sectionHeight = section.offsetHeight;
 
       if (
         pageYOffset >= sectionOffsetTop &&
         pageYOffset < sectionOffsetTop + sectionHeight
       ) {
-        //@ts-ignore
         newActiveSection = section.id;
       }
     });
-    //@ts-ignore
     if (newActiveSection != null) {
-      if (newActiveSection == "/") setActiveSection(newActiveSection);
-      else setActiveSection("/#" + newActiveSection);
+      const path = Object.keys(sectionIds).find((key) => sectionIds[key] === newActiveSection);
+      if (path) setActiveSection(path);
     }
   };
 
   useEffect(() => {
-    //@ts-ignore
-    sections.current = document.querySelectorAll("[data-section]");
+    sections.current = document.querySelectorAll<HTMLElement>("[data-section]");
     window.addEventListener("scroll", handleScroll);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+  const location = useLocation();
+  useEffect(() => {
+    const sectionId = sectionIds[location.pathname] ?? location.hash.slice(1);
+    if (sectionIds[location.pathname]) setActiveSection(location.pathname);
+    const frame = requestAnimationFrame(() => {
+      if (sectionId === "/") window.scrollTo({ top: 0, behavior: "smooth" });
+      else document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+    });
+
+    return () => cancelAnimationFrame(frame);
+  }, [location.pathname, location.hash]);
   const [language, setLanguage] = React.useState(i18n.language);
 
   useEffect(() => {
@@ -76,8 +83,12 @@ export default function DocsPage() {
           </div>
 
           <img
+            alt="Außenansicht des Herrenhaus Fischer"
+            loading="eager"
+            decoding="async"
             className=" h-[250px] mx-auto sm:hidden "
-            src="Start/Herrenhaus_Fischer_Außenansicht.png "
+            src="/Start/Herrenhaus_Fischer_Außenansicht.webp"
+            {...imageSources("/Start/Herrenhaus_Fischer_Außenansicht.webp", "(max-width: 640px) 250px, 360px")}
             style={{
               float: "right",
               shapeOutside: "circle(48%)",
@@ -87,8 +98,12 @@ export default function DocsPage() {
 
           <p className=" text-justify sm:hidden block ">{t("start.intro")}</p>
           <img
+            alt="Außenansicht des Herrenhaus Fischer"
+            loading="eager"
+            decoding="async"
             className="h-90 hidden sm:block "
-            src="Start/Herrenhaus_Fischer_Außenansicht.png"
+            src="/Start/Herrenhaus_Fischer_Außenansicht.webp"
+            {...imageSources("/Start/Herrenhaus_Fischer_Außenansicht.webp", "(max-width: 640px) 250px, 360px")}
             style={{
               float: "left",
               shapeOutside: "circle(60% at 37% 60%)",
@@ -96,8 +111,12 @@ export default function DocsPage() {
             }}
           />
           <img
+            alt="Familie Fischer"
+            loading="lazy"
+            decoding="async"
             className="h-90  hidden sm:block "
-            src="Start/FamilieFischer.png "
+            src="/Start/FamilieFischer.webp"
+            {...imageSources("/Start/FamilieFischer.webp", "360px")}
             style={{
               float: "right",
               // marginTop: "-30px",
@@ -148,19 +167,19 @@ export default function DocsPage() {
               style={{ marginTop: "-40px" }}
             >
               {theme == "dark" ? (
-                <Image
+                <Image loading="lazy"
                   className="w-50 sm:60 md:80 lg:w-100 mt-10 sm:mt-15"
                   src={"/UnterschriftDark.png"}
                 />
               ) : (
-                <Image
+                <Image loading="lazy"
                   className="w-50 sm:60 md:80 lg:w-100 mt-10 sm:mt-15"
                   src={"/Unterschrift.png"}
                 />
               )}
-              <Image
+              <Image loading="lazy"
                 className="lg:w-50 lg:h-50 md:w-40 md:h-40 sm:w-30 sm:h-30 h-20 w-20 sm:flex  rounded-full "
-                src={"/BernhardFotoGruß.png"}
+                src={"/BernhardFotoGruß.webp"}
                 style={{ objectFit: "cover" }}
               />
             </div>
@@ -254,10 +273,10 @@ export default function DocsPage() {
                 </ul>
               </li>
               <Card className="grid grid-cols-1 p-3 sm:grid-cols-2 gap-3 lg:grid-cols-4">
-                <Image src="/ShootingHolzhausen/Pavillon_1.png" />
-                <Image src="/ShootingHolzhausen/Pavillon_3.png" />
-                <Image src="/ShootingHolzhausen/Pavillon_2.png" />
-                <Image src="/ShootingHolzhausen/Pavillon_4.png" />
+                <Image loading="lazy" src="/ShootingHolzhausen/Pavillon_1.webp" />
+                <Image loading="lazy" src="/ShootingHolzhausen/Pavillon_3.webp" />
+                <Image loading="lazy" src="/ShootingHolzhausen/Pavillon_2.webp" />
+                <Image loading="lazy" src="/ShootingHolzhausen/Pavillon_4.webp" />
               </Card>
               <br />
               <li className="flex justify-between items-center gap-4">
@@ -277,10 +296,10 @@ export default function DocsPage() {
                 <h1 className="text-5xl sm:mr-10">Exterhof</h1>
               </li>
               <Card className="grid grid-cols-1 p-3 sm:grid-cols-2 gap-3 lg:grid-cols-4">
-                <Image src="/ShootingExterhof/Exterhof_1.png" />
-                <Image src="/ShootingExterhof/Exterhof_3.png" />
-                <Image src="/ShootingExterhof/Exterhof_2.png" />
-                <Image src="/ShootingExterhof/Exterhof_4.png" />
+                <Image loading="lazy" src="/ShootingExterhof/Exterhof_1.webp" />
+                <Image loading="lazy" src="/ShootingExterhof/Exterhof_3.webp" />
+                <Image loading="lazy" src="/ShootingExterhof/Exterhof_2.webp" />
+                <Image loading="lazy" src="/ShootingExterhof/Exterhof_4.webp" />
               </Card>
               <br />
               <li className="flex justify-between items-center gap-4">
@@ -298,10 +317,10 @@ export default function DocsPage() {
                 </ul>
               </li>
               <Card className="grid grid-cols-1 p-3 sm:grid-cols-2 gap-3 lg:grid-cols-4">
-                <Image src="/ShootingBredelaer/Bredelaer_1.png" />
-                <Image src="/ShootingBredelaer/Bredelaer_3.png" />
-                <Image src="/ShootingBredelaer/Bredelaer_2.png" />
-                <Image src="/ShootingBredelaer/Bredelaer_4.png" />
+                <Image loading="lazy" src="/ShootingBredelaer/Bredelaer_1.webp" />
+                <Image loading="lazy" src="/ShootingBredelaer/Bredelaer_3.webp" />
+                <Image loading="lazy" src="/ShootingBredelaer/Bredelaer_2.webp" />
+                <Image loading="lazy" src="/ShootingBredelaer/Bredelaer_4.webp" />
               </Card>
               <br />
               <li className="flex justify-between items-center gap-4">
@@ -317,10 +336,10 @@ export default function DocsPage() {
                 <h1 className="text-5xl sm:mr-10">Hof Frien</h1>
               </li>
               <Card className="grid grid-cols-1 p-3 sm:grid-cols-2 gap-3 lg:grid-cols-4">
-                <Image src="/ShootingHofFrien/Frien_1.png" />
-                <Image src="/ShootingHofFrien/Frien_3.png" />
-                <Image src="/ShootingHofFrien/Frien_2.png" />
-                <Image src="/ShootingHofFrien/Frien_4.png" />
+                <Image loading="lazy" src="/ShootingHofFrien/Frien_1.webp" />
+                <Image loading="lazy" src="/ShootingHofFrien/Frien_3.webp" />
+                <Image loading="lazy" src="/ShootingHofFrien/Frien_2.webp" />
+                <Image loading="lazy" src="/ShootingHofFrien/Frien_4.webp" />
               </Card>
             </ul>
           </AccordionItem>
@@ -427,39 +446,39 @@ export default function DocsPage() {
           <br />
           <p>{t("männermode.text2")}</p>
           <div className="flex flex-row flex-wrap gap-5 justify-around mb-5 mt-3">
-            <Image
+            <Image loading="lazy"
               isBlurred
               className="h-80 w-auto rounded-xl"
-              src="/Männermode/ETERNA_weißes_Hemd.png"
+              src="/Männermode/ETERNA_weißes_Hemd.webp"
             />
             <div className="flex justify-center">
-              <Image
+              <Image loading="lazy"
                 isBlurred
                 className="h-80 w-auto rounded-xl"
                 classNames={{ wrapper: "justify-center items-center " }}
-                src="/Männermode/Marvelis.png"
+                src="/Männermode/Marvelis.webp"
               />
             </div>
-            <Image
+            <Image loading="lazy"
               isBlurred
               className="h-80 w-auto rounded-xl"
-              src="/Männermode/CINQUE.png"
+              src="/Männermode/CINQUE.webp"
             />
           </div>
           <p>{t("männermode.text3")}</p>
           <div className="flex flex-row flex-wrap gap-5 justify-around mb-5 mt-3">
-            <Image
+            <Image loading="lazy"
               isBlurred
               className="h-80 w-auto rounded-xl"
-              src="/Männermode/NZA_Image_Feuer.png"
+              src="/Männermode/NZA_Image_Feuer.webp"
             />
-            <Image
+            <Image loading="lazy"
               isBlurred
               className="h-80 w-auto rounded-xl"
               classNames={{ wrapper: "justify-center items-center " }}
-              src="/Männermode/NZA_Norweger_Pulli_129,99_€.png"
+              src="/Männermode/NZA_Norweger_Pulli_129,99_€.webp"
             />
-            <Image
+            <Image loading="lazy"
               isBlurred
               className="h-80 w-auto rounded-xl"
               src="/Männermode/Replay.webp"
@@ -482,9 +501,9 @@ export default function DocsPage() {
         <div>
           <p className="text-wrap text-left">{t("schützenfest.text1")}</p>
           <div className="sm:max-w-2/3 justify-self-center gap-5 flex items-center mx-auto mt-4">
-            <Image
+            <Image loading="lazy"
               className="rounded-3xl max-[640px]:max-w-1/2 sm:max-w-60  min-w-35    float-left"
-              src="Diana_und_Bernhard.png"
+              src="Diana_und_Bernhard.webp"
             />
             <p className="text-default-500  max-[640px]:max-w-1/2 text-left text-wrap">
               {t("schützenfest.text2")}

@@ -1,5 +1,5 @@
 import { Accordion, AccordionItem } from "@heroui/accordion";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { t } from "i18next";
 
 import { markenFile, MarkeInterface } from "../markenFile.ts";
@@ -20,18 +20,15 @@ export interface MarkeWithPhotos extends MarkeInterface {
 }
 
 async function getData<T>(path: string): Promise<T> {
-  console.log(path);
   const response = await fetch(path, {
     cache: "force-cache",
   });
-
-  const data: T = await response.json();
 
   if (!response.ok) {
     throw new Error(`Failed to fetch ${path}: ${response.statusText}`);
   }
 
-  return data;
+  return response.json() as Promise<T>;
 }
 
 const normalizePhotos = (raw: any[], TextDateiName: string): PhotoInfo[] => {
@@ -41,7 +38,7 @@ const normalizePhotos = (raw: any[], TextDateiName: string): PhotoInfo[] => {
     // Ensure file path is rooted under TextDateiName (assets in /public resolve from site root)
 
     return {
-      file: "marken/" + TextDateiName + "/" + p.file,
+      file: "/marken/" + TextDateiName + "/" + p.file,
       text: p.text ?? "",
       preise: rawPreise,
       zusammensetzung: p.zusammensetzung, // present in your new format; leave undefined if absent
@@ -50,29 +47,18 @@ const normalizePhotos = (raw: any[], TextDateiName: string): PhotoInfo[] => {
 };
 
 export const fetchMarkenWithPhotos = async (): Promise<MarkeWithPhotos[]> => {
-  // 1) Load marken.json
-  const marken = markenFile;
-  // 2) Return marken immediately with empty photos, load photos in the background
-  const withPhotos = marken.map(
-    (m) => ({ ...m, photos: [] }) as MarkeWithPhotos,
-  );
-
-  // 3) Load photos asynchronously without blocking the UI
-  marken.forEach(async (m, index) => {
+  return Promise.all(markenFile.map(async (m) => {
+    if (!m.TextDateiName) return { ...m, photos: [] };
     try {
       const rawPhotos = await getData<any[]>(
-        `marken/texte/${m.TextDateiName}.json`,
+        `/marken/texte/${m.TextDateiName}.json`,
       );
-      const photos = normalizePhotos(rawPhotos, m.TextDateiName);
-
-      withPhotos[index] = { ...m, photos } as MarkeWithPhotos;
+      return { ...m, photos: normalizePhotos(rawPhotos, m.TextDateiName) };
     } catch (e) {
-      // If a brand has no photos file, fail softly and just keep empty photos
       console.warn(`No photos for ${m.name}`, e);
+      return { ...m, photos: [] };
     }
-  });
-
-  return withPhotos;
+  }));
 };
 
 export default function Marken() {
@@ -80,51 +66,21 @@ export default function Marken() {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [selectedKeys, setSelectedKeys] = useState(new Set([""]));
-  const [tt, forceUpdate] = useState(0);
+  const [, forceUpdate] = useState(0);
 
-  console.log("FlipCard render");
-
-  useLayoutEffect(() => {
+  useEffect(() => {
+    let cancelled = false;
     (async () => {
       try {
         const result = await fetchMarkenWithPhotos();
-
-        setItems(result);
-        setLoading(false);
-
-        // Prefetch photos for all brands
-        const marken = markenFile;
-
-        marken.forEach(async (m, index) => {
-          try {
-            const rawPhotos = await getData<any[]>(
-              `marken/texte/${m.TextDateiName}.json`,
-            );
-            const photos = normalizePhotos(rawPhotos, m.TextDateiName);
-
-            setItems((prev) => {
-              const updated = [...prev];
-
-              updated[index] = { ...m, photos } as MarkeWithPhotos;
-
-              return updated;
-            });
-
-            // Prefetch images
-            photos.forEach((photo) => {
-              const img = new Image();
-
-              img.src = photo.file;
-            });
-          } catch (e) {
-            console.warn(`No photos for ${m.name}`, e);
-          }
-        });
+        if (!cancelled) setItems(result);
       } catch (e: any) {
-        setError(e?.message ?? "Unknown error");
-        setLoading(false);
+        if (!cancelled) setError(e?.message ?? "Unknown error");
+      } finally {
+        if (!cancelled) setLoading(false);
       }
     })();
+    return () => { cancelled = true; };
   }, []);
 
   const [language, setLanguage] = useState(i18n.language);
@@ -143,7 +99,6 @@ export default function Marken() {
       selectedKeys={selectedKeys}
       variant="splitted"
       onSelectionChange={(selection) => {
-        console.log("force", tt);
         setTimeout(() => forceUpdate((prev) => (prev == 0 ? 1 : 0)), 100);
         //@ts-ignore
         setSelectedKeys(selection);

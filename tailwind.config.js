@@ -15,7 +15,7 @@ module.exports = {
         dark: {
           extend: "dark", // <- inherit default values from dark theme
           colors: {
-            link: "text-blue-400",
+            link: "#60a5fa",
 
             primary: {
               100: "#FCF7DB",

@@ -1,4 +1,4 @@
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 import DefaultLayout from "./layouts/default";
 import FürdenBräutigamPage from "./pages/festlich/fürdenBräutigam";
@@ -15,6 +15,11 @@ function App() {
     <DefaultLayout>
       <Routes>
         <Route element={<AboutPage />} path="/" />
+        <Route element={<AboutPage />} path="/festlich" />
+        <Route element={<AboutPage />} path="/maennermode" />
+        <Route element={<AboutPage />} path="/schuetzenfest" />
+        <Route element={<AboutPage />} path="/kontakt" />
+        <Route element={<AboutPage />} path="/empfehlungen" />
         <Route element={<FürdenBräutigamPage />} path="/bräutigam" />
         <Route element={<TrauzeugePage />} path="/trauzeuge" />
         <Route element={<GästeFamiliePage />} path="/familie" />

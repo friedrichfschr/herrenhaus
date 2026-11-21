@@ -1,4 +1,4 @@
-import { Image } from "@heroui/image";
+import { SiteImage as Image } from "@/components/siteImage";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
@@ -60,7 +60,7 @@ function Back({
           {p.text ? (
             <>
               <div className="italic">
-                {Object.entries(p.preise).map(([key, value]) => (
+                {Object.entries(p.preise ?? {}).map(([key, value]) => (
                   <div key={key} className="flex flex-row justify-between">
                     <p>{key}</p>
                     <p>{value as any}</p>
@@ -96,6 +96,8 @@ function Front({
       onClick={() => setIsFlipped((prev: boolean) => !prev)}
     >
       <Image
+        loading="lazy"
+        sizes="(min-width: 1400px) 20vw, (min-width: 1200px) 25vw, (min-width: 700px) 33vw, 50vw"
         className="min-h-40 rounded-2xl w-full flex-1 overflow-hidden lg:max-h-130 md:max-h-110 sm:max-h-100 max-h-90"
         src={p.file}
         style={{ objectFit: "cover", objectPosition: "50% 90%" }}
@@ -122,21 +124,11 @@ function FlipCard({
   const [isFlipped, setIsFlippedState] = useState<boolean>(true);
 
   useEffect(() => {
-    if (idx == 1) {
-      setTimeout(() => {
-        setIsFlipped(false);
-      }, 500);
-      setTimeout(() => {
-        setIsFlipped(true);
-      }, 1500);
-    }
-  }, []);
-  useEffect(() => {
     setIsFlipped(true);
   }, [isMoving]);
 
   return (
-    <div className="lg:h-130 md:110 sm:h-100 h-90 w-full m-1">
+    <div className="lg:h-130 md:h-110 sm:h-100 h-90 w-full m-1">
       <motion.div
         animate={{
           rotateY: isFlipped ? 0 : 180,

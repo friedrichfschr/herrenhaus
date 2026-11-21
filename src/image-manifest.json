@@ -1,0 +1,862 @@
+{
+  "/BernhardFotoGruß.webp": {
+    "width": 1333,
+    "height": 2000,
+    "variants": [
+      {
+        "src": "/BernhardFotoGruß.w400.webp",
+        "width": 400
+      },
+      {
+        "src": "/BernhardFotoGruß.w800.webp",
+        "width": 800
+      },
+      {
+        "src": "/BernhardFotoGruß.w1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/BernhardFotoGruß.webp",
+        "width": 1333
+      }
+    ]
+  },
+  "/Diana_und_Bernhard.webp": {
+    "width": 1500,
+    "height": 2000,
+    "variants": [
+      {
+        "src": "/Diana_und_Bernhard.w400.webp",
+        "width": 400
+      },
+      {
+        "src": "/Diana_und_Bernhard.w800.webp",
+        "width": 800
+      },
+      {
+        "src": "/Diana_und_Bernhard.w1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/Diana_und_Bernhard.webp",
+        "width": 1500
+      }
+    ]
+  },
+  "/marken/RobertoVicentti/07.20.300.webp": {
+    "width": 1235,
+    "height": 2000,
+    "variants": [
+      {
+        "src": "/marken/RobertoVicentti/07.20.300.w400.webp",
+        "width": 400
+      },
+      {
+        "src": "/marken/RobertoVicentti/07.20.300.w800.webp",
+        "width": 800
+      },
+      {
+        "src": "/marken/RobertoVicentti/07.20.300.w1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/marken/RobertoVicentti/07.20.300.webp",
+        "width": 1235
+      }
+    ]
+  },
+  "/marken/RobertoVicentti/15.23.900 C.webp": {
+    "width": 1235,
+    "height": 2000,
+    "variants": [
+      {
+        "src": "/marken/RobertoVicentti/15.23.900 C.w400.webp",
+        "width": 400
+      },
+      {
+        "src": "/marken/RobertoVicentti/15.23.900 C.w800.webp",
+        "width": 800
+      },
+      {
+        "src": "/marken/RobertoVicentti/15.23.900 C.w1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/marken/RobertoVicentti/15.23.900 C.webp",
+        "width": 1235
+      }
+    ]
+  },
+  "/marken/RobertoVicentti/25.24.500.webp": {
+    "width": 1235,
+    "height": 2000,
+    "variants": [
+      {
+        "src": "/marken/RobertoVicentti/25.24.500.w400.webp",
+        "width": 400
+      },
+      {
+        "src": "/marken/RobertoVicentti/25.24.500.w800.webp",
+        "width": 800
+      },
+      {
+        "src": "/marken/RobertoVicentti/25.24.500.w1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/marken/RobertoVicentti/25.24.500.webp",
+        "width": 1235
+      }
+    ]
+  },
+  "/marken/RobertoVicentti/32.26.440A hellblau matt.webp": {
+    "width": 1235,
+    "height": 2000,
+    "variants": [
+      {
+        "src": "/marken/RobertoVicentti/32.26.440A hellblau matt.w400.webp",
+        "width": 400
+      },
+      {
+        "src": "/marken/RobertoVicentti/32.26.440A hellblau matt.w800.webp",
+        "width": 800
+      },
+      {
+        "src": "/marken/RobertoVicentti/32.26.440A hellblau matt.w1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/marken/RobertoVicentti/32.26.440A hellblau matt.webp",
+        "width": 1235
+      }
+    ]
+  },
+  "/marken/RobertoVicentti/35.26.900Agrünmatt.webp": {
+    "width": 1235,
+    "height": 2000,
+    "variants": [
+      {
+        "src": "/marken/RobertoVicentti/35.26.900Agrünmatt.w400.webp",
+        "width": 400
+      },
+      {
+        "src": "/marken/RobertoVicentti/35.26.900Agrünmatt.w800.webp",
+        "width": 800
+      },
+      {
+        "src": "/marken/RobertoVicentti/35.26.900Agrünmatt.w1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/marken/RobertoVicentti/35.26.900Agrünmatt.webp",
+        "width": 1235
+      }
+    ]
+  },
+  "/marken/RobertoVicentti/40.26.200frischblaustruktur.webp": {
+    "width": 1235,
+    "height": 2000,
+    "variants": [
+      {
+        "src": "/marken/RobertoVicentti/40.26.200frischblaustruktur.w400.webp",
+        "width": 400
+      },
+      {
+        "src": "/marken/RobertoVicentti/40.26.200frischblaustruktur.w800.webp",
+        "width": 800
+      },
+      {
+        "src": "/marken/RobertoVicentti/40.26.200frischblaustruktur.w1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/marken/RobertoVicentti/40.26.200frischblaustruktur.webp",
+        "width": 1235
+      }
+    ]
+  },
+  "/marken/RobertoVicentti/44.26.800hellgrünschlicht.webp": {
+    "width": 1235,
+    "height": 2000,
+    "variants": [
+      {
+        "src": "/marken/RobertoVicentti/44.26.800hellgrünschlicht.w400.webp",
+        "width": 400
+      },
+      {
+        "src": "/marken/RobertoVicentti/44.26.800hellgrünschlicht.w800.webp",
+        "width": 800
+      },
+      {
+        "src": "/marken/RobertoVicentti/44.26.800hellgrünschlicht.w1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/marken/RobertoVicentti/44.26.800hellgrünschlicht.webp",
+        "width": 1235
+      }
+    ]
+  },
+  "/marken/Tziacco/TziaccoLook4.webp": {
+    "width": 1333,
+    "height": 2000,
+    "variants": [
+      {
+        "src": "/marken/Tziacco/TziaccoLook4.w400.webp",
+        "width": 400
+      },
+      {
+        "src": "/marken/Tziacco/TziaccoLook4.w800.webp",
+        "width": 800
+      },
+      {
+        "src": "/marken/Tziacco/TziaccoLook4.w1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/marken/Tziacco/TziaccoLook4.webp",
+        "width": 1333
+      }
+    ]
+  },
+  "/marken/Wilvorst/GWLook1.webp": {
+    "width": 1334,
+    "height": 2000,
+    "variants": [
+      {
+        "src": "/marken/Wilvorst/GWLook1.w400.webp",
+        "width": 400
+      },
+      {
+        "src": "/marken/Wilvorst/GWLook1.w800.webp",
+        "width": 800
+      },
+      {
+        "src": "/marken/Wilvorst/GWLook1.w1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/marken/Wilvorst/GWLook1.webp",
+        "width": 1334
+      }
+    ]
+  },
+  "/marken/Wilvorst/GWLook2.webp": {
+    "width": 1334,
+    "height": 2000,
+    "variants": [
+      {
+        "src": "/marken/Wilvorst/GWLook2.w400.webp",
+        "width": 400
+      },
+      {
+        "src": "/marken/Wilvorst/GWLook2.w800.webp",
+        "width": 800
+      },
+      {
+        "src": "/marken/Wilvorst/GWLook2.w1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/marken/Wilvorst/GWLook2.webp",
+        "width": 1334
+      }
+    ]
+  },
+  "/marken/Wilvorst/GWLook7.webp": {
+    "width": 1334,
+    "height": 2000,
+    "variants": [
+      {
+        "src": "/marken/Wilvorst/GWLook7.w400.webp",
+        "width": 400
+      },
+      {
+        "src": "/marken/Wilvorst/GWLook7.w800.webp",
+        "width": 800
+      },
+      {
+        "src": "/marken/Wilvorst/GWLook7.w1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/marken/Wilvorst/GWLook7.webp",
+        "width": 1334
+      }
+    ]
+  },
+  "/marken/Wilvorst/WilvorstLook1.webp": {
+    "width": 1500,
+    "height": 2000,
+    "variants": [
+      {
+        "src": "/marken/Wilvorst/WilvorstLook1.w400.webp",
+        "width": 400
+      },
+      {
+        "src": "/marken/Wilvorst/WilvorstLook1.w800.webp",
+        "width": 800
+      },
+      {
+        "src": "/marken/Wilvorst/WilvorstLook1.w1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/marken/Wilvorst/WilvorstLook1.webp",
+        "width": 1500
+      }
+    ]
+  },
+  "/marken/Wilvorst/WilvorstLook13.webp": {
+    "width": 1500,
+    "height": 2000,
+    "variants": [
+      {
+        "src": "/marken/Wilvorst/WilvorstLook13.w400.webp",
+        "width": 400
+      },
+      {
+        "src": "/marken/Wilvorst/WilvorstLook13.w800.webp",
+        "width": 800
+      },
+      {
+        "src": "/marken/Wilvorst/WilvorstLook13.w1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/marken/Wilvorst/WilvorstLook13.webp",
+        "width": 1500
+      }
+    ]
+  },
+  "/marken/Wilvorst/WilvorstLook6.webp": {
+    "width": 1500,
+    "height": 2000,
+    "variants": [
+      {
+        "src": "/marken/Wilvorst/WilvorstLook6.w400.webp",
+        "width": 400
+      },
+      {
+        "src": "/marken/Wilvorst/WilvorstLook6.w800.webp",
+        "width": 800
+      },
+      {
+        "src": "/marken/Wilvorst/WilvorstLook6.w1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/marken/Wilvorst/WilvorstLook6.webp",
+        "width": 1500
+      }
+    ]
+  },
+  "/Männermode/CINQUE.webp": {
+    "width": 1491,
+    "height": 1919,
+    "variants": [
+      {
+        "src": "/Männermode/CINQUE.w400.webp",
+        "width": 400
+      },
+      {
+        "src": "/Männermode/CINQUE.w800.webp",
+        "width": 800
+      },
+      {
+        "src": "/Männermode/CINQUE.w1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/Männermode/CINQUE.webp",
+        "width": 1491
+      }
+    ]
+  },
+  "/Männermode/ETERNA_weißes_Hemd.webp": {
+    "width": 1350,
+    "height": 1800,
+    "variants": [
+      {
+        "src": "/Männermode/ETERNA_weißes_Hemd.w400.webp",
+        "width": 400
+      },
+      {
+        "src": "/Männermode/ETERNA_weißes_Hemd.w800.webp",
+        "width": 800
+      },
+      {
+        "src": "/Männermode/ETERNA_weißes_Hemd.w1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/Männermode/ETERNA_weißes_Hemd.webp",
+        "width": 1350
+      }
+    ]
+  },
+  "/Männermode/Marvelis.webp": {
+    "width": 518,
+    "height": 922,
+    "variants": [
+      {
+        "src": "/Männermode/Marvelis.w400.webp",
+        "width": 400
+      },
+      {
+        "src": "/Männermode/Marvelis.webp",
+        "width": 518
+      }
+    ]
+  },
+  "/Männermode/NZA_Image_Feuer.webp": {
+    "width": 2000,
+    "height": 1415,
+    "variants": [
+      {
+        "src": "/Männermode/NZA_Image_Feuer.w400.webp",
+        "width": 400
+      },
+      {
+        "src": "/Männermode/NZA_Image_Feuer.w800.webp",
+        "width": 800
+      },
+      {
+        "src": "/Männermode/NZA_Image_Feuer.w1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/Männermode/NZA_Image_Feuer.webp",
+        "width": 2000
+      }
+    ]
+  },
+  "/Männermode/NZA_Norweger_Pulli_129,99_€.webp": {
+    "width": 1450,
+    "height": 2000,
+    "variants": [
+      {
+        "src": "/Männermode/NZA_Norweger_Pulli_129,99_€.w400.webp",
+        "width": 400
+      },
+      {
+        "src": "/Männermode/NZA_Norweger_Pulli_129,99_€.w800.webp",
+        "width": 800
+      },
+      {
+        "src": "/Männermode/NZA_Norweger_Pulli_129,99_€.w1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/Männermode/NZA_Norweger_Pulli_129,99_€.webp",
+        "width": 1450
+      }
+    ]
+  },
+  "/Männermode/Replay.webp": {
+    "width": 1125,
+    "height": 1500,
+    "variants": [
+      {
+        "src": "/Männermode/Replay.w400.webp",
+        "width": 400
+      },
+      {
+        "src": "/Männermode/Replay.w800.webp",
+        "width": 800
+      },
+      {
+        "src": "/Männermode/Replay.webp",
+        "width": 1125
+      }
+    ]
+  },
+  "/ShootingBredelaer/Bredelaer_1.webp": {
+    "width": 1333,
+    "height": 2000,
+    "variants": [
+      {
+        "src": "/ShootingBredelaer/Bredelaer_1.w400.webp",
+        "width": 400
+      },
+      {
+        "src": "/ShootingBredelaer/Bredelaer_1.w800.webp",
+        "width": 800
+      },
+      {
+        "src": "/ShootingBredelaer/Bredelaer_1.w1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/ShootingBredelaer/Bredelaer_1.webp",
+        "width": 1333
+      }
+    ]
+  },
+  "/ShootingBredelaer/Bredelaer_2.webp": {
+    "width": 1333,
+    "height": 2000,
+    "variants": [
+      {
+        "src": "/ShootingBredelaer/Bredelaer_2.w400.webp",
+        "width": 400
+      },
+      {
+        "src": "/ShootingBredelaer/Bredelaer_2.w800.webp",
+        "width": 800
+      },
+      {
+        "src": "/ShootingBredelaer/Bredelaer_2.w1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/ShootingBredelaer/Bredelaer_2.webp",
+        "width": 1333
+      }
+    ]
+  },
+  "/ShootingBredelaer/Bredelaer_3.webp": {
+    "width": 1334,
+    "height": 2000,
+    "variants": [
+      {
+        "src": "/ShootingBredelaer/Bredelaer_3.w400.webp",
+        "width": 400
+      },
+      {
+        "src": "/ShootingBredelaer/Bredelaer_3.w800.webp",
+        "width": 800
+      },
+      {
+        "src": "/ShootingBredelaer/Bredelaer_3.w1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/ShootingBredelaer/Bredelaer_3.webp",
+        "width": 1334
+      }
+    ]
+  },
+  "/ShootingBredelaer/Bredelaer_4.webp": {
+    "width": 1333,
+    "height": 2000,
+    "variants": [
+      {
+        "src": "/ShootingBredelaer/Bredelaer_4.w400.webp",
+        "width": 400
+      },
+      {
+        "src": "/ShootingBredelaer/Bredelaer_4.w800.webp",
+        "width": 800
+      },
+      {
+        "src": "/ShootingBredelaer/Bredelaer_4.w1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/ShootingBredelaer/Bredelaer_4.webp",
+        "width": 1333
+      }
+    ]
+  },
+  "/ShootingExterhof/Exterhof_1.webp": {
+    "width": 1331,
+    "height": 2000,
+    "variants": [
+      {
+        "src": "/ShootingExterhof/Exterhof_1.w400.webp",
+        "width": 400
+      },
+      {
+        "src": "/ShootingExterhof/Exterhof_1.w800.webp",
+        "width": 800
+      },
+      {
+        "src": "/ShootingExterhof/Exterhof_1.w1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/ShootingExterhof/Exterhof_1.webp",
+        "width": 1331
+      }
+    ]
+  },
+  "/ShootingExterhof/Exterhof_2.webp": {
+    "width": 1331,
+    "height": 2000,
+    "variants": [
+      {
+        "src": "/ShootingExterhof/Exterhof_2.w400.webp",
+        "width": 400
+      },
+      {
+        "src": "/ShootingExterhof/Exterhof_2.w800.webp",
+        "width": 800
+      },
+      {
+        "src": "/ShootingExterhof/Exterhof_2.w1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/ShootingExterhof/Exterhof_2.webp",
+        "width": 1331
+      }
+    ]
+  },
+  "/ShootingExterhof/Exterhof_3.webp": {
+    "width": 1319,
+    "height": 2000,
+    "variants": [
+      {
+        "src": "/ShootingExterhof/Exterhof_3.w400.webp",
+        "width": 400
+      },
+      {
+        "src": "/ShootingExterhof/Exterhof_3.w800.webp",
+        "width": 800
+      },
+      {
+        "src": "/ShootingExterhof/Exterhof_3.w1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/ShootingExterhof/Exterhof_3.webp",
+        "width": 1319
+      }
+    ]
+  },
+  "/ShootingExterhof/Exterhof_4.webp": {
+    "width": 1331,
+    "height": 2000,
+    "variants": [
+      {
+        "src": "/ShootingExterhof/Exterhof_4.w400.webp",
+        "width": 400
+      },
+      {
+        "src": "/ShootingExterhof/Exterhof_4.w800.webp",
+        "width": 800
+      },
+      {
+        "src": "/ShootingExterhof/Exterhof_4.w1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/ShootingExterhof/Exterhof_4.webp",
+        "width": 1331
+      }
+    ]
+  },
+  "/ShootingHofFrien/Frien_1.webp": {
+    "width": 1333,
+    "height": 2000,
+    "variants": [
+      {
+        "src": "/ShootingHofFrien/Frien_1.w400.webp",
+        "width": 400
+      },
+      {
+        "src": "/ShootingHofFrien/Frien_1.w800.webp",
+        "width": 800
+      },
+      {
+        "src": "/ShootingHofFrien/Frien_1.w1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/ShootingHofFrien/Frien_1.webp",
+        "width": 1333
+      }
+    ]
+  },
+  "/ShootingHofFrien/Frien_2.webp": {
+    "width": 1333,
+    "height": 2000,
+    "variants": [
+      {
+        "src": "/ShootingHofFrien/Frien_2.w400.webp",
+        "width": 400
+      },
+      {
+        "src": "/ShootingHofFrien/Frien_2.w800.webp",
+        "width": 800
+      },
+      {
+        "src": "/ShootingHofFrien/Frien_2.w1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/ShootingHofFrien/Frien_2.webp",
+        "width": 1333
+      }
+    ]
+  },
+  "/ShootingHofFrien/Frien_3.webp": {
+    "width": 1333,
+    "height": 2000,
+    "variants": [
+      {
+        "src": "/ShootingHofFrien/Frien_3.w400.webp",
+        "width": 400
+      },
+      {
+        "src": "/ShootingHofFrien/Frien_3.w800.webp",
+        "width": 800
+      },
+      {
+        "src": "/ShootingHofFrien/Frien_3.w1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/ShootingHofFrien/Frien_3.webp",
+        "width": 1333
+      }
+    ]
+  },
+  "/ShootingHofFrien/Frien_4.webp": {
+    "width": 1333,
+    "height": 2000,
+    "variants": [
+      {
+        "src": "/ShootingHofFrien/Frien_4.w400.webp",
+        "width": 400
+      },
+      {
+        "src": "/ShootingHofFrien/Frien_4.w800.webp",
+        "width": 800
+      },
+      {
+        "src": "/ShootingHofFrien/Frien_4.w1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/ShootingHofFrien/Frien_4.webp",
+        "width": 1333
+      }
+    ]
+  },
+  "/ShootingHolzhausen/Pavillon_1.webp": {
+    "width": 1920,
+    "height": 1280,
+    "variants": [
+      {
+        "src": "/ShootingHolzhausen/Pavillon_1.w400.webp",
+        "width": 400
+      },
+      {
+        "src": "/ShootingHolzhausen/Pavillon_1.w800.webp",
+        "width": 800
+      },
+      {
+        "src": "/ShootingHolzhausen/Pavillon_1.w1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/ShootingHolzhausen/Pavillon_1.webp",
+        "width": 1920
+      }
+    ]
+  },
+  "/ShootingHolzhausen/Pavillon_2.webp": {
+    "width": 1920,
+    "height": 1280,
+    "variants": [
+      {
+        "src": "/ShootingHolzhausen/Pavillon_2.w400.webp",
+        "width": 400
+      },
+      {
+        "src": "/ShootingHolzhausen/Pavillon_2.w800.webp",
+        "width": 800
+      },
+      {
+        "src": "/ShootingHolzhausen/Pavillon_2.w1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/ShootingHolzhausen/Pavillon_2.webp",
+        "width": 1920
+      }
+    ]
+  },
+  "/ShootingHolzhausen/Pavillon_3.webp": {
+    "width": 1920,
+    "height": 1280,
+    "variants": [
+      {
+        "src": "/ShootingHolzhausen/Pavillon_3.w400.webp",
+        "width": 400
+      },
+      {
+        "src": "/ShootingHolzhausen/Pavillon_3.w800.webp",
+        "width": 800
+      },
+      {
+        "src": "/ShootingHolzhausen/Pavillon_3.w1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/ShootingHolzhausen/Pavillon_3.webp",
+        "width": 1920
+      }
+    ]
+  },
+  "/ShootingHolzhausen/Pavillon_4.webp": {
+    "width": 1920,
+    "height": 1280,
+    "variants": [
+      {
+        "src": "/ShootingHolzhausen/Pavillon_4.w400.webp",
+        "width": 400
+      },
+      {
+        "src": "/ShootingHolzhausen/Pavillon_4.w800.webp",
+        "width": 800
+      },
+      {
+        "src": "/ShootingHolzhausen/Pavillon_4.w1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/ShootingHolzhausen/Pavillon_4.webp",
+        "width": 1920
+      }
+    ]
+  },
+  "/Start/FamilieFischer.webp": {
+    "width": 1500,
+    "height": 2000,
+    "variants": [
+      {
+        "src": "/Start/FamilieFischer.w400.webp",
+        "width": 400
+      },
+      {
+        "src": "/Start/FamilieFischer.w800.webp",
+        "width": 800
+      },
+      {
+        "src": "/Start/FamilieFischer.w1200.webp",
+        "width": 1200
+      },
+      {
+        "src": "/Start/FamilieFischer.webp",
+        "width": 1500
+      }
+    ]
+  },
+  "/Start/Herrenhaus_Fischer_Außenansicht.webp": {
+    "width": 625,
+    "height": 695,
+    "variants": [
+      {
+        "src": "/Start/Herrenhaus_Fischer_Außenansicht.w400.webp",
+        "width": 400
+      },
+      {
+        "src": "/Start/Herrenhaus_Fischer_Außenansicht.webp",
+        "width": 625
+      }
+    ]
+  }
+}

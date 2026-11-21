@@ -22,7 +22,7 @@ import { FacebookIcon, InstagramIcon, MailIcon, YoutubeIcon } from "./icons";
 import { useZustand } from "@/zustand";
 import i18n, { keysToLanguages } from "@/i18n";
 import { ThemeSwitch } from "@/components/theme-switch";
-import { siteConfig } from "@/config/site";
+import { sectionIds, siteConfig } from "@/config/site";
 import { Button } from "@heroui/button";
 
 export const Navbar = () => {
@@ -53,9 +53,15 @@ export const Navbar = () => {
     setIsMenuOpen(false);
   }, [pathname]);
 
-  const { activeSection, setActiveSection } = useZustand();
+  const { activeSection } = useZustand();
 
   const navigate = useNavigate();
+  const goToSection = (path: string) => {
+    if (path !== location.pathname) navigate(path);
+    else if (path === "/") window.scrollTo({ top: 0, behavior: "smooth" });
+    else document.getElementById(sectionIds[path])?.scrollIntoView({ behavior: "smooth" });
+    setIsMenuOpen(false);
+  };
   return (
     <HeroUINavbar
       className=" pb-14  sm:pb-16 inset-shadow-xl backgrounddiv mask-navbar"
@@ -81,6 +87,7 @@ export const Navbar = () => {
           className="p-0 m-0"
         >
           <Image
+            alt="Herrenhaus Fischer"
             className=" top-0 lg:left-0 xl:left-auto  z-0 fixed cursor-grab"
             src="/logo-herrenhaus-fischer.png"
             width={230}
@@ -138,6 +145,8 @@ export const Navbar = () => {
           {siteConfig.scrollNavItems.map((item) => (
             <NavbarItem key={item.href} className="" id={item.href}>
               <Button
+                as="a"
+                href={`#${item.href}`}
                 color={item.href === activeSection ? "primary" : "default"}
                 variant="light"
                 className={
@@ -145,32 +154,7 @@ export const Navbar = () => {
                     ? "dark:bg-foreground-50 bg-foreground-100 scale-105"
                     : "") + " text-md hover:scale-105 duration-400"
                 }
-                onPress={() => {
-                  navigate("/");
-                  if (item.href.split("#")[0] !== location.pathname) {
-                    setActiveSection(item.href);
-                    setTimeout(() => {
-                      document
-                        .getElementById(item.href.split("#")[1])
-                        ?.scrollIntoView({
-                          behavior: "smooth",
-                          block: "start",
-                          inline: "start",
-                        });
-                    }, 1);
-                  }
-                  let anchorId: string | undefined = undefined;
-
-                  if (item.href.includes("#"))
-                    anchorId = item.href.split("#")[1];
-
-                  if (!anchorId)
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                  else
-                    document.getElementById(anchorId)?.scrollIntoView({
-                      behavior: "smooth",
-                    });
-                }}
+                onPress={() => goToSection(item.href)}
               >
                 {t(`routes.${item.label}`)}
               </Button>
@@ -200,31 +184,8 @@ export const Navbar = () => {
               <Link
                 className={clsx("italic text-lg font-semibold")}
                 color={item.href === activeSection ? "primary" : "foreground"}
-                onPress={() => {
-                  navigate("/");
-                  setIsMenuOpen(false);
-                  if (item.href.split("#")[0] !== location.pathname) {
-                    setActiveSection(item.href);
-                    setTimeout(() => {
-                      document
-                        .getElementById(item.href.split("#")[1])
-                        ?.scrollIntoView({
-                          behavior: "smooth",
-                        });
-                    }, 1);
-                  }
-                  let anchorId: string | undefined = undefined;
-
-                  if (item.href.includes("#"))
-                    anchorId = item.href.split("#")[1];
-
-                  if (!anchorId)
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                  else
-                    document.getElementById(anchorId)?.scrollIntoView({
-                      behavior: "smooth",
-                    });
-                }}
+                href={`#${item.href}`}
+                onPress={() => goToSection(item.href)}
               >
                 {t(`routes.${item.label}`)}
               </Link>

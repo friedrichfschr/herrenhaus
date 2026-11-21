@@ -17,11 +17,22 @@ export function ContactForm() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [firma, setFirma] = useState("");
+  const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
+  const [sending, setSending] = useState(false);
   const formref = useRef<HTMLFormElement>(null);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
-  const sendEmail = (e: any) => {
+  const sendEmail = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!phone.trim()) {
+      addToast({
+        title: t("kontakt.errorTitle"),
+        description: t("kontakt.errorMessagePhone"),
+        color: "danger",
+      });
+      return;
+    }
 
     if (!recaptchaRef.current || !recaptchaRef.current.getValue()) {
       addToast({
@@ -36,48 +47,37 @@ export function ContactForm() {
       email,
       name,
       firma,
-      message,
+      phone,
+      telefon: phone,
+      message: `${message}\n\nTelefon: ${phone}`,
       "g-recaptcha-response": recaptchaRef.current.getValue(),
     };
 
+    setSending(true);
     try {
-      emailjs
-        .send("service_t8gf0mg", "template_qnkair8", params, {
-          publicKey: "JUsM4xFcAYTAwAY7D",
-        })
-        .then(
-          () => {
-            console.log("SUCCESS!");
-            addToast({
-              title: "Erfolg",
-              description: "Ihre Nachricht wurde erfolgreich gesendet.",
-              color: "success",
-            });
-            if (formref.current) {
-              formref.current.reset();
-              setEmail("");
-              setName("");
-              setFirma("");
-              setMessage("");
-              recaptchaRef.current?.reset();
-            }
-          },
-          (error) => {
-            console.log("FAILED...", error, e.target);
-            addToast({
-              title: t("kontakt.errorTitle"),
-              description: t("kontakt.errorDescription"),
-              color: "danger",
-            });
-          },
-        );
+      await emailjs.send("service_t8gf0mg", "template_qnkair8", params, {
+        publicKey: "JUsM4xFcAYTAwAY7D",
+      });
+      addToast({
+        title: "Erfolg",
+        description: "Ihre Nachricht wurde erfolgreich gesendet.",
+        color: "success",
+      });
+      formref.current?.reset();
+      setEmail("");
+      setName("");
+      setFirma("");
+      setPhone("");
+      setMessage("");
+      recaptchaRef.current?.reset();
     } catch (error) {
-      console.log("FAILED...", error);
       addToast({
         title: t("kontakt.errorTitle"),
         description: t("kontakt.errorDescription"),
         color: "danger",
       });
+    } finally {
+      setSending(false);
     }
   };
 
@@ -110,6 +110,7 @@ export function ContactForm() {
       <div className="flex flex-row grow gap-5 mt-5 justify-end  w-full text-lg pt-1">
         <div className="  grow">
           <iframe
+            title="Herrenhaus Fischer auf Google Maps"
             className="grow"
             height="100%"
             loading="lazy"
@@ -128,7 +129,7 @@ export function ContactForm() {
           </span>
           <div className="flex flex-col gap-2.5">
             <Link
-              href="tel:05272 - 355 832"
+              href="tel:+495272355832"
               size="lg"
               className="bg-foreground-50 p-1"
             >
@@ -182,6 +183,18 @@ export function ContactForm() {
           />
 
           <Input
+            isRequired
+            errorMessage={t("kontakt.errorMessagePhone")}
+            label={t("kontakt.label.phone")}
+            labelPlacement="outside"
+            name="phone"
+            placeholder={t("kontakt.placeholder.phone")}
+            type="tel"
+            autoComplete="tel"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+          />
+          <Input
             label={t("kontakt.label.firma")}
             labelPlacement="outside"
             name="Firma"
@@ -200,7 +213,7 @@ export function ContactForm() {
             onChange={(e) => setMessage(e.target.value)}
           />
           <div className="flex gap-2" id="empfehlungenscroll">
-            <Button color="primary" type="submit">
+            <Button color="primary" isDisabled={sending} isLoading={sending} type="submit">
               {t("kontakt.sendButton")}
             </Button>
           </div>

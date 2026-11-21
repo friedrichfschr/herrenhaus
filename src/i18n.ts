@@ -26,7 +26,15 @@ i18n
   // for all options read: https://www.i18next.com/overview/configuration-options
 
   .init({
-    debug: true,
+    debug: import.meta.env.MODE !== "production",
+
+    // Use localStorage for language persistence instead of cookies
+    detection: {
+      // order of lookup: try localStorage first, then browser settings
+      order: ["localStorage", "navigator", "htmlTag", "path", "subdomain"],
+      // persist user language only in localStorage
+      caches: ["localStorage"],
+    },
 
     fallbackLng: "de",
 
@@ -203,17 +211,20 @@ i18n
             label: {
               email: "Email",
               name: "Name",
+              phone: "Telefonnummer",
               firma: "Firma",
               nachricht: "Nachricht",
             },
             placeholder: {
               email: "Ihre Email Adresse",
               name: "Ihr Name",
+              phone: "Ihre Telefonnummer",
               firma: "Ihre Firma",
               nachricht: "Ihre Nachricht",
             },
             errorMessageEmail:
               "Bitte geben sie eine korrekte Email Addresse ein.",
+            errorMessagePhone: "Bitte geben Sie Ihre Telefonnummer ein.",
             errorMessageRecaptcha:
               "Bitte bestätigen Sie erst, dass Sie kein Roboter sind.",
             errorTitle: "Etwas ist schief gelaufen...",
@@ -413,16 +424,19 @@ i18n
             label: {
               email: "Email",
               name: "Name",
+              phone: "Phone number",
               firma: "Company",
               nachricht: "Message",
             },
             placeholder: {
               email: "Your email address",
               name: "Your name",
+              phone: "Your phone number",
               firma: "Your company",
               nachricht: "Your message",
             },
             errorMessageEmail: "Please enter a valid email address.",
+            errorMessagePhone: "Please enter your phone number.",
             errorMessageRecaptcha:
               "Please first confirm that you are not a robot.",
             errorTitle: "Something went wrong...",
@@ -622,16 +636,19 @@ i18n
             label: {
               email: "Email",
               name: "Nom",
+              phone: "Numéro de téléphone",
               firma: "Entreprise",
               nachricht: "Message",
             },
             placeholder: {
               email: "Votre adresse email",
               name: "Votre nom",
+              phone: "Votre numéro de téléphone",
               firma: "Votre entreprise",
               nachricht: "Votre message",
             },
             errorMessageEmail: "Veuillez saisir une adresse email valide.",
+            errorMessagePhone: "Veuillez saisir votre numéro de téléphone.",
             errorMessageRecaptcha:
               "Veuillez d’abord confirmer que vous n’êtes pas un robot.",
             errorTitle: "Une erreur s’est produite...",
@@ -831,17 +848,20 @@ i18n
             label: {
               email: "Email",
               name: "Nombre",
+              phone: "Número de teléfono",
               firma: "Empresa",
               nachricht: "Mensaje",
             },
             placeholder: {
               email: "Su dirección de email",
               name: "Su nombre",
+              phone: "Su número de teléfono",
               firma: "Su empresa",
               nachricht: "Su mensaje",
             },
             errorMessageEmail:
               "Por favor, introduzca una dirección de email válida.",
+            errorMessagePhone: "Por favor, introduzca su número de teléfono.",
             errorMessageRecaptcha:
               "Por favor, confirme primero que no es un robot.",
             errorTitle: "Algo ha salido mal...",
